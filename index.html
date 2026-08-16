@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yordanos Ketema — BI Analyst</title>
+<meta name="description" content="Yordanos Ketema — BI Analyst. SQL, Excel, Python, and Power BI portfolio featuring a full COVID-19 global data analysis.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0F1720;
+    --surface:#16202B;
+    --surface-2:#1C2836;
+    --border:#2A3644;
+    --text:#EDF1F5;
+    --text-muted:#8496A8;
+    --amber:#F2B705;
+    --blue:#4FA3D1;
+    --green:#4CAF7D;
+    --magenta:#C2559C;
+    --radius:10px;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Inter', sans-serif;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{ font-family:'Space Grotesk', sans-serif; font-weight:600; letter-spacing:-0.01em; }
+  .mono{ font-family:'JetBrains Mono', monospace; }
+  a{ color:inherit; text-decoration:none; }
+  img{ max-width:100%; display:block; }
+  .wrap{ max-width:1120px; margin:0 auto; padding:0 28px; }
+  :focus-visible{ outline:2px solid var(--amber); outline-offset:3px; }
+
+  /* ---------- NAV ---------- */
+  .nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(15,23,32,0.86);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--border);
+  }
+  .nav .wrap{ display:flex; align-items:center; justify-content:space-between; height:72px; }
+  .brand{ display:flex; align-items:center; gap:10px; font-family:'Space Grotesk', sans-serif; font-weight:600; font-size:17px; }
+  .brand .mark{
+    width:32px; height:32px; border-radius:8px;
+    background:linear-gradient(135deg, var(--amber), var(--magenta));
+    display:flex; align-items:center; justify-content:center;
+    color:#0F1720; font-weight:700; font-size:13px; font-family:'JetBrains Mono', monospace;
+  }
+  .nav-links{ display:flex; gap:32px; font-size:14px; color:var(--text-muted); }
+  .nav-links a:hover{ color:var(--text); }
+  .nav-cta{
+    font-size:13px; font-family:'JetBrains Mono', monospace;
+    border:1px solid var(--border); padding:9px 16px; border-radius:7px;
+    transition:border-color .15s, color .15s;
+  }
+  .nav-cta:hover{ border-color:var(--amber); color:var(--amber); }
+  .nav-toggle{ display:none; background:none; border:none; color:var(--text); font-size:22px; cursor:pointer; }
+
+  /* ---------- HERO ---------- */
+  .hero{ padding:88px 0 64px; }
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:'JetBrains Mono', monospace; font-size:12.5px; letter-spacing:0.08em;
+    color:var(--green); text-transform:uppercase; margin-bottom:22px;
+    border:1px solid rgba(76,175,125,0.35); background:rgba(76,175,125,0.08);
+    padding:6px 12px; border-radius:20px;
+  }
+  .eyebrow .dot{ width:7px; height:7px; border-radius:50%; background:var(--green); box-shadow:0 0 0 0 rgba(76,175,125,0.6); animation:pulse 2s infinite; }
+  @keyframes pulse{
+    0%{ box-shadow:0 0 0 0 rgba(76,175,125,0.55); }
+    70%{ box-shadow:0 0 0 7px rgba(76,175,125,0); }
+    100%{ box-shadow:0 0 0 0 rgba(76,175,125,0); }
+  }
+  .hero h1{ font-size:clamp(38px, 6vw, 60px); line-height:1.05; margin-bottom:18px; }
+  .hero .sub{ font-size:19px; color:var(--text-muted); max-width:620px; margin-bottom:44px; }
+  .kpi-strip{ display:grid; grid-template-columns:repeat(4, 1fr); gap:14px; }
+  .kpi-card{
+    background:var(--surface); border:1px solid var(--border); border-radius:var(--radius);
+    padding:20px 18px;
+  }
+  .kpi-card .num{ font-family:'JetBrains Mono', monospace; font-size:26px; font-weight:500; color:var(--amber); margin-bottom:6px; }
+  .kpi-card .label{ font-size:12.5px; color:var(--text-muted); line-height:1.4; }
+
+  /* ---------- SECTION HEADERS ---------- */
+  section{ padding:72px 0; border-top:1px solid var(--border); }
+  .sec-head{ margin-bottom:40px; }
+  .sec-tag{ font-family:'JetBrains Mono', monospace; font-size:12px; color:var(--blue); letter-spacing:0.08em; text-transform:uppercase; margin-bottom:10px; }
+  .sec-head h2{ font-size:clamp(26px, 4vw, 34px); }
+
+  /* ---------- ABOUT ---------- */
+  .about-grid{ display:grid; grid-template-columns:1.3fr 1fr; gap:48px; align-items:start; }
+  .about p{ color:var(--text-muted); font-size:16px; margin-bottom:22px; max-width:540px; }
+  .tag-row{ display:flex; flex-wrap:wrap; gap:9px; margin-top:8px; }
+  .tag{
+    font-family:'JetBrains Mono', monospace; font-size:12.5px;
+    border:1px solid var(--border); border-radius:20px; padding:7px 14px;
+    color:var(--text-muted); background:var(--surface);
+  }
+  .edu-card{
+    background:var(--surface); border:1px solid var(--border); border-radius:var(--radius);
+    padding:24px;
+  }
+  .edu-card .edu-eyebrow{ font-family:'JetBrains Mono', monospace; font-size:11.5px; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.06em; margin-bottom:10px; }
+  .edu-card h3{ font-size:17px; margin-bottom:6px; }
+  .edu-card .school{ color:var(--amber); font-size:14px; margin-bottom:14px; }
+  .edu-card .desc{ color:var(--text-muted); font-size:14px; }
+
+  /* ---------- PROJECT / TABS ---------- */
+  .project-intro{ color:var(--text-muted); font-size:16px; max-width:680px; margin-bottom:36px; }
+  .tabbar{ display:flex; gap:2px; border-bottom:1px solid var(--border); margin-bottom:0; flex-wrap:wrap; }
+  .tab{
+    font-family:'JetBrains Mono', monospace; font-size:13.5px;
+    padding:13px 22px 12px; cursor:pointer; color:var(--text-muted);
+    background:var(--surface);
+    border:1px solid var(--border); border-bottom:none;
+    border-radius:8px 8px 0 0;
+    position:relative; top:1px;
+    display:flex; align-items:center; gap:8px;
+    transition:color .15s, background .15s;
+  }
+  .tab .swatch{ width:8px; height:8px; border-radius:2px; }
+  .tab[data-tool="sql"] .swatch{ background:var(--blue); }
+  .tab[data-tool="excel"] .swatch{ background:var(--green); }
+  .tab[data-tool="python"] .swatch{ background:var(--amber); }
+  .tab[data-tool="powerbi"] .swatch{ background:var(--magenta); }
+  .tab:hover{ color:var(--text); }
+  .tab.active{
+    color:var(--text); background:var(--surface-2);
+    border-color:var(--border);
+    border-bottom:1px solid var(--surface-2);
+  }
+  .tab-panels{
+    background:var(--surface-2); border:1px solid var(--border); border-top:none;
+    border-radius:0 0 var(--radius) var(--radius);
+    padding:36px;
+  }
+  .panel{ display:none; }
+  .panel.active{ display:block; animation:fadein .25s ease; }
+  @keyframes fadein{ from{ opacity:0; transform:translateY(4px);} to{ opacity:1; transform:translateY(0);} }
+  .panel-head{ display:flex; align-items:baseline; justify-content:space-between; gap:20px; flex-wrap:wrap; margin-bottom:14px; }
+  .panel-head h3{ font-size:20px; }
+  .panel-links{ display:flex; gap:10px; flex-wrap:wrap; }
+  .panel-links a{
+    font-family:'JetBrains Mono', monospace; font-size:12.5px;
+    border:1px solid var(--border); padding:7px 13px; border-radius:6px;
+    color:var(--text-muted); transition:border-color .15s, color .15s;
+    white-space:nowrap;
+  }
+  .panel-links a:hover{ border-color:var(--amber); color:var(--amber); }
+  .panel-links a.primary{ border-color:var(--amber); color:var(--amber); }
+  .panel p.desc{ color:var(--text-muted); font-size:15px; margin-bottom:22px; max-width:680px; }
+  .panel .shots{ display:grid; grid-template-columns:1fr; gap:18px; align-items:start; }
+  .panel .shots.two{ grid-template-columns:1fr 1fr; }
+  .shot{ border:1px solid var(--border); border-radius:8px; overflow:hidden; background:var(--bg); }
+  .shot img{ width:100%; }
+  .code-block{
+    background:var(--bg); border:1px solid var(--border); border-radius:8px;
+    padding:20px 22px; overflow-x:auto; margin-bottom:22px;
+  }
+  .code-block pre{ font-family:'JetBrains Mono', monospace; font-size:12.5px; color:#B9C4D0; line-height:1.7; white-space:pre; }
+  .code-block .kw{ color:var(--blue); }
+  .code-block .cm{ color:var(--text-muted); font-style:italic; }
+  .code-block .fn{ color:var(--amber); }
+  .stat-line{ display:flex; gap:24px; flex-wrap:wrap; margin-top:22px; font-family:'JetBrains Mono', monospace; font-size:12.5px; color:var(--text-muted); }
+  .stat-line b{ color:var(--text); }
+
+  /* ---------- SKILLS ---------- */
+  .skills-grid{ display:grid; grid-template-columns:repeat(2, 1fr); gap:28px; }
+  .skill-group h3{ font-size:14px; font-family:'JetBrains Mono', monospace; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.06em; margin-bottom:14px; font-weight:500; }
+  .skill-group .tag-row .tag{ background:var(--surface-2); }
+
+  /* ---------- FOOTER ---------- */
+  footer{ padding:64px 0 40px; }
+  .footer-top{ display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:32px; margin-bottom:48px; }
+  .footer-top h2{ font-size:clamp(26px, 4vw, 36px); max-width:480px; }
+  .footer-links{ display:flex; flex-direction:column; gap:12px; }
+  .footer-links a{
+    font-family:'JetBrains Mono', monospace; font-size:14px; color:var(--text-muted);
+    display:flex; align-items:center; gap:8px; transition:color .15s;
+  }
+  .footer-links a:hover{ color:var(--amber); }
+  .footer-bottom{ border-top:1px solid var(--border); padding-top:24px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px; font-size:12.5px; color:var(--text-muted); font-family:'JetBrains Mono', monospace; }
+
+  /* ---------- REVEAL ---------- */
+  .reveal{ opacity:0; transform:translateY(16px); transition:opacity .5s ease, transform .5s ease; }
+  .reveal.in{ opacity:1; transform:translateY(0); }
+  @media (prefers-reduced-motion: reduce){
+    .reveal{ opacity:1; transform:none; transition:none; }
+    .eyebrow .dot{ animation:none; }
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 860px){
+    .about-grid{ grid-template-columns:1fr; }
+    .skills-grid{ grid-template-columns:1fr; }
+    .kpi-strip{ grid-template-columns:1fr 1fr; }
+    .panel .shots.two{ grid-template-columns:1fr; }
+  }
+  @media (max-width: 640px){
+    .nav-links{ display:none; }
+    .nav-toggle{ display:block; }
+    .kpi-strip{ grid-template-columns:1fr 1fr; }
+    .tabbar{ overflow-x:auto; flex-wrap:nowrap; }
+    .tab-panels{ padding:24px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a href="#top" class="brand"><span class="mark">YK</span> Yordanos Ketema</a>
+    <nav class="nav-links">
+      <a href="#about">About</a>
+      <a href="#project">Project</a>
+      <a href="#skills">Skills</a>
+    </nav>
+    <a href="#contact" class="nav-cta">Contact</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap">
+      <span class="eyebrow"><span class="dot"></span> Open to full-time roles</span>
+      <h1>Yordanos Ketema</h1>
+      <p class="sub">BI Analyst turning raw data into decisions — comfortable across SQL, spreadsheets, Python, and Power BI, and equally at home with web and database work.</p>
+
+      <div class="kpi-strip reveal">
+        <div class="kpi-card">
+          <div class="num">4</div>
+          <div class="label">Tools, one dataset — SQL, Excel, Python, Power BI</div>
+        </div>
+        <div class="kpi-card">
+          <div class="num">150.5M</div>
+          <div class="label">COVID-19 records analyzed</div>
+        </div>
+        <div class="kpi-card">
+          <div class="num">210</div>
+          <div class="label">Countries covered</div>
+        </div>
+        <div class="kpi-card">
+          <div class="num">14</div>
+          <div class="label">SQL queries — joins to window functions</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="sec-tag">// about</div>
+        <h2>Background</h2>
+      </div>
+      <div class="about-grid">
+        <div class="reveal">
+          <p>I'm a BI Analyst based in Addis Ababa, Ethiopia. I like working end-to-end on data — pulling it out of a database, cleaning it up, modeling it properly, and building something a non-technical reader can actually understand at a glance.</p>
+          <p>I'm currently open to full-time roles across a few adjacent areas, since I'm equally comfortable on the analysis side and the systems side of data work:</p>
+          <div class="tag-row">
+            <span class="tag">Business Intelligence</span>
+            <span class="tag">Data Analysis</span>
+            <span class="tag">Web Development</span>
+            <span class="tag">Database Administration</span>
+            <span class="tag">Systems Analysis</span>
+          </div>
+        </div>
+        <div class="edu-card reveal">
+          <div class="edu-eyebrow">Education</div>
+          <h3>B.A. Business Administration &amp; Information Systems</h3>
+          <div class="school">Addis Ababa University</div>
+          <div class="desc">Coursework spanning business operations and information systems, giving equal footing in the business questions behind the data and the systems that hold it.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECT -->
+  <section id="project">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="sec-tag">// project 01</div>
+        <h2>COVID-19 Global Data Analysis</h2>
+      </div>
+      <p class="project-intro reveal">One dataset — Our World in Data's COVID-19 records, 210 countries, Jan 2020 to Apr 2021 — analyzed four different ways. Every headline number is cross-checked across all four, including a continent-aggregation pitfall I caught and fixed the same way in each tool. Pick a tab.</p>
+
+      <div class="reveal tool-group">
+        <div class="tabbar" role="tablist">
+          <button class="tab active" data-tool="sql" role="tab">
+            <span class="swatch"></span> SQL
+          </button>
+          <button class="tab" data-tool="excel" role="tab">
+            <span class="swatch"></span> Excel
+          </button>
+          <button class="tab" data-tool="python" role="tab">
+            <span class="swatch"></span> Python
+          </button>
+          <button class="tab" data-tool="powerbi" role="tab">
+            <span class="swatch"></span> Power BI
+          </button>
+        </div>
+
+        <div class="tab-panels">
+
+          <!-- SQL PANEL -->
+          <div class="panel active" data-tool="sql">
+            <div class="panel-head">
+              <h3>SQL exploration — SQLite</h3>
+              <div class="panel-links">
+                <a class="primary" href="https://github.com/yordanosugr-9866-16-bot/covid-data-analysis-portfolio/blob/main/sql/covid_analysis.sql" target="_blank" rel="noopener">View .sql on GitHub ↗</a>
+              </div>
+            </div>
+            <p class="desc">14 queries against a SQLite database built from the raw data — from basic filtering up through joins, CTEs, window functions, temp tables, and a view. Includes a documented fix for a common pitfall: naively grouping cumulative totals by continent silently returns the wrong number.</p>
+            <div class="code-block">
+              <pre><span class="cm">-- Rolling vaccination % of population, via CTE + window function</span>
+<span class="kw">WITH</span> pop_vs_vac <span class="kw">AS</span> (
+    <span class="kw">SELECT</span> d.location, d.date, d.population, v.new_vaccinations,
+        <span class="fn">SUM</span>(v.new_vaccinations) <span class="kw">OVER</span> (
+            <span class="kw">PARTITION BY</span> d.location <span class="kw">ORDER BY</span> d.date
+        ) <span class="kw">AS</span> rolling_people_vaccinated
+    <span class="kw">FROM</span> CovidDeaths d
+    <span class="kw">JOIN</span> CovidVaccinations v
+        <span class="kw">ON</span> d.location = v.location <span class="kw">AND</span> d.date = v.date
+    <span class="kw">WHERE</span> d.continent <span class="kw">IS NOT NULL</span>
+)
+<span class="kw">SELECT</span> *, <span class="fn">ROUND</span>(100.0 * rolling_people_vaccinated / population, 2)
+    <span class="kw">AS</span> pct_population_vaccinated
+<span class="kw">FROM</span> pop_vs_vac <span class="kw">ORDER BY</span> location, date;</pre>
+            </div>
+            <div class="stat-line">
+              <span><b>150,574,977</b> global cases</span>
+              <span><b>3,180,206</b> global deaths</span>
+              <span><b>2.11%</b> global death rate</span>
+            </div>
+          </div>
+
+          <!-- EXCEL PANEL -->
+          <div class="panel" data-tool="excel">
+            <div class="panel-head">
+              <h3>Excel dashboard — formula-driven</h3>
+              <div class="panel-links">
+                <a class="primary" href="https://github.com/yordanosugr-9866-16-bot/covid-data-analysis-portfolio/blob/main/excel/COVID_Excel_Dashboard.xlsx" target="_blank" rel="noopener">Download .xlsx ↗</a>
+              </div>
+            </div>
+            <p class="desc">Nothing here is hardcoded. Country and continent summaries are built with SUMIF / MAXIFS / RANK / INDEX-MATCH straight off 81,000+ rows of raw data, so the whole workbook recalculates if the source data changes. KPI cards and four charts pull live from those formula sheets.</p>
+            <div class="shots">
+              <div class="shot"><img src="assets/excel_dashboard_screenshot.png" alt="Excel dashboard showing global COVID KPI cards, a cases-and-deaths trend chart, and a continent death-toll bar chart"></div>
+            </div>
+          </div>
+
+          <!-- PYTHON PANEL -->
+          <div class="panel" data-tool="python">
+            <div class="panel-head">
+              <h3>Python notebook — pandas + matplotlib</h3>
+              <div class="panel-links">
+                <a class="primary" href="https://github.com/yordanosugr-9866-16-bot/covid-data-analysis-portfolio/blob/main/notebook/covid_analysis_notebook.ipynb" target="_blank" rel="noopener">Open notebook on GitHub ↗</a>
+              </div>
+            </div>
+            <p class="desc">A narrated, executed notebook — cleaning, EDA, and visualization, ending with a deliberately cautious look at vaccination rate vs. death rate. The point of that last chart isn't a correlation, it's showing <em>why</em> a 4-month snapshot is the wrong data to draw one from.</p>
+            <div class="shots two">
+              <div class="shot"><img src="assets/chart_global_trend.png" alt="Line chart of global daily new COVID-19 cases and deaths from Jan 2020 to Apr 2021"></div>
+              <div class="shot"><img src="assets/chart_continent_comparison.png" alt="Bar charts comparing total deaths and case-fatality rate by continent"></div>
+              <div class="shot"><img src="assets/chart_top_infection_rate.png" alt="Horizontal bar chart of the top 15 countries by COVID-19 infection rate"></div>
+              <div class="shot"><img src="assets/chart_vaccine_rollout.png" alt="Line chart of vaccine rollout trajectories for the leading countries through April 2021"></div>
+            </div>
+          </div>
+
+          <!-- POWER BI PANEL -->
+          <div class="panel" data-tool="powerbi">
+            <div class="panel-head">
+              <h3>Power BI — interactive dashboard</h3>
+              <div class="panel-links">
+                <a class="primary" href="https://github.com/yordanosugr-9866-16-bot/covid-data-analysis-portfolio/blob/main/powerbi/covid_dashboard.pbix" target="_blank" rel="noopener">Download .pbix ↗</a>
+              </div>
+            </div>
+            <p class="desc">Built on a proper star schema (one fact table, two dimension tables) with custom DAX measures — including a continent-total measure that correctly sums each country's own cumulative figure, rather than the naive version that silently grabs whichever single country peaked highest. The screenshot below shows both slicers live — click a continent or drag the date range to cross-filter. <em>(Public web embedding is disabled by my school's Power BI admin policy — download the file to try it interactively, or happy to walk through it live.)</em></p>
+            <div class="shots">
+              <div class="shot"><img src="assets/powerbi_dashboard_screenshot.png" alt="Power BI dashboard with KPI cards, a cases and deaths trend line, a continent death toll chart, top-10 tables, and date range and continent slicers"></div>
+            </div>
+          </div>
+
+        </div>
+  </section>
+
+  <!-- PROJECT 2 -->
+  <section id="project2">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="sec-tag">// project 02</div>
+        <h2>Ethiopia &amp; East Africa Economic Analysis</h2>
+      </div>
+      <p class="project-intro reveal">A self-sourced dataset this time — World Bank indicators for Ethiopia, Kenya, Uganda, Tanzania, and Rwanda, pulled and reconciled from public sources rather than a pre-cleaned download. The headline finding: Ethiopia leads the region on population and total GDP, but Kenya actually leads on GDP <em>per capita</em> — total and per-capita tell opposite stories, and this project shows both rather than picking the flattering one.</p>
+
+      <div class="reveal tool-group">
+        <div class="tabbar" role="tablist">
+          <button class="tab active" data-tool="sql2" role="tab">
+            <span class="swatch"></span> SQL
+          </button>
+          <button class="tab" data-tool="excel2" role="tab">
+            <span class="swatch"></span> Excel
+          </button>
+          <button class="tab" data-tool="python2" role="tab">
+            <span class="swatch"></span> Python
+          </button>
+          <button class="tab" data-tool="powerbi2" role="tab">
+            <span class="swatch"></span> Power BI
+          </button>
+        </div>
+
+        <div class="tab-panels">
+
+          <!-- SQL PANEL 2 -->
+          <div class="panel active" data-tool="sql2">
+            <div class="panel-head">
+              <h3>SQL exploration — SQLite</h3>
+              <div class="panel-links">
+                <a class="primary" href="https://github.com/yordanosugr-9866-16-bot/ethiopia-east-africa-analysis/blob/main/sql/africa_analysis.sql" target="_blank" rel="noopener">View .sql on GitHub ↗</a>
+              </div>
+            </div>
+            <p class="desc">10 queries combining two data sources with different update schedules — population/GDP run through 2023-24, broader indicators only to ~2012, and every query is explicit about which it's using. Includes window functions (LAG, rolling averages, RANK), a CTE-based inflation classifier, and a multi-source JOIN that recomputes GDP-per-capita directly rather than trusting a separately-vintaged column.</p>
+            <div class="code-block">
+              <pre><span class="cm">-- GDP per capita, recomputed directly from two source tables</span>
+<span class="cm">-- rather than trusting a separately-vintaged indicator column</span>
+<span class="kw">SELECT</span>
+    p.<span class="fn">"Country Name"</span>, p.Year, p.Population, g.GDP_current_USD,
+    <span class="fn">ROUND</span>(g.GDP_current_USD / p.Population, 2) <span class="kw">AS</span> gdp_per_capita_usd
+<span class="kw">FROM</span> Population p
+<span class="kw">JOIN</span> GDP g
+    <span class="kw">ON</span> p.<span class="fn">"Country Name"</span> = g.<span class="fn">"Country Name"</span> <span class="kw">AND</span> p.Year = g.Year
+<span class="kw">WHERE</span> p.<span class="fn">"Country Name"</span> <span class="kw">IN</span> (<span class="fn">'Ethiopia','Kenya','Uganda','Tanzania','Rwanda'</span>)
+<span class="kw">ORDER BY</span> p.<span class="fn">"Country Name"</span>, p.Year;</pre>
+            </div>
+            <div class="stat-line">
+              <span><b>132.1M</b> Ethiopia population (2024)</span>
+              <span><b>$163.7B</b> Ethiopia GDP (2023)</span>
+              <span><b>$1,272</b> Ethiopia GDP/capita vs <b>$1,942</b> Kenya</span>
+            </div>
+          </div>
+
+          <!-- EXCEL PANEL 2 -->
+          <div class="panel" data-tool="excel2">
+            <div class="panel-head">
+              <h3>Excel dashboard — formula-driven</h3>
+              <div class="panel-links">
+                <a class="primary" href="https://github.com/yordanosugr-9866-16-bot/ethiopia-east-africa-analysis/blob/main/excel/Ethiopia_EastAfrica_Excel_Dashboard.xlsx" target="_blank" rel="noopener">Download .xlsx ↗</a>
+              </div>
+            </div>
+            <p class="desc">Same formula-driven approach as the COVID dashboard — MAXIFS/SUMIFS pulling live off raw data sheets. Building it surfaced a real bug worth mentioning on its own: the first version divided 2023 GDP by 2024 population (mismatched years from the two source files), quietly producing a wrong per-capita figure. Fixed by aligning both to the same year before dividing.</p>
+            <div class="shots">
+              <div class="shot"><img src="assets/africa_excel_screenshot.png" alt="Excel dashboard showing Ethiopia population and GDP KPI cards, a population growth trend chart, and a total GDP by country bar chart"></div>
+            </div>
+          </div>
+
+          <!-- PYTHON PANEL 2 -->
+          <div class="panel" data-tool="python2">
+            <div class="panel-head">
+              <h3>Python notebook — pandas + light forecasting</h3>
+              <div class="panel-links">
+                <a class="primary" href="https://github.com/yordanosugr-9866-16-bot/ethiopia-east-africa-analysis/blob/main/notebook/africa_notebook.ipynb" target="_blank" rel="noopener">Open notebook on GitHub ↗</a>
+              </div>
+            </div>
+            <p class="desc">EDA plus a genuinely predictive piece: a 10-year Ethiopia population forecast using two methods — a linear trend and a compound growth rate — shown side by side so the divergence between them is visible, with honest caveats about what a simple trend model can't capture (migration, fertility shifts, the demographic transition).</p>
+            <div class="shots two">
+              <div class="shot"><img src="assets/africa_chart_population.png" alt="Line chart of population growth for Ethiopia and East African peers from 1960 to 2024"></div>
+              <div class="shot"><img src="assets/africa_chart_gdp_per_capita.png" alt="Bar chart of GDP per capita by country, with Kenya leading ahead of Ethiopia"></div>
+              <div class="shot"><img src="assets/africa_chart_forecast.png" alt="Ethiopia population 10-year forecast comparing a linear trend model against a compound growth model"></div>
+              <div class="shot"><img src="assets/africa_chart_life_expectancy.png" alt="Line chart comparing life expectancy in Ethiopia against Sub-Saharan Africa and world averages"></div>
+            </div>
+          </div>
+
+          <!-- POWER BI PANEL 2 -->
+          <div class="panel" data-tool="powerbi2">
+            <div class="panel-head">
+              <h3>Power BI — interactive dashboard</h3>
+              <div class="panel-links">
+                <a href="https://github.com/yordanosugr-9866-16-bot/ethiopia-east-africa-analysis/blob/main/powerbi/africa_dashboard.pbix" target="_blank" rel="noopener">Download .pbix ↗</a>
+              </div>
+            </div>
+            <p class="desc">Star schema with a country dimension and two fact tables kept deliberately separate (population/GDP vs. the older indicator set) rather than force-joined, so the dashboard never implies a false connection between mismatched years. DAX measures handle the same year-alignment fix from the Excel version, plus a few LASTNONBLANK lookups since not every country reports every indicator in every year.</p>
+            <div class="shots">
+              <div class="shot"><img src="assets/africa_powerbi_screenshot.png" alt="Power BI dashboard with KPI cards, a population growth trend line, GDP and GDP-per-capita bar charts, and a life expectancy chart"></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="sec-tag">// skills</div>
+        <h2>Tools &amp; concepts</h2>
+      </div>
+      <div class="skills-grid reveal">
+        <div class="skill-group">
+          <h3>Languages &amp; tools</h3>
+          <div class="tag-row">
+            <span class="tag">SQL</span>
+            <span class="tag">Python</span>
+            <span class="tag">pandas</span>
+            <span class="tag">DAX</span>
+            <span class="tag">Power Query</span>
+            <span class="tag">Excel</span>
+            <span class="tag">Power BI</span>
+            <span class="tag">Git &amp; GitHub</span>
+            <span class="tag">HTML / CSS</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h3>Concepts</h3>
+          <div class="tag-row">
+            <span class="tag">Data modeling</span>
+            <span class="tag">Star schemas</span>
+            <span class="tag">ETL &amp; data cleaning</span>
+            <span class="tag">Dashboard design</span>
+            <span class="tag">Data visualization</span>
+            <span class="tag">Statistical summarization</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="footer-top reveal">
+      <h2>Let's work together.</h2>
+      <div class="footer-links">
+        <!-- TODO: replace with your real email -->
+        <a href="mailto:yordanos.ketema@email.com">yordanos.ketema@email.com ↗</a>
+        <a href="https://github.com/yordanosugr-9866-16-bot" target="_blank" rel="noopener">github.com/yordanosugr-9866-16-bot ↗</a>
+        <!-- TODO: replace with your real LinkedIn URL, or delete this line -->
+        <a href="#" target="_blank" rel="noopener">linkedin.com/in/your-profile ↗</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Yordanos Ketema</span>
+      <span>Built with SQL, Excel, Python, and Power BI</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Tab switching (scoped per project so multiple tab groups don't collide)
+  document.querySelectorAll('.tool-group').forEach(group => {
+    group.querySelectorAll('.tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        const tool = tab.getAttribute('data-tool');
+        group.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+        group.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+        tab.classList.add('active');
+        group.querySelector(`.panel[data-tool="${tool}"]`).classList.add('active');
+      });
+    });
+  });
+
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add('in');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
