@@ -169,6 +169,25 @@
   .code-block .cm{ color:var(--text-muted); font-style:italic; }
   .code-block .fn{ color:var(--amber); }
   .stat-line{ display:flex; gap:24px; flex-wrap:wrap; margin-top:22px; font-family:'JetBrains Mono', monospace; font-size:12.5px; color:var(--text-muted); }
+
+  /* ---------- CASE STUDY (single-project card, no tabs) ---------- */
+  .case-study{
+    background:var(--surface-2); border:1px solid var(--border); border-radius:var(--radius);
+    padding:36px; display:grid; grid-template-columns:1.1fr 1fr; gap:36px; align-items:start;
+  }
+  .case-study .shot{ margin:0; }
+  .case-study h3{ font-size:20px; margin-bottom:14px; }
+  .case-study .desc{ color:var(--text-muted); font-size:15px; margin-bottom:18px; }
+  .case-study .stat-row{ display:flex; gap:14px; margin-bottom:20px; flex-wrap:wrap; }
+  .case-study .stat-card{
+    background:var(--surface); border:1px solid var(--border); border-radius:8px;
+    padding:12px 16px; flex:1; min-width:110px;
+  }
+  .case-study .stat-card .num{ font-family:'JetBrains Mono', monospace; font-weight:600; font-size:20px; color:var(--amber); }
+  .case-study .stat-card .lbl{ font-size:11.5px; color:var(--text-muted); margin-top:2px; }
+  @media (max-width: 860px){
+    .case-study{ grid-template-columns:1fr; }
+  }
   .stat-line b{ color:var(--text); }
 
   /* ---------- SKILLS ---------- */
@@ -219,7 +238,7 @@
     <a href="#top" class="brand"><span class="mark">YK</span> Yordanos Ketema</a>
     <nav class="nav-links">
       <a href="#about">About</a>
-      <a href="#project">Project</a>
+      <a href="#project">Projects</a>
       <a href="#skills">Skills</a>
     </nav>
     <a href="#contact" class="nav-cta">Contact</a>
@@ -497,6 +516,46 @@
     </div>
   </section>
 
+  <!-- PROJECT 3 -->
+  <section id="project3">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="sec-tag">// project 03 — client work</div>
+        <h2>REGALFRONT Consultancy PLC — Full-Stack Website</h2>
+      </div>
+      <p class="project-intro reveal">Live, in-production client work — not a portfolio exercise. Built solo, end to end, for an Ethiopian consultancy firm that helps NGOs, INGOs, UN agencies, and government institutions secure funding. Design, frontend, backend, database, email, and analytics, all shipped and running today.</p>
+
+      <div class="case-study reveal">
+        <div class="shot"><img src="assets/regalfront_screenshot.png" alt="REGALFRONT Consultancy PLC homepage — hero section with headline, track record stats, and services"></div>
+        <div>
+          <h3>What I built</h3>
+          <p class="desc">A responsive single-page marketing site (Tailwind CSS + vanilla JS) backed by a PHP + MySQL API: contact-form validation and storage, automated email notifications via PHPMailer/SMTP, and a password-protected staff view for reviewing inquiries. Wired up Google Tag Manager and GA4 with a custom conversion event that only fires on a genuinely successful form submission — not just a page view — plus a submitted sitemap verified in Google Search Console.</p>
+
+          <div class="stat-row">
+            <div class="stat-card"><div class="num">Solo</div><div class="lbl">Full-stack, design to deploy</div></div>
+            <div class="stat-card"><div class="num">Live</div><div class="lbl">In production for a real client</div></div>
+            <div class="stat-card"><div class="num">GA4</div><div class="lbl">Real conversion tracking, not just pageviews</div></div>
+          </div>
+
+          <div class="tag-row" style="margin-bottom:22px;">
+            <span class="tag">HTML5</span>
+            <span class="tag">Tailwind CSS</span>
+            <span class="tag">PHP</span>
+            <span class="tag">MySQL</span>
+            <span class="tag">PHPMailer</span>
+            <span class="tag">Google Tag Manager</span>
+            <span class="tag">GA4</span>
+          </div>
+
+          <div class="panel-links">
+            <a class="primary" href="https://regalefrontconsultancyplc.et" target="_blank" rel="noopener">Visit live site ↗</a>
+            <a href="https://github.com/yordanosugr-9866-16-bot/regalfront-consultancy-website" target="_blank" rel="noopener">View code on GitHub ↗</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- SKILLS -->
   <section id="skills">
     <div class="wrap">
@@ -544,8 +603,6 @@
         <!-- TODO: replace with your real email -->
         <a href="mailto:yordanos.ketema@email.com">yordanos.ketema@email.com ↗</a>
         <a href="https://github.com/yordanosugr-9866-16-bot" target="_blank" rel="noopener">github.com/yordanosugr-9866-16-bot ↗</a>
-        <!-- TODO: replace with your real LinkedIn URL, or delete this line -->
-        <a href="#" target="_blank" rel="noopener">linkedin.com/in/your-profile ↗</a>
       </div>
     </div>
     <div class="footer-bottom">
