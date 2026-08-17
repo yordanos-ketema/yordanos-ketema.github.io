@@ -5,6 +5,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Yordanos Ketema — BI Analyst</title>
 <meta name="description" content="Yordanos Ketema — BI Analyst. SQL, Excel, Python, and Power BI portfolio featuring a full COVID-19 global data analysis.">
+
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="assets/favicon-192.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Yordanos Ketema — BI Analyst">
+<meta property="og:description" content="SQL, Excel, Python, and Power BI portfolio, plus real full-stack client work.">
+<meta property="og:image" content="assets/og-image.png">
+<meta property="og:url" content="https://yordanosugr-9866-16-bot.github.io">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Yordanos Ketema — BI Analyst">
+<meta name="twitter:description" content="SQL, Excel, Python, and Power BI portfolio, plus real full-stack client work.">
+<meta name="twitter:image" content="assets/og-image.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -55,6 +69,7 @@
   }
   .nav-links{ display:flex; gap:32px; font-size:14px; color:var(--text-muted); }
   .nav-links a:hover{ color:var(--text); }
+  .nav-links a.active{ color:var(--amber); }
   .nav-cta{
     font-size:13px; font-family:'JetBrains Mono', monospace;
     border:1px solid var(--border); padding:9px 16px; border-radius:7px;
@@ -373,7 +388,7 @@
             </div>
             <p class="desc">Nothing here is hardcoded. Country and continent summaries are built with SUMIF / MAXIFS / RANK / INDEX-MATCH straight off 81,000+ rows of raw data, so the whole workbook recalculates if the source data changes. KPI cards and four charts pull live from those formula sheets.</p>
             <div class="shots">
-              <div class="shot"><img src="assets/excel_dashboard_screenshot.png" alt="Excel dashboard showing global COVID KPI cards, a cases-and-deaths trend chart, and a continent death-toll bar chart"></div>
+              <div class="shot"><img loading="lazy" src="assets/excel_dashboard_screenshot.png" alt="Excel dashboard showing global COVID KPI cards, a cases-and-deaths trend chart, and a continent death-toll bar chart"></div>
             </div>
           </div>
 
@@ -387,10 +402,10 @@
             </div>
             <p class="desc">A narrated, executed notebook — cleaning, EDA, and visualization, ending with a deliberately cautious look at vaccination rate vs. death rate. The point of that last chart isn't a correlation, it's showing <em>why</em> a 4-month snapshot is the wrong data to draw one from.</p>
             <div class="shots two">
-              <div class="shot"><img src="assets/chart_global_trend.png" alt="Line chart of global daily new COVID-19 cases and deaths from Jan 2020 to Apr 2021"></div>
-              <div class="shot"><img src="assets/chart_continent_comparison.png" alt="Bar charts comparing total deaths and case-fatality rate by continent"></div>
-              <div class="shot"><img src="assets/chart_top_infection_rate.png" alt="Horizontal bar chart of the top 15 countries by COVID-19 infection rate"></div>
-              <div class="shot"><img src="assets/chart_vaccine_rollout.png" alt="Line chart of vaccine rollout trajectories for the leading countries through April 2021"></div>
+              <div class="shot"><img loading="lazy" src="assets/chart_global_trend.png" alt="Line chart of global daily new COVID-19 cases and deaths from Jan 2020 to Apr 2021"></div>
+              <div class="shot"><img loading="lazy" src="assets/chart_continent_comparison.png" alt="Bar charts comparing total deaths and case-fatality rate by continent"></div>
+              <div class="shot"><img loading="lazy" src="assets/chart_top_infection_rate.png" alt="Horizontal bar chart of the top 15 countries by COVID-19 infection rate"></div>
+              <div class="shot"><img loading="lazy" src="assets/chart_vaccine_rollout.png" alt="Line chart of vaccine rollout trajectories for the leading countries through April 2021"></div>
             </div>
           </div>
 
@@ -404,7 +419,7 @@
             </div>
             <p class="desc">Built on a proper star schema (one fact table, two dimension tables) with custom DAX measures — including a continent-total measure that correctly sums each country's own cumulative figure, rather than the naive version that silently grabs whichever single country peaked highest. The screenshot below shows both slicers live — click a continent or drag the date range to cross-filter. <em>(Public web embedding is disabled by my school's Power BI admin policy — download the file to try it interactively, or happy to walk through it live.)</em></p>
             <div class="shots">
-              <div class="shot"><img src="assets/powerbi_dashboard_screenshot.png" alt="Power BI dashboard with KPI cards, a cases and deaths trend line, a continent death toll chart, top-10 tables, and date range and continent slicers"></div>
+              <div class="shot"><img loading="lazy" src="assets/powerbi_dashboard_screenshot.png" alt="Power BI dashboard with KPI cards, a cases and deaths trend line, a continent death toll chart, top-10 tables, and date range and continent slicers"></div>
             </div>
           </div>
 
@@ -476,7 +491,7 @@
             </div>
             <p class="desc">Same formula-driven approach as the COVID dashboard — MAXIFS/SUMIFS pulling live off raw data sheets. Building it surfaced a real bug worth mentioning on its own: the first version divided 2023 GDP by 2024 population (mismatched years from the two source files), quietly producing a wrong per-capita figure. Fixed by aligning both to the same year before dividing.</p>
             <div class="shots">
-              <div class="shot"><img src="assets/africa_excel_screenshot.png" alt="Excel dashboard showing Ethiopia population and GDP KPI cards, a population growth trend chart, and a total GDP by country bar chart"></div>
+              <div class="shot"><img loading="lazy" src="assets/africa_excel_screenshot.png" alt="Excel dashboard showing Ethiopia population and GDP KPI cards, a population growth trend chart, and a total GDP by country bar chart"></div>
             </div>
           </div>
 
@@ -490,10 +505,10 @@
             </div>
             <p class="desc">EDA plus a genuinely predictive piece: a 10-year Ethiopia population forecast using two methods — a linear trend and a compound growth rate — shown side by side so the divergence between them is visible, with honest caveats about what a simple trend model can't capture (migration, fertility shifts, the demographic transition).</p>
             <div class="shots two">
-              <div class="shot"><img src="assets/africa_chart_population.png" alt="Line chart of population growth for Ethiopia and East African peers from 1960 to 2024"></div>
-              <div class="shot"><img src="assets/africa_chart_gdp_per_capita.png" alt="Bar chart of GDP per capita by country, with Kenya leading ahead of Ethiopia"></div>
-              <div class="shot"><img src="assets/africa_chart_forecast.png" alt="Ethiopia population 10-year forecast comparing a linear trend model against a compound growth model"></div>
-              <div class="shot"><img src="assets/africa_chart_life_expectancy.png" alt="Line chart comparing life expectancy in Ethiopia against Sub-Saharan Africa and world averages"></div>
+              <div class="shot"><img loading="lazy" src="assets/africa_chart_population.png" alt="Line chart of population growth for Ethiopia and East African peers from 1960 to 2024"></div>
+              <div class="shot"><img loading="lazy" src="assets/africa_chart_gdp_per_capita.png" alt="Bar chart of GDP per capita by country, with Kenya leading ahead of Ethiopia"></div>
+              <div class="shot"><img loading="lazy" src="assets/africa_chart_forecast.png" alt="Ethiopia population 10-year forecast comparing a linear trend model against a compound growth model"></div>
+              <div class="shot"><img loading="lazy" src="assets/africa_chart_life_expectancy.png" alt="Line chart comparing life expectancy in Ethiopia against Sub-Saharan Africa and world averages"></div>
             </div>
           </div>
 
@@ -507,7 +522,7 @@
             </div>
             <p class="desc">Star schema with a country dimension and two fact tables kept deliberately separate (population/GDP vs. the older indicator set) rather than force-joined, so the dashboard never implies a false connection between mismatched years. DAX measures handle the same year-alignment fix from the Excel version, plus a few LASTNONBLANK lookups since not every country reports every indicator in every year.</p>
             <div class="shots">
-              <div class="shot"><img src="assets/africa_powerbi_screenshot.png" alt="Power BI dashboard with KPI cards, a population growth trend line, GDP and GDP-per-capita bar charts, and a life expectancy chart"></div>
+              <div class="shot"><img loading="lazy" src="assets/africa_powerbi_screenshot.png" alt="Power BI dashboard with KPI cards, a population growth trend line, GDP and GDP-per-capita bar charts, and a life expectancy chart"></div>
             </div>
           </div>
 
@@ -526,7 +541,7 @@
       <p class="project-intro reveal">Live, in-production client work — not a portfolio exercise. Built solo, end to end, for an Ethiopian consultancy firm that helps NGOs, INGOs, UN agencies, and government institutions secure funding. Design, frontend, backend, database, email, and analytics, all shipped and running today.</p>
 
       <div class="case-study reveal">
-        <div class="shot"><img src="assets/regalfront_screenshot.png" alt="REGALFRONT Consultancy PLC homepage — hero section with headline, track record stats, and services"></div>
+        <div class="shot"><img loading="lazy" src="assets/regalfront_screenshot.png" alt="REGALFRONT Consultancy PLC homepage — hero section with headline, track record stats, and services"></div>
         <div>
           <h3>What I built</h3>
           <p class="desc">A responsive single-page marketing site (Tailwind CSS + vanilla JS) backed by a PHP + MySQL API: contact-form validation and storage, automated email notifications via PHPMailer/SMTP, and a password-protected staff view for reviewing inquiries. Wired up Google Tag Manager and GA4 with a custom conversion event that only fires on a genuinely successful form submission — not just a page view — plus a submitted sitemap verified in Google Search Console.</p>
@@ -601,7 +616,7 @@
       <h2>Let's work together.</h2>
       <div class="footer-links">
         <!-- TODO: replace with your real email -->
-        <a href="mailto:yordanos.ketema@email.com">yordanos.ketema@email.com ↗</a>
+        <a href="mailto:yordanosketema13@gmail.com">yordanosketema13@gmail.com ↗</a>
         <a href="https://github.com/yordanosugr-9866-16-bot" target="_blank" rel="noopener">github.com/yordanosugr-9866-16-bot ↗</a>
       </div>
     </div>
@@ -636,6 +651,32 @@
     });
   }, { threshold: 0.12 });
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Nav active-section highlighting
+  const navMap = {
+    about: 'about', project: 'project', project2: 'project', project3: 'project',
+    skills: 'skills', contact: 'contact'
+  };
+  const navLinks = {};
+  document.querySelectorAll('.nav-links a').forEach(a => {
+    const id = a.getAttribute('href').replace('#', '');
+    navLinks[id] = a;
+  });
+  const navObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const target = navMap[entry.target.id];
+        if (target && navLinks[target]) {
+          Object.values(navLinks).forEach(a => a.classList.remove('active'));
+          navLinks[target].classList.add('active');
+        }
+      }
+    });
+  }, { rootMargin: '-40% 0px -55% 0px' });
+  Object.keys(navMap).forEach(id => {
+    const el = document.getElementById(id);
+    if (el) navObserver.observe(el);
+  });
 </script>
 
 </body>
