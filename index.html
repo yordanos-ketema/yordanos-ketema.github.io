@@ -14,7 +14,7 @@
 <meta property="og:title" content="Yordanos Ketema — BI Analyst">
 <meta property="og:description" content="SQL, Excel, Python, and Power BI portfolio, plus real full-stack client work.">
 <meta property="og:image" content="assets/og-image.png">
-<meta property="og:url" content="https://yordanosugr-9866-16-bot.github.io">
+<meta property="og:url" content="https://yordanos-ketema.github.io">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Yordanos Ketema — BI Analyst">
 <meta name="twitter:description" content="SQL, Excel, Python, and Power BI portfolio, plus real full-stack client work.">
@@ -351,7 +351,7 @@
             <div class="panel-head">
               <h3>SQL exploration — SQLite</h3>
               <div class="panel-links">
-                <a class="primary" href="https://github.com/yordanosugr-9866-16-bot/covid-data-analysis-portfolio/blob/main/covid-portfolio-project/sql/covid_analysis.sql" target="_blank" rel="noopener">View .sql on GitHub ↗</a>
+                <a class="primary" href="https://github.com/yordanos-ketema/covid-data-analysis-portfolio/blob/main/covid-portfolio-project/sql/covid_analysis.sql" target="_blank" rel="noopener">View .sql on GitHub ↗</a>
               </div>
             </div>
             <p class="desc">14 queries against a SQLite database built from the raw data — from basic filtering up through joins, CTEs, window functions, temp tables, and a view. Includes a documented fix for a common pitfall: naively grouping cumulative totals by continent silently returns the wrong number.</p>
@@ -383,7 +383,7 @@
             <div class="panel-head">
               <h3>Excel dashboard — formula-driven</h3>
               <div class="panel-links">
-                <a class="primary" href="https://github.com/yordanosugr-9866-16-bot/covid-data-analysis-portfolio/blob/main/covid-portfolio-project/excel/COVID_Excel_Dashboard.xlsx" target="_blank" rel="noopener">Download .xlsx ↗</a>
+                <a class="primary" href="https://github.com/yordanos-ketema/covid-data-analysis-portfolio/blob/main/covid-portfolio-project/excel/COVID_Excel_Dashboard.xlsx" target="_blank" rel="noopener">Download .xlsx ↗</a>
               </div>
             </div>
             <p class="desc">Nothing here is hardcoded. Country and continent summaries are built with SUMIF / MAXIFS / RANK / INDEX-MATCH straight off 81,000+ rows of raw data, so the whole workbook recalculates if the source data changes. KPI cards and four charts pull live from those formula sheets.</p>
@@ -397,7 +397,7 @@
             <div class="panel-head">
               <h3>Python notebook — pandas + matplotlib</h3>
               <div class="panel-links">
-                <a class="primary" href="https://github.com/yordanosugr-9866-16-bot/covid-data-analysis-portfolio/blob/main/covid-portfolio-project/notebook/covid_analysis_notebook.ipynb" target="_blank" rel="noopener">Open notebook on GitHub ↗</a>
+                <a class="primary" href="https://github.com/yordanos-ketema/covid-data-analysis-portfolio/blob/main/covid-portfolio-project/notebook/covid_analysis_notebook.ipynb" target="_blank" rel="noopener">Open notebook on GitHub ↗</a>
               </div>
             </div>
             <p class="desc">A narrated, executed notebook — cleaning, EDA, and visualization, ending with a deliberately cautious look at vaccination rate vs. death rate. The point of that last chart isn't a correlation, it's showing <em>why</em> a 4-month snapshot is the wrong data to draw one from.</p>
@@ -414,7 +414,7 @@
             <div class="panel-head">
               <h3>Power BI — interactive dashboard</h3>
               <div class="panel-links">
-                <a class="primary" href="https://github.com/yordanosugr-9866-16-bot/covid-data-analysis-portfolio/blob/main/covid-portfolio-project/powerbi/covid_dashboard.pbix" target="_blank" rel="noopener">Download .pbix ↗</a>
+                <a class="primary" href="https://github.com/yordanos-ketema/covid-data-analysis-portfolio/blob/main/covid-portfolio-project/powerbi/covid_dashboard.pbix" target="_blank" rel="noopener">Download .pbix ↗</a>
               </div>
             </div>
             <p class="desc">Built on a proper star schema (one fact table, two dimension tables) with custom DAX measures — including a continent-total measure that correctly sums each country's own cumulative figure, rather than the naive version that silently grabs whichever single country peaked highest. The screenshot below shows both slicers live — click a continent or drag the date range to cross-filter. <em>(Public web embedding is disabled by my school's Power BI admin policy — download the file to try it interactively, or happy to walk through it live.)</em></p>
@@ -458,7 +458,7 @@
             <div class="panel-head">
               <h3>SQL exploration — SQLite</h3>
               <div class="panel-links">
-                <a class="primary" href="https://github.com/yordanosugr-9866-16-bot/ethiopia-east-africa-analysis/blob/main/ethiopia-econ-project/sql/africa_analysis.sql" target="_blank" rel="noopener">View .sql on GitHub ↗</a>
+                <a class="primary" href="https://github.com/yordanos-ketema/ethiopia-east-africa-analysis/blob/main/ethiopia-econ-project/sql/africa_analysis.sql" target="_blank" rel="noopener">View .sql on GitHub ↗</a>
               </div>
             </div>
             <p class="desc">10 queries combining two data sources with different update schedules — population/GDP run through 2023-24, broader indicators only to ~2012, and every query is explicit about which it's using. Includes window functions (LAG, rolling averages, RANK), a CTE-based inflation classifier, and a multi-source JOIN that recomputes GDP-per-capita directly rather than trusting a separately-vintaged column.</p>
@@ -486,7 +486,7 @@
             <div class="panel-head">
               <h3>Excel dashboard — formula-driven</h3>
               <div class="panel-links">
-                <a class="primary" href="https://github.com/yordanosugr-9866-16-bot/ethiopia-east-africa-analysis/blob/main/ethiopia-econ-project/excel/Ethiopia_EastAfrica_Excel_Dashboard.xlsx" target="_blank" rel="noopener">Download .xlsx ↗</a>
+                <a class="primary" href="https://github.com/yordanos-ketema/ethiopia-east-africa-analysis/blob/main/ethiopia-econ-project/excel/Ethiopia_EastAfrica_Excel_Dashboard.xlsx" target="_blank" rel="noopener">Download .xlsx ↗</a>
               </div>
             </div>
             <p class="desc">Same formula-driven approach as the COVID dashboard — MAXIFS/SUMIFS pulling live off raw data sheets. Building it surfaced a real bug worth mentioning on its own: the first version divided 2023 GDP by 2024 population (mismatched years from the two source files), quietly producing a wrong per-capita figure. Fixed by aligning both to the same year before dividing.</p>
@@ -500,7 +500,7 @@
             <div class="panel-head">
               <h3>Python notebook — pandas + light forecasting</h3>
               <div class="panel-links">
-                <a class="primary" href="https://github.com/yordanosugr-9866-16-bot/ethiopia-east-africa-analysis/blob/main/ethiopia-econ-project/notebook/africa_notebook.ipynb" target="_blank" rel="noopener">Open notebook on GitHub ↗</a>
+                <a class="primary" href="https://github.com/yordanos-ketema/ethiopia-east-africa-analysis/blob/main/ethiopia-econ-project/notebook/africa_notebook.ipynb" target="_blank" rel="noopener">Open notebook on GitHub ↗</a>
               </div>
             </div>
             <p class="desc">EDA plus a genuinely predictive piece: a 10-year Ethiopia population forecast using two methods — a linear trend and a compound growth rate — shown side by side so the divergence between them is visible, with honest caveats about what a simple trend model can't capture (migration, fertility shifts, the demographic transition).</p>
@@ -517,7 +517,7 @@
             <div class="panel-head">
               <h3>Power BI — interactive dashboard</h3>
               <div class="panel-links">
-                <a href="https://github.com/yordanosugr-9866-16-bot/ethiopia-east-africa-analysis/blob/main/ethiopia-econ-project/powerbi/africa_dashboard.pbix" target="_blank" rel="noopener">Download .pbix ↗</a>
+                <a href="https://github.com/yordanos-ketema/ethiopia-east-africa-analysis/blob/main/ethiopia-econ-project/powerbi/africa_dashboard.pbix" target="_blank" rel="noopener">Download .pbix ↗</a>
               </div>
             </div>
             <p class="desc">Star schema with a country dimension and two fact tables kept deliberately separate (population/GDP vs. the older indicator set) rather than force-joined, so the dashboard never implies a false connection between mismatched years. DAX measures handle the same year-alignment fix from the Excel version, plus a few LASTNONBLANK lookups since not every country reports every indicator in every year.</p>
@@ -564,7 +564,7 @@
 
           <div class="panel-links">
             <a class="primary" href="https://regalefrontconsultancyplc.et" target="_blank" rel="noopener">Visit live site ↗</a>
-            <a href="https://github.com/yordanosugr-9866-16-bot/regalfront-consultancy-website" target="_blank" rel="noopener">View code on GitHub ↗</a>
+            <a href="https://github.com/yordanos-ketema/regalfront-consultancy-website" target="_blank" rel="noopener">View code on GitHub ↗</a>
           </div>
         </div>
       </div>
@@ -617,7 +617,7 @@
       <div class="footer-links">
         <!-- TODO: replace with your real email -->
         <a href="mailto:yordanosketema13@gmail.com">yordanosketema13@gmail.com ↗</a>
-        <a href="https://github.com/yordanosugr-9866-16-bot" target="_blank" rel="noopener">github.com/yordanosugr-9866-16-bot ↗</a>
+        <a href="https://github.com/yordanos-ketema" target="_blank" rel="noopener">github.com/yordanos-ketema ↗</a>
       </div>
     </div>
     <div class="footer-bottom">
