@@ -571,6 +571,48 @@
     </div>
   </section>
 
+  <!-- PROJECT 4 -->
+  <section id="project4">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="sec-tag">// project 04</div>
+        <h2>Inventory &amp; Sales Tracker — Full-Stack Business App</h2>
+      </div>
+      <p class="project-intro reveal">The project that ties the rest of this portfolio together — not analysis on a dataset, and not a marketing site, but a real internal business tool: point-of-sale checkout, inventory management, role-based staff accounts, and a live reporting dashboard, all built on one properly normalized database.</p>
+
+      <div class="case-study reveal">
+        <div class="shot"><img loading="lazy" src="assets/inventory_dashboard.png" alt="Inventory tracker dashboard showing revenue KPIs, a 7-day revenue trend chart, top products, and a low-stock alert table"></div>
+        <div>
+          <h3>What I built</h3>
+          <p class="desc">A PHP + MySQL app with PDO prepared statements throughout, tested end-to-end against a real database before shipping — including the checkout transaction, which uses row-level locking (<code>SELECT ... FOR UPDATE</code>) so two simultaneous sales can't oversell the same stock. Every inventory change (sale, restock, manual correction) is logged to an append-only audit table, with product stock levels kept as a fast cached value reconciled against it. Tailwind, Chart.js, and fonts are compiled and self-hosted rather than pulled from a CDN.</p>
+
+          <div class="stat-row">
+            <div class="stat-card"><div class="num">Solo</div><div class="lbl">Full-stack, schema to deploy</div></div>
+            <div class="stat-card"><div class="num">7</div><div class="lbl">Normalized tables, 3NF</div></div>
+            <div class="stat-card"><div class="num">Tested</div><div class="lbl">Overselling &amp; role-access guards verified</div></div>
+          </div>
+
+          <div class="tag-row" style="margin-bottom:22px;">
+            <span class="tag">PHP 8</span>
+            <span class="tag">MySQL</span>
+            <span class="tag">PDO</span>
+            <span class="tag">Tailwind CSS</span>
+            <span class="tag">Chart.js</span>
+            <span class="tag">Vanilla JS</span>
+          </div>
+
+          <div class="panel-links">
+            <a class="primary" href="https://github.com/yordanos-ketema/inventory-sales-tracker" target="_blank" rel="noopener">View code on GitHub ↗</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="shot reveal" style="margin-top:18px;">
+        <img loading="lazy" src="assets/inventory_products.png" alt="Inventory tracker products page showing a searchable, filterable product table with stock levels and status">
+      </div>
+    </div>
+  </section>
+
   <!-- SKILLS -->
   <section id="skills">
     <div class="wrap">
@@ -654,7 +696,7 @@
 
   // Nav active-section highlighting
   const navMap = {
-    about: 'about', project: 'project', project2: 'project', project3: 'project',
+    about: 'about', project: 'project', project2: 'project', project3: 'project', project4: 'project',
     skills: 'skills', contact: 'contact'
   };
   const navLinks = {};
