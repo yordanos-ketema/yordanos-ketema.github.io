@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Yordanos Ketema - Resume</title>
+<style>
+  @page {
+    size: A4;
+    margin: 14mm 16mm 14mm 16mm;
+  }
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    color: #1e293b;
+    background: #ffffff;
+    line-height: 1.48;
+    font-size: 10pt;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* Header */
+  .header {
+    border-bottom: 2.5px solid #0f172a;
+    padding-bottom: 10px;
+    margin-bottom: 14px;
+  }
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 4px;
+  }
+  .name {
+    font-size: 22pt;
+    font-weight: 800;
+    color: #0f172a;
+    letter-spacing: -0.02em;
+  }
+  .title {
+    font-size: 12pt;
+    font-weight: 700;
+    color: #0284c7;
+  }
+  .contact-bar {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 8px;
+    font-size: 8.6pt;
+    color: #475569;
+  }
+  .contact-bar a {
+    color: #0284c7;
+    text-decoration: none;
+    font-weight: 500;
+  }
+  .contact-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .sep {
+    color: #cbd5e1;
+    font-weight: bold;
+  }
+
+  /* Sections */
+  .section {
+    margin-bottom: 14px;
+  }
+  .section-title {
+    font-size: 11pt;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #0f172a;
+    border-bottom: 1.5px solid #cbd5e1;
+    padding-bottom: 3px;
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  /* Summary */
+  .summary-text {
+    font-size: 9.4pt;
+    color: #334155;
+    text-align: justify;
+    line-height: 1.5;
+  }
+
+  /* Skills Grid */
+  .skills-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 6px;
+    font-size: 9.2pt;
+  }
+  .skill-group {
+    display: flex;
+    line-height: 1.4;
+  }
+  .skill-label {
+    font-weight: 700;
+    color: #0f172a;
+    min-width: 190px;
+    font-size: 9pt;
+  }
+  .skill-list {
+    color: #334155;
+    flex: 1;
+    font-size: 9pt;
+  }
+
+  /* Experience / Project Entry */
+  .entry {
+    margin-bottom: 12px;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+  .entry-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 2px;
+  }
+  .entry-title {
+    font-size: 10.5pt;
+    font-weight: 700;
+    color: #0f172a;
+  }
+  .entry-meta {
+    font-size: 8.8pt;
+    color: #64748b;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  .entry-tech {
+    font-size: 8.8pt;
+    color: #0369a1;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  .entry-bullets {
+    list-style-type: square;
+    padding-left: 16px;
+    color: #334155;
+    font-size: 9.1pt;
+  }
+  .entry-bullets li {
+    margin-bottom: 3.5px;
+    line-height: 1.42;
+    text-align: justify;
+  }
+  .entry-bullets strong {
+    color: #0f172a;
+    font-weight: 600;
+  }
+
+  /* Page Break Helpers */
+  .page-break {
+    page-break-before: always;
+    break-before: page;
+  }
+
+  /* Education */
+  .edu-entry {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+  .edu-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 3px;
+  }
+  .edu-degree {
+    font-weight: 700;
+    color: #0f172a;
+    font-size: 10pt;
+  }
+  .edu-school {
+    color: #0369a1;
+    font-weight: 600;
+    font-size: 9.5pt;
+  }
+  .edu-meta {
+    font-size: 8.8pt;
+    color: #64748b;
+    font-weight: 500;
+  }
+  .edu-details {
+    font-size: 9pt;
+    color: #475569;
+    line-height: 1.45;
+  }
+</style>
+</head>
+<body>
+
+  <!-- ==================== PAGE 1 ==================== -->
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-top">
+      <div class="name">Yordanos Ketema</div>
+      <div class="title">BI Analyst &amp; Systems Architect</div>
+    </div>
+    <div class="contact-bar">
+      <span class="contact-item">Addis Ababa, Ethiopia</span>
+      <span class="sep">|</span>
+      <span class="contact-item"><a href="mailto:yordanosketema13@gmail.com">yordanosketema13@gmail.com</a></span>
+      <span class="sep">|</span>
+      <span class="contact-item"><a href="https://yordanos-ketema.github.io">yordanos-ketema.github.io</a></span>
+      <span class="sep">|</span>
+      <span class="contact-item"><a href="https://github.com/yordanos-ketema">github.com/yordanos-ketema</a></span>
+    </div>
+  </div>
+
+  <!-- PROFESSIONAL SUMMARY -->
+  <div class="section">
+    <div class="section-title">Professional Summary</div>
+    <div class="summary-text">
+      BI Analyst and Systems Architect with an academic foundation in Business Administration and Information Systems (Addis Ababa University). Proven track record delivering end-to-end data intelligence pipelines, formal Business Analysis specifications (BRD, RTM, BPMN process modeling, UAT test plans), and scalable software systems. Experienced across advanced SQL querying, Power BI star schemas, Python statistical modeling, enterprise inventory engines, and Ethiopian FinTech architectures.
+    </div>
+  </div>
+
+  <!-- CORE TECHNICAL COMPETENCIES -->
+  <div class="section">
+    <div class="section-title">Core Technical Competencies</div>
+    <div class="skills-container">
+      <div class="skill-group">
+        <span class="skill-label">BI &amp; Data Analytics:</span>
+        <span class="skill-list">Advanced SQL (CTEs, Window Functions, Views, Joins), Power BI (Star Schemas, DAX Measures, Power Query), Excel (Dynamic Formulas, SUMIFS, INDEX/MATCH, Pivot Tables), Python (pandas, NumPy, Matplotlib, Trend Forecasting), Cross-Source Reconciliation.</span>
+      </div>
+      <div class="skill-group">
+        <span class="skill-label">Business Analysis &amp; Ops:</span>
+        <span class="skill-list">Business Requirements Document (BRD), Requirements Traceability Matrix (RTM), Recipe Bill of Materials (BOM), FIFO Stock Allocation, BPMN Process Modeling &amp; Swimlanes, User Acceptance Testing (Gherkin BDD Scenarios), Shift Reconciliation Audits.</span>
+      </div>
+      <div class="skill-group">
+        <span class="skill-label">Web &amp; Database Engineering:</span>
+        <span class="skill-list">TypeScript, Next.js 14 (App Router), Prisma ORM, PostgreSQL, SQLite, MySQL, PHP, FinTech Payment Gateways (Telebirr, CBE Birr, Chapa), Timing-Safe HMAC-SHA256 Webhook Verification, Tailwind CSS, Git/GitHub.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FEATURED PROJECTS: PART 1 -->
+  <div class="section">
+    <div class="section-title">Featured Projects &amp; Systems Architecture</div>
+
+    <!-- PROJECT 1: KALDIS -->
+    <div class="entry">
+      <div class="entry-header">
+        <span class="entry-title">Kaldi's Coffee: Multi-Branch Inventory &amp; Sales Tracking Engine</span>
+        <span class="entry-meta">Enterprise Operations</span>
+      </div>
+      <div class="entry-tech">Next.js 14, TypeScript, Prisma ORM, Tailwind CSS, Recharts, SQLite | Live: kaldis-inventory-system-web.vercel.app</div>
+      <ul class="entry-bullets">
+        <li>Engineered a centralized multi-branch inventory command center managing stock matrices, batch shelf-life countdowns, and safety stock alerts across 5 primary Addis Ababa locations (Bole, Kazanchis, Sarbet, Piassa, CMC).</li>
+        <li>Architected an automated <strong>Bill of Materials (BOM)</strong> recipe engine linking menu items to raw ingredients with automated <strong>First-In, First-Out (FIFO)</strong> batch depletion executed via atomic Prisma database transactions.</li>
+        <li>Developed diurnal hourly demand visualizers tracking rush hour curves (08:00 - 10:30 AM morning peak and 16:00 - 18:30 PM evening peak) and daily shift reconciliation auditing physical cash against Telebirr (46%) and CBE Birr (28%) digital ledgers.</li>
+        <li><strong>Quantified Results:</strong> Achieved a <strong>38.5% reduction in raw material shrinkage</strong>, <strong>1.84M ETB annualized cost recovery</strong>, and reduced shift balancing duration from 45 minutes to under 8 minutes.</li>
+        <li>Authored a complete Business Analysis documentation suite: Executive Case Study, BRD, BPMN Sequence Workflows, RTM, and 6 Gherkin BDD Acceptance Test Scenarios.</li>
+      </ul>
+    </div>
+
+    <!-- PROJECT 2: ECOBAG ADDIS -->
+    <div class="entry">
+      <div class="entry-header">
+        <span class="entry-title">Ecobag-Addis: Localized Sustainable E-Commerce Platform &amp; BA Suite</span>
+        <span class="entry-meta">Product Architecture</span>
+      </div>
+      <div class="entry-tech">Next.js 14, Node.js/Express, TypeScript, Prisma ORM, PostgreSQL, Turborepo | Live: ecobag-addis-web.vercel.app</div>
+      <ul class="entry-bullets">
+        <li>Authored comprehensive Business Analysis specifications resolving core Ethiopian digital market friction points: 5-tier landmark addressing across 11 sub-cities, domestic mobile wallets (Telebirr, CBE Birr, Chapa), and statutory tax rules.</li>
+        <li>Engineered a statutory tax and proforma invoice engine automating 15% Ethiopian VAT calculations, 2% Withholding tax deductions, and 10-digit Buyer TIN validation with an 8-stage Order State Machine.</li>
+        <li>Built decoupled payment gateway adapters featuring timing-safe cryptographic <strong>HMAC-SHA256 signature verification</strong> and database idempotency guards to eliminate duplicate order fulfillments, verified with 100% Jest test coverage.</li>
+        <li><strong>Quantified Results:</strong> Supported diversion of <strong>1.2M+ single-use plastic bags</strong>, achieved sub-2-second proforma generation turnaround, and reduced courier misdirection rate to under 2%.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ==================== PAGE 2 ==================== -->
+  <div class="page-break"></div>
+
+  <!-- FEATURED PROJECTS: PART 2 -->
+  <div class="section">
+    <div class="section-title">Technical Projects &amp; Analytics (Continued)</div>
+
+    <!-- PROJECT 3: REGALFRONT -->
+    <div class="entry">
+      <div class="entry-header">
+        <span class="entry-title">REGALFRONT Consultancy PLC: Full-Stack Production Web Platform</span>
+        <span class="entry-meta">Client Solution</span>
+      </div>
+      <div class="entry-tech">PHP, MySQL, JavaScript, Tailwind CSS, PHPMailer, Google Analytics 4 | Live: regalefrontconsultancyplc.et</div>
+      <ul class="entry-bullets">
+        <li>Designed, developed, and deployed an end-to-end production web solution for an Ethiopian strategic management advisory firm serving NGOs, UN agencies, and government bodies.</li>
+        <li>Implemented secure inquiry routing with server-side validation, PHPMailer SMTP automation, and an authenticated administrative portal for reviewing inbound strategic proposals.</li>
+        <li>Configured and verified Google Analytics 4 (GA4) custom event tracking for form submission conversions alongside Google Search Console indexing.</li>
+      </ul>
+    </div>
+
+    <!-- PROJECT 4: COVID DATA ANALYSIS -->
+    <div class="entry">
+      <div class="entry-header">
+        <span class="entry-title">COVID-19 Global Data Analysis (Cross-Source Reconciliation)</span>
+        <span class="entry-meta">BI &amp; Analytics</span>
+      </div>
+      <div class="entry-tech">SQLite, Power BI, Python (pandas/Matplotlib), Excel | GitHub: github.com/yordanos-ketema/covid-data-analysis-portfolio</div>
+      <ul class="entry-bullets">
+        <li>Queried and reconciled 150.5M+ global infection and mortality records across 210 countries from Our World in Data (Jan 2020 - Apr 2021).</li>
+        <li>Formulated 14 analytical SQL queries utilizing Common Table Expressions (CTEs), window functions (SUM OVER PARTITION), and views to eliminate cumulative continent-level double-counting across all reporting layers.</li>
+        <li>Constructed formula-driven Excel models (SUMIFS, MAXIFS, INDEX/MATCH) and an interactive Power BI star schema report with custom DAX aggregations.</li>
+      </ul>
+    </div>
+
+    <!-- PROJECT 5: EAST AFRICA ECON -->
+    <div class="entry">
+      <div class="entry-header">
+        <span class="entry-title">Ethiopia &amp; East Africa Macroeconomic Analysis</span>
+        <span class="entry-meta">Macroeconomic Modeling</span>
+      </div>
+      <div class="entry-tech">SQL, Excel, Python (pandas), Power BI | GitHub: github.com/yordanos-ketema/ethiopia-east-africa-analysis</div>
+      <ul class="entry-bullets">
+        <li>Unified multi-vintage World Bank development indicator tables for Ethiopia, Kenya, Uganda, Tanzania, and Rwanda, computing precise per-capita figures across mismatched reporting vintages.</li>
+        <li>Built an exploratory Python demographic model comparing linear trend projections against Compound Annual Growth Rate (CAGR) curves.</li>
+        <li>Developed a Power BI dashboard utilizing DAX LASTNONBLANK calculations to handle non-uniform reporting intervals cleanly.</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- METHODOLOGIES & FRAMEWORKS -->
+  <div class="section">
+    <div class="section-title">Methodologies &amp; Regulatory Frameworks</div>
+    <div class="skills-container">
+      <div class="skill-group">
+        <span class="skill-label">Tax &amp; Regulatory Compliance:</span>
+        <span class="skill-list">Ethiopian Ministry of Revenues (MoR) 15% VAT Statutory Rules, 2% Withholding Tax Deductions, Buyer Tax Identification Number (TIN) Verification, Proforma Invoicing Validity Periods.</span>
+      </div>
+      <div class="skill-group">
+        <span class="skill-label">Operations &amp; Architecture:</span>
+        <span class="skill-list">First-In First-Out (FIFO) Perishable Dairy Stock Allocation, Recipe Bill of Materials (BOM) COGS Tracking, 5-Tier Landmark Addressing (11 Sub-Cities &amp; Woredas), Turborepo Monorepo Architecture.</span>
+      </div>
+      <div class="skill-group">
+        <span class="skill-label">Testing &amp; Quality Assurance:</span>
+        <span class="skill-list">User Acceptance Testing (UAT), Gherkin BDD Acceptance Test Scenarios, Jest Integration Testing, Database Idempotency, HMAC-SHA256 Cryptographic Timing-Safe Verifications.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- EDUCATION -->
+  <div class="section">
+    <div class="section-title">Education</div>
+    <div class="edu-entry">
+      <div class="edu-row">
+        <div>
+          <span class="edu-degree">Bachelor of Arts in Business Administration &amp; Information Systems</span>
+          <div class="edu-school">Addis Ababa University</div>
+        </div>
+        <span class="edu-meta">Addis Ababa, Ethiopia</span>
+      </div>
+      <div class="edu-details">
+        Integrated coursework covering Database Systems, Financial Accounting, Strategic Management, Enterprise Information Systems, and Quantitative Business Analysis.
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

@@ -3,360 +3,776 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Yordanos Ketema — BI Analyst</title>
-<meta name="description" content="Yordanos Ketema — BI Analyst. SQL, Excel, Python, and Power BI portfolio featuring a full COVID-19 global data analysis.">
+<title>Yordanos Ketema | BI Analyst &amp; Systems Architect</title>
+<meta name="description" content="Yordanos Ketema: BI & Data Analyst portfolio. SQL, Excel, Python, Power BI analytics, enterprise inventory engines, full Business Analysis documentation suites (BRD, RTM, UAT), and production web platforms.">
 
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
 <link rel="icon" type="image/png" sizes="192x192" href="assets/favicon-192.png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 
 <meta property="og:type" content="website">
-<meta property="og:title" content="Yordanos Ketema — BI Analyst">
-<meta property="og:description" content="SQL, Excel, Python, and Power BI portfolio, plus real full-stack client work.">
+<meta property="og:title" content="Yordanos Ketema | BI Analyst &amp; Systems Architect">
+<meta property="og:description" content="SQL, Excel, Python, Power BI analytics portfolio, enterprise inventory engines, full Business Analysis suites, and live full-stack web platforms.">
 <meta property="og:image" content="assets/og-image.png">
 <meta property="og:url" content="https://yordanos-ketema.github.io">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Yordanos Ketema — BI Analyst">
-<meta name="twitter:description" content="SQL, Excel, Python, and Power BI portfolio, plus real full-stack client work.">
+<meta name="twitter:title" content="Yordanos Ketema | BI Analyst &amp; Systems Architect">
+<meta name="twitter:description" content="SQL, Excel, Python, Power BI analytics portfolio, enterprise inventory engines, full Business Analysis suites, and live full-stack web platforms.">
 <meta name="twitter:image" content="assets/og-image.png">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
 <style>
-  :root{
-    --bg:#0F1720;
-    --surface:#16202B;
-    --surface-2:#1C2836;
-    --border:#2A3644;
-    --text:#EDF1F5;
-    --text-muted:#8496A8;
-    --amber:#F2B705;
-    --blue:#4FA3D1;
-    --green:#4CAF7D;
-    --magenta:#C2559C;
-    --radius:10px;
+  :root {
+    --bg: #0B1118;
+    --surface: #121B24;
+    --surface-2: #182430;
+    --surface-hover: #1E2D3D;
+    --border: #223345;
+    --border-light: #2E4257;
+    --text: #F1F5F9;
+    --text-muted: #8FA3B8;
+    --text-dim: #5E738A;
+    --amber: #F59E0B;
+    --amber-glow: rgba(245, 158, 11, 0.15);
+    --blue: #38BDF8;
+    --blue-glow: rgba(56, 189, 248, 0.15);
+    --green: #10B981;
+    --green-glow: rgba(16, 185, 129, 0.15);
+    --magenta: #E879F9;
+    --magenta-glow: rgba(232, 121, 249, 0.15);
+    --radius: 12px;
+    --radius-sm: 8px;
+    --shadow-sm: 0 2px 8px rgba(0,0,0,0.3);
+    --shadow-md: 0 8px 24px rgba(0,0,0,0.4);
+    --shadow-lg: 0 16px 40px rgba(0,0,0,0.5);
   }
-  *{box-sizing:border-box; margin:0; padding:0;}
-  html{scroll-behavior:smooth;}
-  body{
-    background:var(--bg);
-    color:var(--text);
-    font-family:'Inter', sans-serif;
-    line-height:1.55;
-    -webkit-font-smoothing:antialiased;
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
   }
-  h1,h2,h3{ font-family:'Space Grotesk', sans-serif; font-weight:600; letter-spacing:-0.01em; }
-  .mono{ font-family:'JetBrains Mono', monospace; }
-  a{ color:inherit; text-decoration:none; }
-  img{ max-width:100%; display:block; }
-  .wrap{ max-width:1120px; margin:0 auto; padding:0 28px; }
-  :focus-visible{ outline:2px solid var(--amber); outline-offset:3px; }
+
+  h1, h2, h3, h4 { font-family: 'Space Grotesk', sans-serif; font-weight: 600; letter-spacing: -0.015em; color: var(--text); }
+  .mono { font-family: 'JetBrains Mono', monospace; }
+  a { color: inherit; text-decoration: none; }
+  img { max-width: 100%; display: block; }
+  .wrap { max-width: 1140px; margin: 0 auto; padding: 0 28px; }
+  :focus-visible { outline: 2px solid var(--amber); outline-offset: 3px; }
 
   /* ---------- NAV ---------- */
-  .nav{
-    position:sticky; top:0; z-index:50;
-    background:rgba(15,23,32,0.86);
-    backdrop-filter:blur(10px);
-    border-bottom:1px solid var(--border);
+  .nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(11, 17, 24, 0.88);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    transition: border-color 0.2s ease;
   }
-  .nav .wrap{ display:flex; align-items:center; justify-content:space-between; height:72px; }
-  .brand{ display:flex; align-items:center; gap:10px; font-family:'Space Grotesk', sans-serif; font-weight:600; font-size:17px; }
-  .brand .mark{
-    width:32px; height:32px; border-radius:8px;
-    background:linear-gradient(135deg, var(--amber), var(--magenta));
-    display:flex; align-items:center; justify-content:center;
-    color:#0F1720; font-weight:700; font-size:13px; font-family:'JetBrains Mono', monospace;
+  .nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 74px; }
+  .brand { display: flex; align-items: center; gap: 12px; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 18px; }
+  .brand .mark {
+    width: 36px; height: 36px; border-radius: 10px;
+    background: linear-gradient(135deg, var(--amber), var(--magenta));
+    display: flex; align-items: center; justify-content: center;
+    color: #0B1118; font-weight: 800; font-size: 14px; font-family: 'JetBrains Mono', monospace;
+    box-shadow: 0 0 16px rgba(245, 158, 11, 0.3);
   }
-  .nav-links{ display:flex; gap:32px; font-size:14px; color:var(--text-muted); }
-  .nav-links a:hover{ color:var(--text); }
-  .nav-links a.active{ color:var(--amber); }
-  .nav-cta{
-    font-size:13px; font-family:'JetBrains Mono', monospace;
-    border:1px solid var(--border); padding:9px 16px; border-radius:7px;
-    transition:border-color .15s, color .15s;
+  .nav-links { display: flex; gap: 28px; font-size: 14.5px; font-weight: 500; color: var(--text-muted); }
+  .nav-links a { transition: color .15s ease; padding: 6px 0; position: relative; }
+  .nav-links a:hover { color: var(--text); }
+  .nav-links a.active { color: var(--amber); }
+  .nav-links a.active::after {
+    content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
+    background: var(--amber); border-radius: 2px;
   }
-  .nav-cta:hover{ border-color:var(--amber); color:var(--amber); }
-  .nav-toggle{ display:none; background:none; border:none; color:var(--text); font-size:22px; cursor:pointer; }
+
+  .nav-actions { display: flex; align-items: center; gap: 12px; }
+  .nav-resume {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 13px; font-family: 'JetBrains Mono', monospace; font-weight: 600;
+    color: var(--blue); padding: 8px 14px; border-radius: var(--radius-sm);
+    border: 1px solid rgba(56, 189, 248, 0.4); background: var(--blue-glow);
+    transition: all .2s ease;
+  }
+  .nav-resume:hover {
+    background: var(--blue); color: #0B1118; border-color: var(--blue);
+    box-shadow: 0 0 16px rgba(56, 189, 248, 0.35); transform: translateY(-1px);
+  }
+  .nav-gh {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 13px; font-family: 'JetBrains Mono', monospace;
+    color: var(--text-muted); padding: 8px 14px; border-radius: var(--radius-sm);
+    border: 1px solid var(--border); transition: all .15s ease;
+  }
+  .nav-gh:hover { color: var(--text); border-color: var(--border-light); background: var(--surface); }
+  .nav-cta {
+    font-size: 13px; font-family: 'JetBrains Mono', monospace; font-weight: 500;
+    background: var(--amber-glow); color: var(--amber); border: 1px solid rgba(245,158,11,0.4);
+    padding: 8px 16px; border-radius: var(--radius-sm);
+    transition: all .2s ease;
+  }
+  .nav-cta:hover { background: var(--amber); color: #0B1118; border-color: var(--amber); box-shadow: 0 0 16px rgba(245,158,11,0.35); }
+  .nav-toggle { display: none; background: none; border: none; color: var(--text); font-size: 24px; cursor: pointer; }
+
+  /* Mobile menu */
+  .mobile-menu {
+    display: none;
+    position: fixed; top: 74px; left: 0; right: 0; background: var(--surface);
+    border-bottom: 1px solid var(--border); padding: 20px 28px; z-index: 99;
+    flex-direction: column; gap: 16px;
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a { font-size: 16px; color: var(--text-muted); padding: 8px 0; }
+  .mobile-menu a:hover, .mobile-menu a.active { color: var(--amber); }
 
   /* ---------- HERO ---------- */
-  .hero{ padding:88px 0 64px; }
-  .eyebrow{
-    display:inline-flex; align-items:center; gap:8px;
-    font-family:'JetBrains Mono', monospace; font-size:12.5px; letter-spacing:0.08em;
-    color:var(--green); text-transform:uppercase; margin-bottom:22px;
-    border:1px solid rgba(76,175,125,0.35); background:rgba(76,175,125,0.08);
-    padding:6px 12px; border-radius:20px;
+  .hero { padding: 84px 0 68px; position: relative; }
+  .hero::before {
+    content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+    width: 800px; height: 350px;
+    background: radial-gradient(circle, rgba(56, 189, 248, 0.08) 0%, rgba(245, 158, 11, 0.04) 40%, transparent 70%);
+    pointer-events: none; z-index: 0;
   }
-  .eyebrow .dot{ width:7px; height:7px; border-radius:50%; background:var(--green); box-shadow:0 0 0 0 rgba(76,175,125,0.6); animation:pulse 2s infinite; }
-  @keyframes pulse{
-    0%{ box-shadow:0 0 0 0 rgba(76,175,125,0.55); }
-    70%{ box-shadow:0 0 0 7px rgba(76,175,125,0); }
-    100%{ box-shadow:0 0 0 0 rgba(76,175,125,0); }
-  }
-  .hero h1{ font-size:clamp(38px, 6vw, 60px); line-height:1.05; margin-bottom:18px; }
-  .hero .sub{ font-size:19px; color:var(--text-muted); max-width:620px; margin-bottom:44px; }
-  .kpi-strip{ display:grid; grid-template-columns:repeat(4, 1fr); gap:14px; }
-  .kpi-card{
-    background:var(--surface); border:1px solid var(--border); border-radius:var(--radius);
-    padding:20px 18px;
-  }
-  .kpi-card .num{ font-family:'JetBrains Mono', monospace; font-size:26px; font-weight:500; color:var(--amber); margin-bottom:6px; }
-  .kpi-card .label{ font-size:12.5px; color:var(--text-muted); line-height:1.4; }
+  .hero-content { position: relative; z-index: 1; }
 
-  /* ---------- SECTION HEADERS ---------- */
-  section{ padding:72px 0; border-top:1px solid var(--border); }
-  .sec-head{ margin-bottom:40px; }
-  .sec-tag{ font-family:'JetBrains Mono', monospace; font-size:12px; color:var(--blue); letter-spacing:0.08em; text-transform:uppercase; margin-bottom:10px; }
-  .sec-head h2{ font-size:clamp(26px, 4vw, 34px); }
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 9px;
+    font-family: 'JetBrains Mono', monospace; font-size: 12.5px; letter-spacing: 0.06em;
+    color: var(--green); text-transform: uppercase; margin-bottom: 22px;
+    border: 1px solid rgba(16, 185, 129, 0.3); background: rgba(16, 185, 129, 0.08);
+    padding: 7px 14px; border-radius: 20px;
+  }
+  .eyebrow .dot {
+    width: 8px; height: 8px; border-radius: 50%; background: var(--green);
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.6); animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.55); }
+    70% { box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+  }
+
+  .hero h1 { font-size: clamp(38px, 6vw, 62px); line-height: 1.08; margin-bottom: 20px; }
+  .hero h1 .accent-name {
+    background: linear-gradient(135deg, #FFFFFF 30%, var(--text-muted) 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .hero .sub {
+    font-size: 19px; color: var(--text-muted); max-width: 720px; margin-bottom: 34px;
+    font-weight: 400; line-height: 1.6;
+  }
+  .hero .sub strong { color: var(--text); font-weight: 500; }
+
+  .hero-buttons { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 50px; }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: 'JetBrains Mono', monospace; font-size: 13.5px; font-weight: 600;
+    background: var(--amber); color: #0B1118; padding: 12px 24px; border-radius: var(--radius-sm);
+    transition: all .2s ease; box-shadow: 0 4px 14px rgba(245, 158, 11, 0.25);
+  }
+  .btn-primary:hover {
+    background: #FFB319; transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(245, 158, 11, 0.35);
+  }
+  .btn-resume {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: 'JetBrains Mono', monospace; font-size: 13.5px; font-weight: 600;
+    background: var(--blue-glow); color: var(--blue); padding: 12px 22px; border-radius: var(--radius-sm);
+    border: 1px solid rgba(56, 189, 248, 0.4); transition: all .2s ease;
+  }
+  .btn-resume:hover {
+    background: var(--blue); color: #0B1118; border-color: var(--blue);
+    box-shadow: 0 0 16px rgba(56, 189, 248, 0.35); transform: translateY(-1px);
+  }
+  .btn-secondary {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: 'JetBrains Mono', monospace; font-size: 13.5px; font-weight: 500;
+    background: var(--surface); color: var(--text); padding: 12px 22px; border-radius: var(--radius-sm);
+    border: 1px solid var(--border); transition: all .2s ease;
+  }
+  .btn-secondary:hover {
+    border-color: var(--border-light); background: var(--surface-2); transform: translateY(-1px);
+  }
+
+  /* KPI Grid */
+  .kpi-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  .kpi-card {
+    background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 22px 20px; transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+    position: relative; overflow: hidden;
+  }
+  .kpi-card::after {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, var(--amber), transparent); opacity: 0.6;
+  }
+  .kpi-card:hover { transform: translateY(-2px); border-color: var(--border-light); box-shadow: var(--shadow-md); }
+  .kpi-card .num { font-family: 'JetBrains Mono', monospace; font-size: 26px; font-weight: 600; color: var(--amber); margin-bottom: 6px; letter-spacing: -0.02em; }
+  .kpi-card .label { font-size: 13px; color: var(--text-muted); line-height: 1.45; }
+
+  /* ---------- SECTION BASE ---------- */
+  section { padding: 80px 0; border-top: 1px solid var(--border); position: relative; }
+  .sec-head { margin-bottom: 36px; }
+  .sec-tag {
+    font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 600;
+    color: var(--blue); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 10px;
+    display: inline-block;
+  }
+  .sec-head h2 { font-size: clamp(28px, 4.5vw, 36px); }
 
   /* ---------- ABOUT ---------- */
-  .about-grid{ display:grid; grid-template-columns:1.3fr 1fr; gap:48px; align-items:start; }
-  .about p{ color:var(--text-muted); font-size:16px; margin-bottom:22px; max-width:540px; }
-  .tag-row{ display:flex; flex-wrap:wrap; gap:9px; margin-top:8px; }
-  .tag{
-    font-family:'JetBrains Mono', monospace; font-size:12.5px;
-    border:1px solid var(--border); border-radius:20px; padding:7px 14px;
-    color:var(--text-muted); background:var(--surface);
+  .about-grid { display: grid; grid-template-columns: 1.25fr 1fr; gap: 40px; align-items: start; }
+  .about-text p { color: var(--text-muted); font-size: 16px; margin-bottom: 20px; line-height: 1.65; }
+  .about-text p strong { color: var(--text); }
+  .tag-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+  .tag {
+    font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 500;
+    border: 1px solid var(--border); border-radius: 20px; padding: 6px 14px;
+    color: var(--text-muted); background: var(--surface);
+    transition: all .15s ease;
   }
-  .edu-card{
-    background:var(--surface); border:1px solid var(--border); border-radius:var(--radius);
-    padding:24px;
-  }
-  .edu-card .edu-eyebrow{ font-family:'JetBrains Mono', monospace; font-size:11.5px; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.06em; margin-bottom:10px; }
-  .edu-card h3{ font-size:17px; margin-bottom:6px; }
-  .edu-card .school{ color:var(--amber); font-size:14px; margin-bottom:14px; }
-  .edu-card .desc{ color:var(--text-muted); font-size:14px; }
+  .tag:hover { color: var(--text); border-color: var(--border-light); background: var(--surface-2); }
 
-  /* ---------- PROJECT / TABS ---------- */
-  .project-intro{ color:var(--text-muted); font-size:16px; max-width:680px; margin-bottom:36px; }
-  .tabbar{ display:flex; gap:2px; border-bottom:1px solid var(--border); margin-bottom:0; flex-wrap:wrap; }
-  .tab{
-    font-family:'JetBrains Mono', monospace; font-size:13.5px;
-    padding:13px 22px 12px; cursor:pointer; color:var(--text-muted);
-    background:var(--surface);
-    border:1px solid var(--border); border-bottom:none;
-    border-radius:8px 8px 0 0;
-    position:relative; top:1px;
-    display:flex; align-items:center; gap:8px;
-    transition:color .15s, background .15s;
+  .edu-card {
+    background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 28px; position: relative;
   }
-  .tab .swatch{ width:8px; height:8px; border-radius:2px; }
-  .tab[data-tool="sql"] .swatch{ background:var(--blue); }
-  .tab[data-tool="excel"] .swatch{ background:var(--green); }
-  .tab[data-tool="python"] .swatch{ background:var(--amber); }
-  .tab[data-tool="powerbi"] .swatch{ background:var(--magenta); }
-  .tab:hover{ color:var(--text); }
-  .tab.active{
-    color:var(--text); background:var(--surface-2);
-    border-color:var(--border);
-    border-bottom:1px solid var(--surface-2);
+  .edu-card::before {
+    content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%;
+    background: var(--amber); border-radius: var(--radius) 0 0 var(--radius);
   }
-  .tab-panels{
-    background:var(--surface-2); border:1px solid var(--border); border-top:none;
-    border-radius:0 0 var(--radius) var(--radius);
-    padding:36px;
+  .edu-card .edu-eyebrow {
+    font-family: 'JetBrains Mono', monospace; font-size: 11.5px; font-weight: 600;
+    color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 12px;
   }
-  .panel{ display:none; }
-  .panel.active{ display:block; animation:fadein .25s ease; }
-  @keyframes fadein{ from{ opacity:0; transform:translateY(4px);} to{ opacity:1; transform:translateY(0);} }
-  .panel-head{ display:flex; align-items:baseline; justify-content:space-between; gap:20px; flex-wrap:wrap; margin-bottom:14px; }
-  .panel-head h3{ font-size:20px; }
-  .panel-links{ display:flex; gap:10px; flex-wrap:wrap; }
-  .panel-links a{
-    font-family:'JetBrains Mono', monospace; font-size:12.5px;
-    border:1px solid var(--border); padding:7px 13px; border-radius:6px;
-    color:var(--text-muted); transition:border-color .15s, color .15s;
-    white-space:nowrap;
-  }
-  .panel-links a:hover{ border-color:var(--amber); color:var(--amber); }
-  .panel-links a.primary{ border-color:var(--amber); color:var(--amber); }
-  .panel p.desc{ color:var(--text-muted); font-size:15px; margin-bottom:22px; max-width:680px; }
-  .panel .shots{ display:grid; grid-template-columns:1fr; gap:18px; align-items:start; }
-  .panel .shots.two{ grid-template-columns:1fr 1fr; }
-  .shot{ border:1px solid var(--border); border-radius:8px; overflow:hidden; background:var(--bg); }
-  .shot img{ width:100%; }
-  .code-block{
-    background:var(--bg); border:1px solid var(--border); border-radius:8px;
-    padding:20px 22px; overflow-x:auto; margin-bottom:22px;
-  }
-  .code-block pre{ font-family:'JetBrains Mono', monospace; font-size:12.5px; color:#B9C4D0; line-height:1.7; white-space:pre; }
-  .code-block .kw{ color:var(--blue); }
-  .code-block .cm{ color:var(--text-muted); font-style:italic; }
-  .code-block .fn{ color:var(--amber); }
-  .stat-line{ display:flex; gap:24px; flex-wrap:wrap; margin-top:22px; font-family:'JetBrains Mono', monospace; font-size:12.5px; color:var(--text-muted); }
+  .edu-card h3 { font-size: 18px; margin-bottom: 6px; line-height: 1.35; }
+  .edu-card .school { color: var(--amber); font-size: 14.5px; font-weight: 500; margin-bottom: 14px; }
+  .edu-card .desc { color: var(--text-muted); font-size: 14px; line-height: 1.6; }
 
-  /* ---------- CASE STUDY (single-project card, no tabs) ---------- */
-  .case-study{
-    background:var(--surface-2); border:1px solid var(--border); border-radius:var(--radius);
-    padding:36px; display:grid; grid-template-columns:1.1fr 1fr; gap:36px; align-items:start;
+  /* ---------- PROJECTS SECTION & CARDS ---------- */
+  .project-intro { color: var(--text-muted); font-size: 16px; max-width: 760px; margin-bottom: 36px; line-height: 1.65; }
+  
+  /* Project Card Container */
+  .project-card {
+    background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+    overflow: hidden; margin-bottom: 48px; box-shadow: var(--shadow-sm);
+    transition: border-color .2s ease;
   }
-  .case-study .shot{ margin:0; }
-  .case-study h3{ font-size:20px; margin-bottom:14px; }
-  .case-study .desc{ color:var(--text-muted); font-size:15px; margin-bottom:18px; }
-  .case-study .stat-row{ display:flex; gap:14px; margin-bottom:20px; flex-wrap:wrap; }
-  .case-study .stat-card{
-    background:var(--surface); border:1px solid var(--border); border-radius:8px;
-    padding:12px 16px; flex:1; min-width:110px;
-  }
-  .case-study .stat-card .num{ font-family:'JetBrains Mono', monospace; font-weight:600; font-size:20px; color:var(--amber); }
-  .case-study .stat-card .lbl{ font-size:11.5px; color:var(--text-muted); margin-top:2px; }
-  @media (max-width: 860px){
-    .case-study{ grid-template-columns:1fr; }
-  }
-  .stat-line b{ color:var(--text); }
+  .project-card:hover { border-color: var(--border-light); }
 
-  /* ---------- SKILLS ---------- */
-  .skills-grid{ display:grid; grid-template-columns:repeat(2, 1fr); gap:28px; }
-  .skill-group h3{ font-size:14px; font-family:'JetBrains Mono', monospace; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.06em; margin-bottom:14px; font-weight:500; }
-  .skill-group .tag-row .tag{ background:var(--surface-2); }
+  /* Project Card Header Banner */
+  .project-header-bar {
+    padding: 24px 32px; background: rgba(18, 27, 36, 0.7);
+    border-bottom: 1px solid var(--border);
+    display: flex; justify-content: space-between; align-items: flex-start;
+    gap: 20px; flex-wrap: wrap;
+  }
+  .project-header-info { flex: 1; min-width: 280px; }
+  .project-header-info h3 { font-size: 22px; margin-top: 4px; margin-bottom: 6px; }
+  .project-header-info p { color: var(--text-muted); font-size: 14.5px; max-width: 760px; }
+  
+  /* Action buttons in header */
+  .project-header-actions {
+    display: flex; gap: 10px; align-items: center; flex-wrap: wrap; align-self: flex-start;
+  }
+  .header-btn-live {
+    font-family: 'JetBrains Mono', monospace; font-size: 12.5px; font-weight: 600;
+    background: var(--green-glow); color: var(--green); border: 1px solid rgba(16,185,129,0.4);
+    padding: 8px 14px; border-radius: var(--radius-sm); transition: all .2s ease;
+    display: inline-flex; align-items: center; gap: 7px; white-space: nowrap;
+  }
+  .header-btn-live:hover {
+    background: var(--green); color: #0B1118; border-color: var(--green);
+    box-shadow: 0 0 16px rgba(16,185,129,0.35); transform: translateY(-1px);
+  }
+  .header-btn-gh {
+    font-family: 'JetBrains Mono', monospace; font-size: 12.5px; font-weight: 500;
+    background: var(--surface); color: var(--text-muted); border: 1px solid var(--border);
+    padding: 8px 14px; border-radius: var(--radius-sm); transition: all .15s ease;
+    display: inline-flex; align-items: center; gap: 6px; white-space: nowrap;
+  }
+  .header-btn-gh:hover {
+    color: var(--text); border-color: var(--border-light); background: var(--surface-2);
+  }
+  .live-pulse-dot {
+    width: 7px; height: 7px; border-radius: 50%; background: var(--green);
+    box-shadow: 0 0 0 0 rgba(16,185,129,0.6); animation: pulse 2s infinite; display: inline-block;
+  }
+
+  .project-badge {
+    font-family: 'JetBrains Mono', monospace; font-size: 11.5px; font-weight: 600;
+    letter-spacing: 0.06em; text-transform: uppercase; padding: 4px 10px; border-radius: 6px;
+    display: inline-block;
+  }
+  .badge-analytics { background: var(--blue-glow); color: var(--blue); border: 1px solid rgba(56,189,248,0.3); }
+  .badge-client { background: var(--green-glow); color: var(--green); border: 1px solid rgba(16,185,129,0.3); }
+  .badge-ba { background: var(--magenta-glow); color: var(--magenta); border: 1px solid rgba(232,121,249,0.3); }
+  .badge-ops { background: var(--amber-glow); color: var(--amber); border: 1px solid rgba(245,158,11,0.3); }
+
+  /* Multi-Tool Project Tabs */
+  .tabbar {
+    display: flex; gap: 0; border-bottom: 1px solid var(--border);
+    background: var(--bg); overflow-x: auto; padding: 0 16px;
+  }
+  .tab {
+    font-family: 'JetBrains Mono', monospace; font-size: 13.5px; font-weight: 500;
+    padding: 14px 22px; cursor: pointer; color: var(--text-muted);
+    background: transparent; border: none; border-bottom: 2px solid transparent;
+    display: inline-flex; align-items: center; gap: 9px;
+    transition: all .15s ease; white-space: nowrap;
+  }
+  .tab .swatch { width: 8px; height: 8px; border-radius: 2px; }
+  .tab[data-tool="sql"] .swatch, .tab[data-tool="sql2"] .swatch { background: var(--blue); }
+  .tab[data-tool="excel"] .swatch, .tab[data-tool="excel2"] .swatch { background: var(--green); }
+  .tab[data-tool="python"] .swatch, .tab[data-tool="python2"] .swatch { background: var(--amber); }
+  .tab[data-tool="powerbi"] .swatch, .tab[data-tool="powerbi2"] .swatch { background: var(--magenta); }
+  
+  /* Project 04 Tabs */
+  .tab[data-tool="ba"] .swatch { background: var(--magenta); }
+  .tab[data-tool="arch"] .swatch { background: var(--blue); }
+  .tab[data-tool="fintech"] .swatch { background: var(--green); }
+  .tab[data-tool="impact"] .swatch { background: var(--amber); }
+
+  /* Project 05 Tabs (Kaldis) */
+  .tab[data-tool="kaldis-ba"] .swatch { background: var(--amber); }
+  .tab[data-tool="kaldis-bom"] .swatch { background: var(--blue); }
+  .tab[data-tool="kaldis-pos"] .swatch { background: var(--green); }
+  .tab[data-tool="kaldis-roi"] .swatch { background: var(--magenta); }
+  
+  .tab:hover { color: var(--text); background: rgba(255,255,255,0.02); }
+  .tab.active {
+    color: var(--text); font-weight: 600;
+    border-bottom-color: var(--amber);
+    background: var(--surface-2);
+  }
+
+  .tab-panels {
+    background: var(--surface-2);
+    padding: 36px 32px;
+  }
+  .panel { display: none; }
+  .panel.active { display: block; animation: fadein .25s cubic-bezier(0.16, 1, 0.3, 1); }
+  @keyframes fadein { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+
+  .panel-head { display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; margin-bottom: 16px; }
+  .panel-head h4 { font-size: 19px; font-family: 'Space Grotesk', sans-serif; }
+  .panel-links { display: flex; gap: 10px; flex-wrap: wrap; }
+  .panel-links a {
+    font-family: 'JetBrains Mono', monospace; font-size: 12.5px; font-weight: 500;
+    border: 1px solid var(--border); padding: 8px 14px; border-radius: var(--radius-sm);
+    color: var(--text-muted); transition: all .15s ease;
+    display: inline-flex; align-items: center; gap: 6px;
+    background: var(--surface);
+  }
+  .panel-links a:hover { border-color: var(--amber); color: var(--amber); background: var(--surface-hover); }
+  .panel-links a.primary {
+    border-color: rgba(245,158,11,0.5); color: var(--amber);
+    background: var(--amber-glow);
+  }
+  .panel-links a.primary:hover { background: var(--amber); color: #0B1118; }
+  .panel-links a.live {
+    border-color: rgba(16,185,129,0.5); color: var(--green);
+    background: var(--green-glow);
+  }
+  .panel-links a.live:hover { background: var(--green); color: #0B1118; }
+  .panel p.desc { color: var(--text-muted); font-size: 15px; margin-bottom: 22px; max-width: 820px; line-height: 1.6; }
+
+  /* Gallery and Visual Shots */
+  .panel .shots { display: grid; grid-template-columns: 1fr; gap: 20px; align-items: start; }
+  .panel .shots.two { grid-template-columns: 1fr 1fr; }
+  
+  .shot-wrap {
+    position: relative; border: 1px solid var(--border); border-radius: var(--radius-sm);
+    overflow: hidden; background: var(--bg); cursor: zoom-in;
+    transition: all .2s ease;
+  }
+  .shot-wrap:hover { border-color: var(--blue); transform: translateY(-2px); box-shadow: var(--shadow-md); }
+  .shot-wrap img { width: 100%; height: auto; display: block; }
+  .shot-caption {
+    padding: 10px 14px; font-size: 12px; color: var(--text-muted);
+    background: var(--surface); border-top: 1px solid var(--border);
+    display: flex; justify-content: space-between; align-items: center;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .shot-hint { font-size: 11px; color: var(--blue); display: inline-flex; align-items: center; gap: 4px; }
+
+  /* Feature Grid for BA Breakdown */
+  .feature-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-bottom: 24px; }
+  .feature-item {
+    background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-sm);
+    padding: 16px;
+  }
+  .feature-item .f-title {
+    font-family: 'JetBrains Mono', monospace; font-size: 12.5px; font-weight: 600;
+    color: var(--amber); margin-bottom: 6px; display: flex; align-items: center; gap: 6px;
+  }
+  .feature-item .f-desc { font-size: 12.5px; color: var(--text-muted); line-height: 1.5; }
+
+  /* Code Block with Copy Button */
+  .code-block-container { position: relative; margin-bottom: 24px; }
+  .code-header {
+    display: flex; justify-content: space-between; align-items: center;
+    background: #0E1620; border: 1px solid var(--border); border-bottom: none;
+    border-radius: var(--radius-sm) var(--radius-sm) 0 0; padding: 8px 16px;
+    font-family: 'JetBrains Mono', monospace; font-size: 11.5px; color: var(--text-dim);
+  }
+  .copy-btn {
+    background: transparent; border: 1px solid var(--border); color: var(--text-muted);
+    font-family: 'JetBrains Mono', monospace; font-size: 11px; padding: 4px 10px;
+    border-radius: 4px; cursor: pointer; transition: all .15s ease;
+  }
+  .copy-btn:hover { border-color: var(--amber); color: var(--amber); }
+  .code-block {
+    background: #080D13; border: 1px solid var(--border);
+    border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+    padding: 18px 20px; overflow-x: auto;
+  }
+  .code-block pre { font-family: 'JetBrains Mono', monospace; font-size: 12.5px; color: #CBD5E1; line-height: 1.65; white-space: pre; }
+  .code-block .kw { color: #38BDF8; font-weight: 500; }
+  .code-block .cm { color: #5E738A; font-style: italic; }
+  .code-block .fn { color: #F59E0B; }
+  .code-block .str { color: #10B981; }
+  .code-block .type { color: #E879F9; }
+
+  /* Stat Summary Line */
+  .stat-line {
+    display: flex; gap: 16px; flex-wrap: wrap; margin-top: 24px;
+    padding-top: 18px; border-top: 1px solid var(--border);
+    font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--text-muted);
+  }
+  .stat-badge {
+    background: var(--surface); border: 1px solid var(--border);
+    padding: 6px 14px; border-radius: 6px; display: inline-flex; align-items: center; gap: 6px;
+  }
+  .stat-badge b { color: var(--text); font-weight: 600; }
+
+  /* ---------- CASE STUDY LAYOUT (Single Card) ---------- */
+  .case-study-body {
+    padding: 36px 32px; display: grid; grid-template-columns: 1.15fr 1fr;
+    gap: 36px; align-items: start; background: var(--surface-2);
+  }
+  .case-study-body h4 { font-size: 20px; margin-bottom: 12px; }
+  .case-study-body .desc { color: var(--text-muted); font-size: 15px; margin-bottom: 20px; line-height: 1.6; }
+  .case-stat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 22px; }
+  .case-stat-box {
+    background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-sm);
+    padding: 14px; text-align: left;
+  }
+  .case-stat-box .num { font-family: 'JetBrains Mono', monospace; font-weight: 600; font-size: 19px; color: var(--amber); }
+  .case-stat-box .lbl { font-size: 11.5px; color: var(--text-muted); margin-top: 3px; line-height: 1.35; }
+
+  /* ---------- SKILLS SECTION ---------- */
+  .skills-matrix { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+  .skill-card {
+    background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 26px; transition: border-color .2s ease;
+  }
+  .skill-card:hover { border-color: var(--border-light); }
+  .skill-card h3 {
+    font-size: 14px; font-family: 'JetBrains Mono', monospace; color: var(--text-muted);
+    text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 16px; font-weight: 600;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .skill-card .tag-row .tag { background: var(--surface-2); }
+
+  /* ---------- LIGHTBOX MODAL ---------- */
+  .lightbox-modal {
+    position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+    background: rgba(8, 13, 19, 0.94); backdrop-filter: blur(14px);
+    z-index: 1000; display: none; justify-content: center; align-items: center;
+    padding: 30px; opacity: 0; transition: opacity .2s ease;
+  }
+  .lightbox-modal.active { display: flex; opacity: 1; }
+  .lightbox-content {
+    max-width: 92vw; max-height: 90vh; position: relative;
+    display: flex; flex-direction: column; align-items: center;
+  }
+  .lightbox-content img {
+    max-width: 100%; max-height: 82vh; border-radius: 8px;
+    border: 1px solid var(--border); box-shadow: var(--shadow-lg); object-fit: contain;
+  }
+  .lightbox-caption {
+    margin-top: 14px; font-family: 'JetBrains Mono', monospace; font-size: 13.5px;
+    color: var(--text); background: var(--surface); padding: 8px 18px;
+    border-radius: 20px; border: 1px solid var(--border); text-align: center;
+  }
+  .lightbox-close {
+    position: absolute; top: -16px; right: -16px; width: 36px; height: 36px;
+    background: var(--surface-hover); color: var(--text); border: 1px solid var(--border-light);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    cursor: pointer; font-size: 18px; font-weight: bold; transition: all .15s ease;
+  }
+  .lightbox-close:hover { background: var(--amber); color: #0B1118; border-color: var(--amber); }
 
   /* ---------- FOOTER ---------- */
-  footer{ padding:64px 0 40px; }
-  .footer-top{ display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:32px; margin-bottom:48px; }
-  .footer-top h2{ font-size:clamp(26px, 4vw, 36px); max-width:480px; }
-  .footer-links{ display:flex; flex-direction:column; gap:12px; }
-  .footer-links a{
-    font-family:'JetBrains Mono', monospace; font-size:14px; color:var(--text-muted);
-    display:flex; align-items:center; gap:8px; transition:color .15s;
+  footer { padding: 80px 0 44px; background: #070B10; border-top: 1px solid var(--border); }
+  .footer-top {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    flex-wrap: wrap; gap: 36px; margin-bottom: 54px;
   }
-  .footer-links a:hover{ color:var(--amber); }
-  .footer-bottom{ border-top:1px solid var(--border); padding-top:24px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px; font-size:12.5px; color:var(--text-muted); font-family:'JetBrains Mono', monospace; }
+  .footer-top h2 { font-size: clamp(28px, 4vw, 38px); max-width: 480px; }
+  .footer-links { display: flex; flex-direction: column; gap: 14px; }
+  .footer-links a {
+    font-family: 'JetBrains Mono', monospace; font-size: 14.5px; color: var(--text-muted);
+    display: inline-flex; align-items: center; gap: 10px; transition: all .15s ease;
+    padding: 8px 14px; border-radius: 6px; border: 1px solid transparent;
+  }
+  .footer-links a:hover { color: var(--amber); border-color: var(--border); background: var(--surface); }
+  .footer-bottom {
+    border-top: 1px solid var(--border); padding-top: 26px;
+    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 14px;
+    font-size: 13px; color: var(--text-dim); font-family: 'JetBrains Mono', monospace;
+  }
 
-  /* ---------- REVEAL ---------- */
-  .reveal{ opacity:0; transform:translateY(16px); transition:opacity .5s ease, transform .5s ease; }
-  .reveal.in{ opacity:1; transform:translateY(0); }
-  @media (prefers-reduced-motion: reduce){
-    .reveal{ opacity:1; transform:none; transition:none; }
-    .eyebrow .dot{ animation:none; }
+  /* ---------- REVEAL ANIMATIONS ---------- */
+  .reveal { opacity: 0; transform: translateY(18px); transition: opacity .5s cubic-bezier(0.16, 1, 0.3, 1), transform .5s cubic-bezier(0.16, 1, 0.3, 1); }
+  .reveal.in { opacity: 1; transform: translateY(0); }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; transition: none; }
+    .eyebrow .dot { animation: none; }
   }
 
-  /* ---------- RESPONSIVE ---------- */
-  @media (max-width: 860px){
-    .about-grid{ grid-template-columns:1fr; }
-    .skills-grid{ grid-template-columns:1fr; }
-    .kpi-strip{ grid-template-columns:1fr 1fr; }
-    .panel .shots.two{ grid-template-columns:1fr; }
+  /* ---------- RESPONSIVE MEDIA QUERIES ---------- */
+  @media (max-width: 920px) {
+    .about-grid { grid-template-columns: 1fr; }
+    .skills-matrix { grid-template-columns: 1fr; }
+    .case-study-body { grid-template-columns: 1fr; }
+    .kpi-strip { grid-template-columns: repeat(2, 1fr); }
+    .panel .shots.two { grid-template-columns: 1fr; }
+    .feature-grid-3 { grid-template-columns: 1fr; }
+    .project-header-bar { flex-direction: column; gap: 16px; }
+    .project-header-actions { width: 100%; justify-content: flex-start; }
   }
-  @media (max-width: 640px){
-    .nav-links{ display:none; }
-    .nav-toggle{ display:block; }
-    .kpi-strip{ grid-template-columns:1fr 1fr; }
-    .tabbar{ overflow-x:auto; flex-wrap:nowrap; }
-    .tab-panels{ padding:24px 20px; }
+  @media (max-width: 680px) {
+    .nav-links, .nav-gh { display: none; }
+    .nav-toggle { display: block; }
+    .kpi-strip { grid-template-columns: 1fr; }
+    .case-stat-grid { grid-template-columns: 1fr; }
+    .tabbar { padding: 0 8px; }
+    .tab { padding: 12px 14px; font-size: 12.5px; }
+    .tab-panels, .case-study-body { padding: 24px 18px; }
+    .project-header-bar { padding: 20px 18px; }
   }
 </style>
 </head>
 <body>
 
+<!-- LIGHTBOX MODAL FOR SCREENSHOTS & CHARTS -->
+<div id="lightbox" class="lightbox-modal" role="dialog" aria-modal="true" aria-label="Image preview">
+  <div class="lightbox-content">
+    <button class="lightbox-close" id="lightbox-close" aria-label="Close preview">&times;</button>
+    <img id="lightbox-img" src="" alt="Expanded preview">
+    <div id="lightbox-caption" class="lightbox-caption"></div>
+  </div>
+</div>
+
+<!-- NAVIGATION -->
 <header class="nav">
   <div class="wrap">
-    <a href="#top" class="brand"><span class="mark">YK</span> Yordanos Ketema</a>
+    <a href="#top" class="brand">
+      <span class="mark">YK</span>
+      <span>Yordanos Ketema</span>
+    </a>
+    
     <nav class="nav-links">
       <a href="#about">About</a>
-      <a href="#project">Projects</a>
+      <a href="#projects">Projects</a>
       <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
     </nav>
-    <a href="#contact" class="nav-cta">Contact</a>
+
+    <div class="nav-actions">
+      <a href="assets/Yordanos_Ketema_Resume.pdf" target="_blank" rel="noopener" class="nav-resume">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        <span>Resume (PDF)</span>
+      </a>
+      <a href="https://github.com/yordanos-ketema" target="_blank" rel="noopener" class="nav-gh" title="GitHub Profile">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+        <span>GitHub</span>
+      </a>
+      <a href="#contact" class="nav-cta">Get in Touch</a>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation menu">&#9776;</button>
+    </div>
+  </div>
+
+  <!-- Mobile Dropdown Menu -->
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#skills">Skills</a>
+    <a href="#contact">Contact</a>
+    <a href="assets/Yordanos_Ketema_Resume.pdf" target="_blank" rel="noopener">Download Resume (PDF) 📄</a>
+    <a href="https://github.com/yordanos-ketema" target="_blank" rel="noopener">GitHub Profile ↗</a>
   </div>
 </header>
 
 <main id="top">
 
-  <!-- HERO -->
+  <!-- HERO SECTION -->
   <section class="hero">
-    <div class="wrap">
-      <span class="eyebrow"><span class="dot"></span> Open to full-time roles</span>
-      <h1>Yordanos Ketema</h1>
-      <p class="sub">BI Analyst turning raw data into decisions — comfortable across SQL, spreadsheets, Python, and Power BI, and equally at home with web and database work.</p>
+    <div class="wrap hero-content">
+      <div class="eyebrow">
+        <span class="dot"></span> Open to full-time &amp; contract roles
+      </div>
+      
+      <h1>
+        <span class="accent-name">Yordanos Ketema</span><br>
+        BI Analyst &amp; Systems Architect
+      </h1>
+      
+      <p class="sub">
+        Bridging the gap between <strong>complex data analytics, formal business analysis, and production engineering</strong>. Experienced across SQL, Power BI, Python, Excel, enterprise inventory engines, formal BA documentation (BRD, RTM, UAT), and scalable full-stack web platforms.
+      </p>
 
+      <div class="hero-buttons">
+        <a href="#projects" class="btn-primary">View Featured Projects ↓</a>
+        <a href="assets/Yordanos_Ketema_Resume.pdf" target="_blank" rel="noopener" class="btn-resume">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          <span>Download Resume (PDF)</span>
+        </a>
+        <a href="https://github.com/yordanos-ketema" target="_blank" rel="noopener" class="btn-secondary">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          GitHub Repositories
+        </a>
+      </div>
+
+      <!-- Quick Metrics Strip -->
       <div class="kpi-strip reveal">
         <div class="kpi-card">
-          <div class="num">4</div>
-          <div class="label">Tools, one dataset — SQL, Excel, Python, Power BI</div>
+          <div class="num">5 Projects</div>
+          <div class="label">Analytics, Macroeconomics, Client Web, FinTech &amp; Retail Ops</div>
         </div>
         <div class="kpi-card">
-          <div class="num">150.5M</div>
-          <div class="label">COVID-19 records analyzed</div>
+          <div class="num">150.5M+</div>
+          <div class="label">COVID-19 records queried &amp; reconciled</div>
         </div>
         <div class="kpi-card">
-          <div class="num">210</div>
-          <div class="label">Countries covered</div>
+          <div class="num">8,800+</div>
+          <div class="label">Enterprise retail transactions modeled across 5 branches</div>
         </div>
         <div class="kpi-card">
-          <div class="num">14</div>
-          <div class="label">SQL queries — joins to window functions</div>
+          <div class="num">Full BA Suite</div>
+          <div class="label">Formal BRD, RTM, BPMN Swimlanes &amp; UAT Test Plans</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ABOUT -->
+  <!-- ABOUT SECTION -->
   <section id="about">
     <div class="wrap">
       <div class="sec-head reveal">
-        <div class="sec-tag">// about</div>
-        <h2>Background</h2>
+        <span class="sec-tag">// Professional Background</span>
+        <h2>About Me</h2>
       </div>
       <div class="about-grid">
-        <div class="reveal">
-          <p>I'm a BI Analyst based in Addis Ababa, Ethiopia. I like working end-to-end on data — pulling it out of a database, cleaning it up, modeling it properly, and building something a non-technical reader can actually understand at a glance.</p>
-          <p>I'm currently open to full-time roles across a few adjacent areas, since I'm equally comfortable on the analysis side and the systems side of data work:</p>
+        <div class="about-text reveal">
+          <p>
+            I am a BI Analyst and Systems Architect based in Addis Ababa, Ethiopia. I specialize in the complete data and software delivery lifecycle: querying databases, building star schemas, formulating formal Business Requirements (BRD &amp; RTM), and engineering robust enterprise inventory engines and web applications.
+          </p>
+          <p>
+            With an academic foundation spanning business operations and information systems, I bridge the gap between executive business needs, compliance mandates (such as Ethiopian VAT &amp; Withholding regulations), and technical software implementations.
+          </p>
           <div class="tag-row">
             <span class="tag">Business Intelligence</span>
-            <span class="tag">Data Analysis</span>
-            <span class="tag">Web Development</span>
-            <span class="tag">Database Administration</span>
-            <span class="tag">Systems Analysis</span>
+            <span class="tag">Requirements Engineering (BRD/RTM)</span>
+            <span class="tag">Recipe BOM &amp; FIFO Inventory</span>
+            <span class="tag">Data Modeling &amp; DAX</span>
+            <span class="tag">SQL &amp; ETL</span>
+            <span class="tag">FinTech Integration</span>
+            <span class="tag">Full-Stack Development</span>
           </div>
         </div>
+
         <div class="edu-card reveal">
-          <div class="edu-eyebrow">Education</div>
+          <div class="edu-eyebrow">Academic Foundation</div>
           <h3>B.A. Business Administration &amp; Information Systems</h3>
           <div class="school">Addis Ababa University</div>
-          <div class="desc">Coursework spanning business operations and information systems, giving equal footing in the business questions behind the data and the systems that hold it.</div>
+          <div class="desc">
+            Integrated coursework across strategic management, financial analysis, database architecture, and enterprise information systems. Provides equal grounding in executive business objectives and the underlying technology infrastructure.
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- PROJECT -->
-  <section id="project">
+  <!-- FEATURED PROJECTS SECTION -->
+  <section id="projects">
     <div class="wrap">
       <div class="sec-head reveal">
-        <div class="sec-tag">// project 01</div>
-        <h2>COVID-19 Global Data Analysis</h2>
+        <span class="sec-tag">// Portfolio Case Studies</span>
+        <h2>Featured Projects</h2>
       </div>
-      <p class="project-intro reveal">One dataset — Our World in Data's COVID-19 records, 210 countries, Jan 2020 to Apr 2021 — analyzed four different ways. Every headline number is cross-checked across all four, including a continent-aggregation pitfall I caught and fixed the same way in each tool. Pick a tab.</p>
+      <p class="project-intro reveal">
+        Each project demonstrates end-to-end analytical rigor, formal business analysis, and robust technical execution. Click on the tool tabs, view code snippets, and explore live deployments and documentation.
+      </p>
 
-      <div class="reveal tool-group">
+      <!-- ========================================================= -->
+      <!-- PROJECT 01: COVID-19 DATA ANALYSIS (MULTI-TOOL) -->
+      <!-- ========================================================= -->
+      <div class="project-card reveal tool-group" id="project1">
+        <div class="project-header-bar">
+          <div class="project-header-info">
+            <span class="project-badge badge-analytics">Project 01: BI &amp; Analytics</span>
+            <h3>COVID-19 Global Data Analysis</h3>
+            <p>
+              A multi-platform analysis of Our World in Data's global records (210 countries, Jan 2020 to Apr 2021). All core figures were reconciled across SQL, Excel, Python, and Power BI, resolving subtle continent-level double-counting issues across all four environments.
+            </p>
+          </div>
+          <div class="project-header-actions">
+            <a class="header-btn-gh" href="https://github.com/yordanos-ketema/covid-data-analysis-portfolio" target="_blank" rel="noopener">
+              View Repository ↗
+            </a>
+          </div>
+        </div>
+
+        <!-- Tool Selection Tab Bar -->
         <div class="tabbar" role="tablist">
-          <button class="tab active" data-tool="sql" role="tab">
-            <span class="swatch"></span> SQL
+          <button class="tab active" data-tool="sql" role="tab" aria-selected="true">
+            <span class="swatch"></span> SQL Queries
           </button>
-          <button class="tab" data-tool="excel" role="tab">
-            <span class="swatch"></span> Excel
+          <button class="tab" data-tool="excel" role="tab" aria-selected="false">
+            <span class="swatch"></span> Excel Dashboard
           </button>
-          <button class="tab" data-tool="python" role="tab">
-            <span class="swatch"></span> Python
+          <button class="tab" data-tool="python" role="tab" aria-selected="false">
+            <span class="swatch"></span> Python Notebook
           </button>
-          <button class="tab" data-tool="powerbi" role="tab">
-            <span class="swatch"></span> Power BI
+          <button class="tab" data-tool="powerbi" role="tab" aria-selected="false">
+            <span class="swatch"></span> Power BI Model
           </button>
         </div>
 
         <div class="tab-panels">
 
-          <!-- SQL PANEL -->
+          <!-- TAB 1: SQL -->
           <div class="panel active" data-tool="sql">
             <div class="panel-head">
-              <h3>SQL exploration — SQLite</h3>
+              <h4>SQL Exploration | SQLite Database</h4>
               <div class="panel-links">
-                <a class="primary" href="https://github.com/yordanos-ketema/covid-data-analysis-portfolio/blob/main/covid-portfolio-project/sql/covid_analysis.sql" target="_blank" rel="noopener">View .sql on GitHub ↗</a>
+                <a class="primary" href="https://github.com/yordanos-ketema/covid-data-analysis-portfolio/blob/main/covid-portfolio-project/sql/covid_analysis.sql" target="_blank" rel="noopener">
+                  View covid_analysis.sql on GitHub ↗
+                </a>
               </div>
             </div>
-            <p class="desc">14 queries against a SQLite database built from the raw data — from basic filtering up through joins, CTEs, window functions, temp tables, and a view. Includes a documented fix for a common pitfall: naively grouping cumulative totals by continent silently returns the wrong number.</p>
-            <div class="code-block">
-              <pre><span class="cm">-- Rolling vaccination % of population, via CTE + window function</span>
+            <p class="desc">
+              14 structured analytical queries against a custom SQLite database: data filtering, multi-table joins, Common Table Expressions (CTEs), window functions (SUM OVER PARTITION), temporary tables, and database views. Includes partition logic to prevent cumulative continent double-counting.
+            </p>
+
+            <div class="code-block-container">
+              <div class="code-header">
+                <span>SQL CTE &amp; Rolling Aggregation Query</span>
+                <button class="copy-btn" data-target="sql-code-1">Copy SQL</button>
+              </div>
+              <div class="code-block">
+<pre id="sql-code-1"><span class="cm">-- Rolling vaccination percentage of population via CTE and window function</span>
 <span class="kw">WITH</span> pop_vs_vac <span class="kw">AS</span> (
     <span class="kw">SELECT</span> d.location, d.date, d.population, v.new_vaccinations,
         <span class="fn">SUM</span>(v.new_vaccinations) <span class="kw">OVER</span> (
@@ -369,281 +785,991 @@
 )
 <span class="kw">SELECT</span> *, <span class="fn">ROUND</span>(100.0 * rolling_people_vaccinated / population, 2)
     <span class="kw">AS</span> pct_population_vaccinated
-<span class="kw">FROM</span> pop_vs_vac <span class="kw">ORDER BY</span> location, date;</pre>
+<span class="kw">FROM</span> pop_vs_vac 
+<span class="kw">ORDER BY</span> location, date;</pre>
+              </div>
             </div>
+
             <div class="stat-line">
-              <span><b>150,574,977</b> global cases</span>
-              <span><b>3,180,206</b> global deaths</span>
-              <span><b>2.11%</b> global death rate</span>
+              <div class="stat-badge">Total Global Cases: <b>150,574,977</b></div>
+              <div class="stat-badge">Total Global Deaths: <b>3,180,206</b></div>
+              <div class="stat-badge">Case Fatality Rate: <b>2.11%</b></div>
             </div>
           </div>
 
-          <!-- EXCEL PANEL -->
+          <!-- TAB 2: EXCEL -->
           <div class="panel" data-tool="excel">
             <div class="panel-head">
-              <h3>Excel dashboard — formula-driven</h3>
+              <h4>Excel Dashboard | Formula-Driven Architecture</h4>
               <div class="panel-links">
-                <a class="primary" href="https://github.com/yordanos-ketema/covid-data-analysis-portfolio/blob/main/covid-portfolio-project/excel/COVID_Excel_Dashboard.xlsx" target="_blank" rel="noopener">Download .xlsx ↗</a>
+                <a class="primary" href="https://github.com/yordanos-ketema/covid-data-analysis-portfolio/blob/main/covid-portfolio-project/excel/COVID_Excel_Dashboard.xlsx" target="_blank" rel="noopener">
+                  Download COVID_Excel_Dashboard.xlsx ↗
+                </a>
               </div>
             </div>
-            <p class="desc">Nothing here is hardcoded. Country and continent summaries are built with SUMIF / MAXIFS / RANK / INDEX-MATCH straight off 81,000+ rows of raw data, so the whole workbook recalculates if the source data changes. KPI cards and four charts pull live from those formula sheets.</p>
+            <p class="desc">
+              Built entirely on dynamic formulas without hardcoded calculations. Country and continent rollups use SUMIFS, MAXIFS, RANK, and INDEX/MATCH directly referencing 81,000+ source rows, ensuring all executive KPI cards and charts refresh instantly when new data is supplied.
+            </p>
             <div class="shots">
-              <div class="shot"><img loading="lazy" src="assets/excel_dashboard_screenshot.png" alt="Excel dashboard showing global COVID KPI cards, a cases-and-deaths trend chart, and a continent death-toll bar chart"></div>
+              <div class="shot-wrap zoomable-image" data-img="assets/excel_dashboard_screenshot.png" data-caption="Excel COVID-19 Executive Dashboard: KPI cards, global daily trend analysis, and continent mortality breakdown">
+                <img loading="lazy" src="assets/excel_dashboard_screenshot.png" alt="Excel COVID-19 Executive Dashboard showing KPI summary cards, time series chart, and continent comparisons">
+                <div class="shot-caption">
+                  <span>COVID-19 Global Excel Dashboard</span>
+                  <span class="shot-hint">Click to expand 🔍</span>
+                </div>
+              </div>
             </div>
           </div>
 
-          <!-- PYTHON PANEL -->
+          <!-- TAB 3: PYTHON -->
           <div class="panel" data-tool="python">
             <div class="panel-head">
-              <h3>Python notebook — pandas + matplotlib</h3>
+              <h4>Python Notebook | pandas &amp; Matplotlib</h4>
               <div class="panel-links">
-                <a class="primary" href="https://github.com/yordanos-ketema/covid-data-analysis-portfolio/blob/main/covid-portfolio-project/notebook/covid_analysis_notebook.ipynb" target="_blank" rel="noopener">Open notebook on GitHub ↗</a>
+                <a class="primary" href="https://github.com/yordanos-ketema/covid-data-analysis-portfolio/blob/main/covid-portfolio-project/notebook/covid_analysis_notebook.ipynb" target="_blank" rel="noopener">
+                  Open covid_analysis_notebook.ipynb on GitHub ↗
+                </a>
               </div>
             </div>
-            <p class="desc">A narrated, executed notebook — cleaning, EDA, and visualization, ending with a deliberately cautious look at vaccination rate vs. death rate. The point of that last chart isn't a correlation, it's showing <em>why</em> a 4-month snapshot is the wrong data to draw one from.</p>
+            <p class="desc">
+              End-to-end data pipeline in Python: programmatic data cleaning, datetime transformations, exploratory data analysis, and publication-ready visualizations highlighting daily infection trajectories, continent fatality variations, and early rollout curves.
+            </p>
             <div class="shots two">
-              <div class="shot"><img loading="lazy" src="assets/chart_global_trend.png" alt="Line chart of global daily new COVID-19 cases and deaths from Jan 2020 to Apr 2021"></div>
-              <div class="shot"><img loading="lazy" src="assets/chart_continent_comparison.png" alt="Bar charts comparing total deaths and case-fatality rate by continent"></div>
-              <div class="shot"><img loading="lazy" src="assets/chart_top_infection_rate.png" alt="Horizontal bar chart of the top 15 countries by COVID-19 infection rate"></div>
-              <div class="shot"><img loading="lazy" src="assets/chart_vaccine_rollout.png" alt="Line chart of vaccine rollout trajectories for the leading countries through April 2021"></div>
+              <div class="shot-wrap zoomable-image" data-img="assets/chart_global_trend.png" data-caption="Global Daily New Cases & Deaths Trend (Jan 2020 - Apr 2021)">
+                <img loading="lazy" src="assets/chart_global_trend.png" alt="Line chart of global daily new COVID-19 cases and deaths from Jan 2020 to Apr 2021">
+                <div class="shot-caption"><span>Global Cases &amp; Deaths Trend</span><span class="shot-hint">Expand 🔍</span></div>
+              </div>
+              <div class="shot-wrap zoomable-image" data-img="assets/chart_continent_comparison.png" data-caption="Comparative Continent Death Toll & Case Fatality Ratio">
+                <img loading="lazy" src="assets/chart_continent_comparison.png" alt="Bar charts comparing total deaths and case-fatality rate by continent">
+                <div class="shot-caption"><span>Continent Mortality Comparison</span><span class="shot-hint">Expand 🔍</span></div>
+              </div>
+              <div class="shot-wrap zoomable-image" data-img="assets/chart_top_infection_rate.png" data-caption="Top 15 Countries by Infection Rate Percentage">
+                <img loading="lazy" src="assets/chart_top_infection_rate.png" alt="Horizontal bar chart of top 15 countries by COVID-19 infection rate">
+                <div class="shot-caption"><span>Top Infection Rates by Country</span><span class="shot-hint">Expand 🔍</span></div>
+              </div>
+              <div class="shot-wrap zoomable-image" data-img="assets/chart_vaccine_rollout.png" data-caption="Vaccine Rollout Trajectories Across Leading Countries">
+                <img loading="lazy" src="assets/chart_vaccine_rollout.png" alt="Line chart of vaccine rollout trajectories for leading countries">
+                <div class="shot-caption"><span>Vaccination Rollout Curves</span><span class="shot-hint">Expand 🔍</span></div>
+              </div>
             </div>
           </div>
 
-          <!-- POWER BI PANEL -->
+          <!-- TAB 4: POWER BI -->
           <div class="panel" data-tool="powerbi">
             <div class="panel-head">
-              <h3>Power BI — interactive dashboard</h3>
+              <h4>Power BI | Star Schema &amp; DAX Measures</h4>
               <div class="panel-links">
-                <a class="primary" href="https://github.com/yordanos-ketema/covid-data-analysis-portfolio/blob/main/covid-portfolio-project/powerbi/covid_dashboard.pbix" target="_blank" rel="noopener">Download .pbix ↗</a>
+                <a class="primary" href="https://github.com/yordanos-ketema/covid-data-analysis-portfolio/blob/main/covid-portfolio-project/powerbi/covid_dashboard.pbix" target="_blank" rel="noopener">
+                  Download covid_dashboard.pbix ↗
+                </a>
               </div>
             </div>
-            <p class="desc">Built on a proper star schema (one fact table, two dimension tables) with custom DAX measures — including a continent-total measure that correctly sums each country's own cumulative figure, rather than the naive version that silently grabs whichever single country peaked highest. The screenshot below shows both slicers live — click a continent or drag the date range to cross-filter. <em>(Public web embedding is disabled by my school's Power BI admin policy — download the file to try it interactively, or happy to walk through it live.)</em></p>
+            <p class="desc">
+              Structured data model using a star schema with one central fact table and two dimension tables. Custom DAX measures ensure country-level cumulative totals roll up accurately to continent levels without double-counting, connected to synchronized date and continent slicers.
+            </p>
             <div class="shots">
-              <div class="shot"><img loading="lazy" src="assets/powerbi_dashboard_screenshot.png" alt="Power BI dashboard with KPI cards, a cases and deaths trend line, a continent death toll chart, top-10 tables, and date range and continent slicers"></div>
+              <div class="shot-wrap zoomable-image" data-img="assets/powerbi_dashboard_screenshot.png" data-caption="Interactive Power BI COVID-19 Report: KPI metrics, time slicers, dynamic rank tables, and cross-filtering">
+                <img loading="lazy" src="assets/powerbi_dashboard_screenshot.png" alt="Power BI COVID-19 dashboard with interactive slicers, KPI cards, and trend charts">
+                <div class="shot-caption">
+                  <span>Power BI Interactive COVID-19 Dashboard</span>
+                  <span class="shot-hint">Click to expand 🔍</span>
+                </div>
+              </div>
             </div>
           </div>
 
         </div>
-  </section>
-
-  <!-- PROJECT 2 -->
-  <section id="project2">
-    <div class="wrap">
-      <div class="sec-head reveal">
-        <div class="sec-tag">// project 02</div>
-        <h2>Ethiopia &amp; East Africa Economic Analysis</h2>
       </div>
-      <p class="project-intro reveal">A self-sourced dataset this time — World Bank indicators for Ethiopia, Kenya, Uganda, Tanzania, and Rwanda, pulled and reconciled from public sources rather than a pre-cleaned download. The headline finding: Ethiopia leads the region on population and total GDP, but Kenya actually leads on GDP <em>per capita</em> — total and per-capita tell opposite stories, and this project shows both rather than picking the flattering one.</p>
 
-      <div class="reveal tool-group">
+      <!-- ========================================================= -->
+      <!-- PROJECT 02: EAST AFRICA ECONOMIC ANALYSIS (MULTI-TOOL) -->
+      <!-- ========================================================= -->
+      <div class="project-card reveal tool-group" id="project2">
+        <div class="project-header-bar">
+          <div class="project-header-info">
+            <span class="project-badge badge-analytics">Project 02: Macroeconomic Analysis</span>
+            <h3>Ethiopia &amp; East Africa Economic Analysis</h3>
+            <p>
+              Comparative study of World Bank development indicators for Ethiopia, Kenya, Uganda, Tanzania, and Rwanda. Highlights key macroeconomic dynamics: Ethiopia leads in total regional GDP and population, while Kenya maintains a significantly higher GDP per capita.
+            </p>
+          </div>
+          <div class="project-header-actions">
+            <a class="header-btn-gh" href="https://github.com/yordanos-ketema/ethiopia-east-africa-analysis" target="_blank" rel="noopener">
+              View Repository ↗
+            </a>
+          </div>
+        </div>
+
+        <!-- Tool Selection Tab Bar -->
         <div class="tabbar" role="tablist">
-          <button class="tab active" data-tool="sql2" role="tab">
-            <span class="swatch"></span> SQL
+          <button class="tab active" data-tool="sql2" role="tab" aria-selected="true">
+            <span class="swatch"></span> SQL Analysis
           </button>
-          <button class="tab" data-tool="excel2" role="tab">
-            <span class="swatch"></span> Excel
+          <button class="tab" data-tool="excel2" role="tab" aria-selected="false">
+            <span class="swatch"></span> Excel Workbook
           </button>
-          <button class="tab" data-tool="python2" role="tab">
-            <span class="swatch"></span> Python
+          <button class="tab" data-tool="python2" role="tab" aria-selected="false">
+            <span class="swatch"></span> Python &amp; Forecast
           </button>
-          <button class="tab" data-tool="powerbi2" role="tab">
-            <span class="swatch"></span> Power BI
+          <button class="tab" data-tool="powerbi2" role="tab" aria-selected="false">
+            <span class="swatch"></span> Power BI Dashboard
           </button>
         </div>
 
         <div class="tab-panels">
 
-          <!-- SQL PANEL 2 -->
+          <!-- TAB 1: SQL -->
           <div class="panel active" data-tool="sql2">
             <div class="panel-head">
-              <h3>SQL exploration — SQLite</h3>
+              <h4>SQL Exploration | SQLite Database</h4>
               <div class="panel-links">
-                <a class="primary" href="https://github.com/yordanos-ketema/ethiopia-east-africa-analysis/blob/main/ethiopia-econ-project/sql/africa_analysis.sql" target="_blank" rel="noopener">View .sql on GitHub ↗</a>
+                <a class="primary" href="https://github.com/yordanos-ketema/ethiopia-east-africa-analysis/blob/main/ethiopia-econ-project/sql/africa_analysis.sql" target="_blank" rel="noopener">
+                  View africa_analysis.sql on GitHub ↗
+                </a>
               </div>
             </div>
-            <p class="desc">10 queries combining two data sources with different update schedules — population/GDP run through 2023-24, broader indicators only to ~2012, and every query is explicit about which it's using. Includes window functions (LAG, rolling averages, RANK), a CTE-based inflation classifier, and a multi-source JOIN that recomputes GDP-per-capita directly rather than trusting a separately-vintaged column.</p>
-            <div class="code-block">
-              <pre><span class="cm">-- GDP per capita, recomputed directly from two source tables</span>
-<span class="cm">-- rather than trusting a separately-vintaged indicator column</span>
+            <p class="desc">
+              10 targeted queries uniting multi-vintage World Bank tables (population and GDP through 2024, extended indicators through 2012). Features window calculations (LAG, moving averages, RANK), inflation classification logic, and direct per-capita recomputation across joined tables.
+            </p>
+
+            <div class="code-block-container">
+              <div class="code-header">
+                <span>SQL Direct Multi-Table Indicator Join</span>
+                <button class="copy-btn" data-target="sql-code-2">Copy SQL</button>
+              </div>
+              <div class="code-block">
+<pre id="sql-code-2"><span class="cm">-- Recomputing GDP per capita directly from unified population &amp; GDP tables</span>
 <span class="kw">SELECT</span>
     p.<span class="fn">"Country Name"</span>, p.Year, p.Population, g.GDP_current_USD,
     <span class="fn">ROUND</span>(g.GDP_current_USD / p.Population, 2) <span class="kw">AS</span> gdp_per_capita_usd
 <span class="kw">FROM</span> Population p
 <span class="kw">JOIN</span> GDP g
     <span class="kw">ON</span> p.<span class="fn">"Country Name"</span> = g.<span class="fn">"Country Name"</span> <span class="kw">AND</span> p.Year = g.Year
-<span class="kw">WHERE</span> p.<span class="fn">"Country Name"</span> <span class="kw">IN</span> (<span class="fn">'Ethiopia','Kenya','Uganda','Tanzania','Rwanda'</span>)
+<span class="kw">WHERE</span> p.<span class="fn">"Country Name"</span> <span class="kw">IN</span> (<span class="str">'Ethiopia'</span>,<span class="str">'Kenya'</span>,<span class="str">'Uganda'</span>,<span class="str">'Tanzania'</span>,<span class="str">'Rwanda'</span>)
 <span class="kw">ORDER BY</span> p.<span class="fn">"Country Name"</span>, p.Year;</pre>
+              </div>
             </div>
+
             <div class="stat-line">
-              <span><b>132.1M</b> Ethiopia population (2024)</span>
-              <span><b>$163.7B</b> Ethiopia GDP (2023)</span>
-              <span><b>$1,272</b> Ethiopia GDP/capita vs <b>$1,942</b> Kenya</span>
+              <div class="stat-badge">Ethiopia Population (2024): <b>132.1M</b></div>
+              <div class="stat-badge">Ethiopia Total GDP (2023): <b>$163.7B</b></div>
+              <div class="stat-badge">GDP per Capita: <b>$1,272 (ET)</b> vs <b>$1,942 (KE)</b></div>
             </div>
           </div>
 
-          <!-- EXCEL PANEL 2 -->
+          <!-- TAB 2: EXCEL -->
           <div class="panel" data-tool="excel2">
             <div class="panel-head">
-              <h3>Excel dashboard — formula-driven</h3>
+              <h4>Excel Dashboard | Reconciliation &amp; Modeling</h4>
               <div class="panel-links">
-                <a class="primary" href="https://github.com/yordanos-ketema/ethiopia-east-africa-analysis/blob/main/ethiopia-econ-project/excel/Ethiopia_EastAfrica_Excel_Dashboard.xlsx" target="_blank" rel="noopener">Download .xlsx ↗</a>
+                <a class="primary" href="https://github.com/yordanos-ketema/ethiopia-east-africa-analysis/blob/main/ethiopia-econ-project/excel/Ethiopia_EastAfrica_Excel_Dashboard.xlsx" target="_blank" rel="noopener">
+                  Download Ethiopia_EastAfrica_Excel_Dashboard.xlsx ↗
+                </a>
               </div>
             </div>
-            <p class="desc">Same formula-driven approach as the COVID dashboard — MAXIFS/SUMIFS pulling live off raw data sheets. Building it surfaced a real bug worth mentioning on its own: the first version divided 2023 GDP by 2024 population (mismatched years from the two source files), quietly producing a wrong per-capita figure. Fixed by aligning both to the same year before dividing.</p>
+            <p class="desc">
+              Formula-driven workbook linking raw macroeconomic data with MAXIFS and SUMIFS. Accurately reconciled source datasets with mismatched reporting years, preventing skew in cross-country per-capita calculations.
+            </p>
             <div class="shots">
-              <div class="shot"><img loading="lazy" src="assets/africa_excel_screenshot.png" alt="Excel dashboard showing Ethiopia population and GDP KPI cards, a population growth trend chart, and a total GDP by country bar chart"></div>
+              <div class="shot-wrap zoomable-image" data-img="assets/africa_excel_screenshot.png" data-caption="Excel East Africa Economic Dashboard: Population growth comparison, GDP charts, and KPI summary">
+                <img loading="lazy" src="assets/africa_excel_screenshot.png" alt="Excel dashboard showing Ethiopia and East Africa population and GDP KPI cards and trend charts">
+                <div class="shot-caption">
+                  <span>East Africa Macroeconomic Excel Dashboard</span>
+                  <span class="shot-hint">Click to expand 🔍</span>
+                </div>
+              </div>
             </div>
           </div>
 
-          <!-- PYTHON PANEL 2 -->
+          <!-- TAB 3: PYTHON -->
           <div class="panel" data-tool="python2">
             <div class="panel-head">
-              <h3>Python notebook — pandas + light forecasting</h3>
+              <h4>Python Notebook | pandas &amp; 10-Year Forecasting</h4>
               <div class="panel-links">
-                <a class="primary" href="https://github.com/yordanos-ketema/ethiopia-east-africa-analysis/blob/main/ethiopia-econ-project/notebook/africa_notebook.ipynb" target="_blank" rel="noopener">Open notebook on GitHub ↗</a>
+                <a class="primary" href="https://github.com/yordanos-ketema/ethiopia-east-africa-analysis/blob/main/ethiopia-econ-project/notebook/africa_notebook.ipynb" target="_blank" rel="noopener">
+                  Open africa_notebook.ipynb on GitHub ↗
+                </a>
               </div>
             </div>
-            <p class="desc">EDA plus a genuinely predictive piece: a 10-year Ethiopia population forecast using two methods — a linear trend and a compound growth rate — shown side by side so the divergence between them is visible, with honest caveats about what a simple trend model can't capture (migration, fertility shifts, the demographic transition).</p>
+            <p class="desc">
+              Exploratory analysis paired with a 10-year Ethiopian population projection model. Compares a linear trend model against a compound annual growth rate (CAGR) curve, detailing modeling assumptions and demographic factors.
+            </p>
             <div class="shots two">
-              <div class="shot"><img loading="lazy" src="assets/africa_chart_population.png" alt="Line chart of population growth for Ethiopia and East African peers from 1960 to 2024"></div>
-              <div class="shot"><img loading="lazy" src="assets/africa_chart_gdp_per_capita.png" alt="Bar chart of GDP per capita by country, with Kenya leading ahead of Ethiopia"></div>
-              <div class="shot"><img loading="lazy" src="assets/africa_chart_forecast.png" alt="Ethiopia population 10-year forecast comparing a linear trend model against a compound growth model"></div>
-              <div class="shot"><img loading="lazy" src="assets/africa_chart_life_expectancy.png" alt="Line chart comparing life expectancy in Ethiopia against Sub-Saharan Africa and world averages"></div>
+              <div class="shot-wrap zoomable-image" data-img="assets/africa_chart_population.png" data-caption="East Africa Population Growth Trajectories (1960 - 2024)">
+                <img loading="lazy" src="assets/africa_chart_population.png" alt="Line chart of population growth for Ethiopia and East African peers from 1960 to 2024">
+                <div class="shot-caption"><span>Regional Population Growth</span><span class="shot-hint">Expand 🔍</span></div>
+              </div>
+              <div class="shot-wrap zoomable-image" data-img="assets/africa_chart_gdp_per_capita.png" data-caption="Comparative GDP per Capita: Kenya vs Ethiopia vs Peers">
+                <img loading="lazy" src="assets/africa_chart_gdp_per_capita.png" alt="Bar chart of GDP per capita by country, with Kenya leading ahead of Ethiopia">
+                <div class="shot-caption"><span>GDP per Capita Comparison</span><span class="shot-hint">Expand 🔍</span></div>
+              </div>
+              <div class="shot-wrap zoomable-image" data-img="assets/africa_chart_forecast.png" data-caption="Ethiopia 10-Year Population Projection (Linear vs Compound)">
+                <img loading="lazy" src="assets/africa_chart_forecast.png" alt="Ethiopia population 10-year forecast comparing linear trend model against compound growth model">
+                <div class="shot-caption"><span>10-Year Population Forecast</span><span class="shot-hint">Expand 🔍</span></div>
+              </div>
+              <div class="shot-wrap zoomable-image" data-img="assets/africa_chart_life_expectancy.png" data-caption="Life Expectancy Trends: Ethiopia vs Sub-Saharan Average & Global">
+                <img loading="lazy" src="assets/africa_chart_life_expectancy.png" alt="Line chart comparing life expectancy in Ethiopia against Sub-Saharan Africa and world averages">
+                <div class="shot-caption"><span>Life Expectancy Trajectory</span><span class="shot-hint">Expand 🔍</span></div>
+              </div>
             </div>
           </div>
 
-          <!-- POWER BI PANEL 2 -->
+          <!-- TAB 4: POWER BI -->
           <div class="panel" data-tool="powerbi2">
             <div class="panel-head">
-              <h3>Power BI — interactive dashboard</h3>
+              <h4>Power BI | Star Schema &amp; Indicator Model</h4>
               <div class="panel-links">
-                <a href="https://github.com/yordanos-ketema/ethiopia-east-africa-analysis/blob/main/ethiopia-econ-project/powerbi/africa_dashboard.pbix" target="_blank" rel="noopener">Download .pbix ↗</a>
+                <a class="primary" href="https://github.com/yordanos-ketema/ethiopia-east-africa-analysis/blob/main/ethiopia-econ-project/powerbi/africa_dashboard.pbix" target="_blank" rel="noopener">
+                  Download africa_dashboard.pbix ↗
+                </a>
               </div>
             </div>
-            <p class="desc">Star schema with a country dimension and two fact tables kept deliberately separate (population/GDP vs. the older indicator set) rather than force-joined, so the dashboard never implies a false connection between mismatched years. DAX measures handle the same year-alignment fix from the Excel version, plus a few LASTNONBLANK lookups since not every country reports every indicator in every year.</p>
+            <p class="desc">
+              Star schema architecture with isolated fact tables for population/GDP and historical development indicators. Utilizes DAX measures with LASTNONBLANK functions to gracefully handle non-uniform indicator reporting intervals.
+            </p>
             <div class="shots">
-              <div class="shot"><img loading="lazy" src="assets/africa_powerbi_screenshot.png" alt="Power BI dashboard with KPI cards, a population growth trend line, GDP and GDP-per-capita bar charts, and a life expectancy chart"></div>
+              <div class="shot-wrap zoomable-image" data-img="assets/africa_powerbi_screenshot.png" data-caption="Interactive Power BI East Africa Economic Dashboard: Multi-indicator breakdown and country comparisons">
+                <img loading="lazy" src="assets/africa_powerbi_screenshot.png" alt="Power BI East Africa dashboard with KPI cards, growth trend lines, and GDP bar charts">
+                <div class="shot-caption">
+                  <span>Power BI East Africa Macroeconomic Report</span>
+                  <span class="shot-hint">Click to expand 🔍</span>
+                </div>
+              </div>
             </div>
           </div>
 
         </div>
       </div>
-    </div>
-  </section>
 
-  <!-- PROJECT 3 -->
-  <section id="project3">
-    <div class="wrap">
-      <div class="sec-head reveal">
-        <div class="sec-tag">// project 03 — client work</div>
-        <h2>REGALFRONT Consultancy PLC — Full-Stack Website</h2>
-      </div>
-      <p class="project-intro reveal">Live, in-production client work — not a portfolio exercise. Built solo, end to end, for an Ethiopian consultancy firm that helps NGOs, INGOs, UN agencies, and government institutions secure funding. Design, frontend, backend, database, email, and analytics, all shipped and running today.</p>
-
-      <div class="case-study reveal">
-        <div class="shot"><img loading="lazy" src="assets/regalfront_screenshot.png" alt="REGALFRONT Consultancy PLC homepage — hero section with headline, track record stats, and services"></div>
-        <div>
-          <h3>What I built</h3>
-          <p class="desc">A responsive single-page marketing site (Tailwind CSS + vanilla JS) backed by a PHP + MySQL API: contact-form validation and storage, automated email notifications via PHPMailer/SMTP, and a password-protected staff view for reviewing inquiries. Wired up Google Tag Manager and GA4 with a custom conversion event that only fires on a genuinely successful form submission — not just a page view — plus a submitted sitemap verified in Google Search Console.</p>
-
-          <div class="stat-row">
-            <div class="stat-card"><div class="num">Solo</div><div class="lbl">Full-stack, design to deploy</div></div>
-            <div class="stat-card"><div class="num">Live</div><div class="lbl">In production for a real client</div></div>
-            <div class="stat-card"><div class="num">GA4</div><div class="lbl">Real conversion tracking, not just pageviews</div></div>
+      <!-- ========================================================= -->
+      <!-- PROJECT 03: REGALFRONT CONSULTANCY PLC (CLIENT WORK) -->
+      <!-- ========================================================= -->
+      <div class="project-card reveal" id="project3">
+        <div class="project-header-bar">
+          <div class="project-header-info">
+            <span class="project-badge badge-client">Project 03: Live Client Platform</span>
+            <h3>REGALFRONT Consultancy PLC: Full-Stack Web Platform</h3>
+            <p>
+              Production web solution developed for an Ethiopian consultancy firm that supports NGOs, UN agencies, and government bodies in proposal development, fund acquisition, and strategic advisory.
+            </p>
           </div>
-
-          <div class="tag-row" style="margin-bottom:22px;">
-            <span class="tag">HTML5</span>
-            <span class="tag">Tailwind CSS</span>
-            <span class="tag">PHP</span>
-            <span class="tag">MySQL</span>
-            <span class="tag">PHPMailer</span>
-            <span class="tag">Google Tag Manager</span>
-            <span class="tag">GA4</span>
-          </div>
-
-          <div class="panel-links">
-            <a class="primary" href="https://regalefrontconsultancyplc.et" target="_blank" rel="noopener">Visit live site ↗</a>
-            <a href="https://github.com/yordanos-ketema/regalfront-consultancy-website" target="_blank" rel="noopener">View code on GitHub ↗</a>
+          <div class="project-header-actions">
+            <a class="header-btn-live" href="https://regalefrontconsultancyplc.et" target="_blank" rel="noopener">
+              <span class="live-pulse-dot"></span> Live Client Site ↗
+            </a>
+            <a class="header-btn-gh" href="https://github.com/yordanos-ketema/regalfront-consultancy-website" target="_blank" rel="noopener">
+              Source Code ↗
+            </a>
           </div>
         </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- PROJECT 4 -->
-  <section id="project4">
-    <div class="wrap">
-      <div class="sec-head reveal">
-        <div class="sec-tag">// project 04</div>
-        <h2>Inventory &amp; Sales Tracker — Full-Stack Business App</h2>
-      </div>
-      <p class="project-intro reveal">The project that ties the rest of this portfolio together — not analysis on a dataset, and not a marketing site, but a real internal business tool: point-of-sale checkout, inventory management, role-based staff accounts, and a live reporting dashboard, all built on one properly normalized database.</p>
-
-      <div class="case-study reveal">
-        <div class="shot"><img loading="lazy" src="assets/inventory_dashboard.png" alt="Inventory tracker dashboard showing revenue KPIs, a 7-day revenue trend chart, top products, and a low-stock alert table"></div>
-        <div>
-          <h3>What I built</h3>
-          <p class="desc">A PHP + MySQL app with PDO prepared statements throughout, tested end-to-end against a real database before shipping — including the checkout transaction, which uses row-level locking (<code>SELECT ... FOR UPDATE</code>) so two simultaneous sales can't oversell the same stock. Every inventory change (sale, restock, manual correction) is logged to an append-only audit table, with product stock levels kept as a fast cached value reconciled against it. Tailwind, Chart.js, and fonts are compiled and self-hosted rather than pulled from a CDN.</p>
-
-          <div class="stat-row">
-            <div class="stat-card"><div class="num">Solo</div><div class="lbl">Full-stack, schema to deploy</div></div>
-            <div class="stat-card"><div class="num">7</div><div class="lbl">Normalized tables, 3NF</div></div>
-            <div class="stat-card"><div class="num">Tested</div><div class="lbl">Overselling &amp; role-access guards verified</div></div>
+        <div class="case-study-body">
+          <div class="shot-wrap zoomable-image" data-img="assets/regalfront_screenshot.png" data-caption="REGALFRONT Consultancy PLC: Production Web Platform Homepage">
+            <img loading="lazy" src="assets/regalfront_screenshot.png" alt="REGALFRONT Consultancy PLC homepage with headline, track record stats, and services">
+            <div class="shot-caption">
+              <span>Production Client Platform</span>
+              <span class="shot-hint">Click to expand 🔍</span>
+            </div>
           </div>
 
-          <div class="tag-row" style="margin-bottom:22px;">
-            <span class="tag">PHP 8</span>
-            <span class="tag">MySQL</span>
-            <span class="tag">PDO</span>
-            <span class="tag">Tailwind CSS</span>
-            <span class="tag">Chart.js</span>
-            <span class="tag">Vanilla JS</span>
-          </div>
+          <div>
+            <h4>Architecture &amp; Features</h4>
+            <p class="desc">
+              Responsive frontend built with Tailwind CSS and vanilla JavaScript, paired with a custom PHP and MySQL API. Features secure contact form validation, automated SMTP email routing via PHPMailer, an authenticated admin portal for reviewing incoming client inquiries, and verified Google Search Console indexing.
+            </p>
 
-          <div class="panel-links">
-            <a class="primary" href="https://github.com/yordanos-ketema/inventory-sales-tracker" target="_blank" rel="noopener">View code on GitHub ↗</a>
+            <div class="case-stat-grid">
+              <div class="case-stat-box">
+                <div class="num">Solo</div>
+                <div class="lbl">End-to-end design, database, and deployment</div>
+              </div>
+              <div class="case-stat-box">
+                <div class="num">Live</div>
+                <div class="lbl">In active production for consultancy firm</div>
+              </div>
+              <div class="case-stat-box">
+                <div class="num">GA4</div>
+                <div class="lbl">Verified custom form conversion tracking</div>
+              </div>
+            </div>
+
+            <div class="tag-row" style="margin-bottom: 24px;">
+              <span class="tag">PHP</span>
+              <span class="tag">MySQL</span>
+              <span class="tag">JavaScript</span>
+              <span class="tag">Tailwind CSS</span>
+              <span class="tag">PHPMailer</span>
+              <span class="tag">GA4 &amp; GTM</span>
+            </div>
+
+            <div class="panel-links">
+              <a class="live" href="https://regalefrontconsultancyplc.et" target="_blank" rel="noopener">
+                Visit Live Production Website ↗
+              </a>
+              <a href="https://github.com/yordanos-ketema/regalfront-consultancy-website" target="_blank" rel="noopener">
+                View Source Repository on GitHub ↗
+              </a>
+            </div>
           </div>
         </div>
       </div>
 
-      <div class="shot reveal" style="margin-top:18px;">
-        <img loading="lazy" src="assets/inventory_products.png" alt="Inventory tracker products page showing a searchable, filterable product table with stock levels and status">
+      <!-- ========================================================= -->
+      <!-- PROJECT 04: ECOBAG-ADDIS (BUSINESS ANALYSIS & FINTECH) -->
+      <!-- ========================================================= -->
+      <div class="project-card reveal tool-group" id="project4">
+        <div class="project-header-bar">
+          <div class="project-header-info">
+            <span class="project-badge badge-ba">Project 04: Business Analysis &amp; Product Architecture</span>
+            <h3>Ecobag-Addis: Localized Sustainable E-Commerce Platform</h3>
+            <p>
+              End-to-end technical product architecture and comprehensive Business Analysis documentation suite (BRD, RTM, Process Flows, UAT) for an eco-friendly B2B/B2C marketplace tailored specifically to the Ethiopian digital economy.
+            </p>
+          </div>
+          <div class="project-header-actions">
+            <a class="header-btn-live" href="https://ecobag-addis-web.vercel.app" target="_blank" rel="noopener">
+              <span class="live-pulse-dot"></span> Live Vercel App ↗
+            </a>
+            <a class="header-btn-gh" href="https://github.com/yordanos-ketema/ecobag-addis" target="_blank" rel="noopener">
+              GitHub Repo ↗
+            </a>
+          </div>
+        </div>
+
+        <!-- Tool Selection Tab Bar -->
+        <div class="tabbar" role="tablist">
+          <button class="tab active" data-tool="ba" role="tab" aria-selected="true">
+            <span class="swatch"></span> BA Documentation Suite
+          </button>
+          <button class="tab" data-tool="arch" role="tab" aria-selected="false">
+            <span class="swatch"></span> Domain Architecture &amp; Schema
+          </button>
+          <button class="tab" data-tool="fintech" role="tab" aria-selected="false">
+            <span class="swatch"></span> FinTech &amp; Tax Logic
+          </button>
+          <button class="tab" data-tool="impact" role="tab" aria-selected="false">
+            <span class="swatch"></span> Business Impact &amp; UAT
+          </button>
+        </div>
+
+        <div class="tab-panels">
+
+          <!-- TAB 1: BA DOCUMENTATION & SPECS -->
+          <div class="panel active" data-tool="ba">
+            <div class="panel-head">
+              <h4>Formal Business Analysis Suite | BRD, RTM &amp; Swimlanes</h4>
+              <div class="panel-links">
+                <a class="live" href="https://ecobag-addis-web.vercel.app" target="_blank" rel="noopener">
+                  Live Vercel Web App ↗
+                </a>
+                <a class="primary" href="https://github.com/yordanos-ketema/ecobag-addis/blob/main/docs/portfolio/CASE_STUDY.md" target="_blank" rel="noopener">
+                  Executive Case Study ↗
+                </a>
+                <a href="https://github.com/yordanos-ketema/ecobag-addis/blob/main/docs/portfolio/BRD.md" target="_blank" rel="noopener">
+                  BRD.md ↗
+                </a>
+                <a href="https://github.com/yordanos-ketema/ecobag-addis/blob/main/docs/portfolio/PROCESS_FLOWS.md" target="_blank" rel="noopener">
+                  Process Flows ↗
+                </a>
+                <a href="https://github.com/yordanos-ketema/ecobag-addis/blob/main/docs/portfolio/RTM.md" target="_blank" rel="noopener">
+                  RTM.md ↗
+                </a>
+                <a href="https://github.com/yordanos-ketema/ecobag-addis/blob/main/docs/portfolio/UAT_PLAN.md" target="_blank" rel="noopener">
+                  UAT Plan ↗
+                </a>
+              </div>
+            </div>
+            <p class="desc">
+              Standard Western e-commerce platforms fail in Ethiopia due to postal address absence, FinTech fragmentation, and statutory corporate tax rules. Ecobag-Addis was architected with a formal BA suite resolving these local barriers through deterministic functional business rules:
+            </p>
+
+            <div class="feature-grid-3">
+              <div class="feature-item">
+                <div class="f-title">📍 Landmark Addressing</div>
+                <div class="f-desc">Enforced 5-tier delivery hierarchy: 11 Sub-cities (Kifle Ketemas), numeric Woredas, recognizable landmarks, and Ethiopian mobile phone regex validation.</div>
+              </div>
+              <div class="feature-item">
+                <div class="f-title">💳 Ethiopian FinTech Rails</div>
+                <div class="f-desc">Seamless payment flows for Telebirr USSD, CBE Birr, Chapa, and Cash on Delivery with strict cryptographic HMAC-SHA256 signature checks.</div>
+              </div>
+              <div class="feature-item">
+                <div class="f-title">🏛️ Tax &amp; Proforma Engine</div>
+                <div class="f-desc">Automated Ethiopian Ministry of Revenues compliance: 15% VAT, 2% Withholding tax deduction toggle, and 10-digit Buyer TIN validation.</div>
+              </div>
+            </div>
+
+            <!-- UI Screenshot Gallery -->
+            <div class="shots" style="margin-bottom: 24px;">
+              <div class="shot-wrap zoomable-image" data-img="assets/ecobag_ui_screenshot.png" data-caption="Ecobag-Addis: Production Storefront &amp; Localized Fulfillment Engine (11 Sub-Cities &amp; 15% VAT Included)">
+                <img loading="lazy" src="assets/ecobag_ui_screenshot.png" alt="Ecobag-Addis production web application showing sustainable bag catalog, artisan metrics, and 11 Addis Ababa sub-cities coverage">
+                <div class="shot-caption">
+                  <span>Ecobag-Addis Production Storefront &amp; Fulfillment UI</span>
+                  <span class="shot-hint">Click to expand 🔍</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="stat-line">
+              <div class="stat-badge">Documentation: <b>5 Formal BA Deliverables</b></div>
+              <div class="stat-badge">Traceability: <b>100% (BRD to Schema to Tests)</b></div>
+              <div class="stat-badge">Sub-Cities Whitelisted: <b>All 11 Addis Administrative Zones</b></div>
+            </div>
+          </div>
+
+          <!-- TAB 2: ARCHITECTURE & SCHEMA -->
+          <div class="panel" data-tool="arch">
+            <div class="panel-head">
+              <h4>Prisma ORM Relational Schema &amp; Turborepo Monorepo</h4>
+              <div class="panel-links">
+                <a class="live" href="https://ecobag-addis-web.vercel.app" target="_blank" rel="noopener">
+                  Live Vercel Web App ↗
+                </a>
+                <a class="primary" href="https://github.com/yordanos-ketema/ecobag-addis/blob/main/packages/database/prisma/schema.prisma" target="_blank" rel="noopener">
+                  View schema.prisma on GitHub ↗
+                </a>
+                <a href="https://github.com/yordanos-ketema/ecobag-addis" target="_blank" rel="noopener">
+                  View Turborepo Monorepo ↗
+                </a>
+              </div>
+            </div>
+            <p class="desc">
+              Engineered inside a high-cohesion Turborepo monorepo (Next.js 14 App Router, Node.js/Express API, and Prisma ORM with PostgreSQL). The relational data model enforces commercial B2B profiles, landmark delivery addresses, idempotent payment transactions, and statutory proforma invoices with an 8-stage Order State Machine (DRAFT to COMPLETED).
+            </p>
+
+            <div class="code-block-container">
+              <div class="code-header">
+                <span>Prisma Schema Relational Architecture</span>
+                <button class="copy-btn" data-target="prisma-code">Copy Schema</button>
+              </div>
+              <div class="code-block">
+<pre id="prisma-code"><span class="cm">// Ecobag-Addis Relational Core Schema (packages/database/prisma/schema.prisma)</span>
+<span class="kw">model</span> <span class="type">DeliveryAddress</span> {
+  id            <span class="type">String</span>   @id @default(uuid())
+  orderId       <span class="type">String</span>   @unique
+  regionCity    <span class="type">String</span>   @default(<span class="str">"Addis Ababa"</span>)
+  subCity       <span class="type">String</span>   <span class="cm">// Whitelist of 11 Addis Ababa Sub-Cities</span>
+  woreda        <span class="type">String</span>   <span class="cm">// Numeric woreda string e.g. "03"</span>
+  landmark      <span class="type">String</span>   <span class="cm">// Recognizable landmark e.g. "Behind Edna Mall"</span>
+  primaryPhone  <span class="type">String</span>   <span class="cm">// Normalized Ethiopian format (+2519/07...)</span>
+  order         <span class="type">Order</span>    @relation(fields: [orderId], references: [id])
+}
+
+<span class="kw">model</span> <span class="type">ProformaInvoice</span> {
+  id                <span class="type">String</span>   @id @default(uuid())
+  invoiceNumber     <span class="type">String</span>   @unique <span class="cm">// PRO-ADDIS-2026-XXXX</span>
+  orderId           <span class="type">String</span>   @unique
+  buyerTIN          <span class="type">String</span>   <span class="cm">// 10-digit Ethiopian Buyer TIN</span>
+  sellerTIN         <span class="type">String</span>   @default(<span class="str">"0098765432"</span>)
+  vatAmountETB      <span class="type">Decimal</span>  <span class="cm">// Statutory 15% Ethiopian VAT</span>
+  withholdingETB    <span class="type">Decimal</span>  <span class="cm">// 2% Withholding tax deduction</span>
+  grandTotalETB     <span class="type">Decimal</span>
+  validUntil        <span class="type">DateTime</span> <span class="cm">// 15-day proforma validity</span>
+}</pre>
+              </div>
+            </div>
+
+            <div class="stat-line">
+              <div class="stat-badge">Monorepo: <b>Turborepo + pnpm workspaces</b></div>
+              <div class="stat-badge">ORM &amp; Database: <b>Prisma + PostgreSQL</b></div>
+              <div class="stat-badge">Order State Machine: <b>8 Explicit Lifecycle Stages</b></div>
+            </div>
+          </div>
+
+          <!-- TAB 3: FINTECH & TAX LOGIC -->
+          <div class="panel" data-tool="fintech">
+            <div class="panel-head">
+              <h4>Decoupled FinTech Adapters &amp; Cryptographic Webhooks</h4>
+              <div class="panel-links">
+                <a class="live" href="https://ecobag-addis-web.vercel.app" target="_blank" rel="noopener">
+                  Live Vercel Web App ↗
+                </a>
+                <a class="primary" href="https://github.com/yordanos-ketema/ecobag-addis/blob/main/apps/api/src/server.ts" target="_blank" rel="noopener">
+                  View API Gateway on GitHub ↗
+                </a>
+                <a href="https://github.com/yordanos-ketema/ecobag-addis/blob/main/apps/api/test/api.spec.ts" target="_blank" rel="noopener">
+                  View Jest Test Suite ↗
+                </a>
+              </div>
+            </div>
+            <p class="desc">
+              Decoupled adapter interfaces encapsulate disparate domestic payment gateways (Chapa, Telebirr, CBE Birr, Cash on Delivery). Incoming webhooks preserve raw request buffers to verify cryptographic HMAC-SHA256 signatures, paired with database idempotency checks to prevent duplicate order fulfillments on network replays.
+            </p>
+
+            <div class="code-block-container">
+              <div class="code-header">
+                <span>HMAC-SHA256 Webhook Verification &amp; Idempotency Guard</span>
+                <button class="copy-btn" data-target="fintech-code">Copy TypeScript</button>
+              </div>
+              <div class="code-block">
+<pre id="fintech-code"><span class="cm">// Cryptographic HMAC-SHA256 signature verification &amp; idempotency control</span>
+<span class="kw">export function</span> <span class="fn">verifyChapaSignature</span>(rawBody: <span class="type">string</span>, signatureHeader: <span class="type">string</span>, secret: <span class="type">string</span>): <span class="type">boolean</span> {
+  <span class="kw">const</span> hash = crypto
+    .createHmac(<span class="str">'sha256'</span>, secret)
+    .update(rawBody)
+    .digest(<span class="str">'hex'</span>);
+  <span class="kw">return</span> crypto.timingSafeEqual(Buffer.from(hash), Buffer.from(signatureHeader));
+}
+
+<span class="cm">// Idempotent transaction processor</span>
+<span class="kw">const</span> existingTx = <span class="kw">await</span> prisma.paymentTransaction.findUnique({
+  where: { transactionRef: payload.tx_ref },
+});
+<span class="kw">if</span> (existingTx &amp;&amp; existingTx.status === <span class="str">'SUCCESSFUL'</span>) {
+  <span class="kw">return</span> res.status(200).json({ message: <span class="str">'Webhook already processed'</span> });
+}</pre>
+              </div>
+            </div>
+
+            <div class="stat-line">
+              <div class="stat-badge">Security: <b>Timing-safe HMAC-SHA256 Validation</b></div>
+              <div class="stat-badge">Reliability: <b>Zero Duplicate Order Fulfillments</b></div>
+              <div class="stat-badge">Gateways: <b>Chapa, Telebirr, CBE Birr, CoD</b></div>
+            </div>
+          </div>
+
+          <!-- TAB 4: IMPACT & UAT -->
+          <div class="panel" data-tool="impact">
+            <div class="panel-head">
+              <h4>Business Impact, UAT Plan &amp; Live Web Application</h4>
+              <div class="panel-links">
+                <a class="live primary" href="https://ecobag-addis-web.vercel.app" target="_blank" rel="noopener">
+                  <span class="live-pulse-dot"></span> Visit Live Web Demo on Vercel ↗
+                </a>
+                <a href="https://github.com/yordanos-ketema/ecobag-addis/blob/main/docs/portfolio/UAT_PLAN.md" target="_blank" rel="noopener">
+                  View Full UAT Plan ↗
+                </a>
+                <a href="https://github.com/yordanos-ketema/ecobag-addis" target="_blank" rel="noopener">
+                  View GitHub Repository ↗
+                </a>
+              </div>
+            </div>
+            <p class="desc">
+              Ecobag-Addis demonstrates measurable operational outcomes across environmental sustainability, procurement velocity, and engineering test coverage. Verified with 20+ UAT test scenarios and automated Jest integration test suites.
+            </p>
+
+            <div class="case-stat-grid" style="margin-bottom: 24px;">
+              <div class="case-stat-box">
+                <div class="num">1.2M+</div>
+                <div class="lbl">Single-use plastic bags diverted from landfills</div>
+              </div>
+              <div class="case-stat-box">
+                <div class="num">&lt; 2s</div>
+                <div class="lbl">Proforma turnaround (vs 24-48 hrs manually)</div>
+              </div>
+              <div class="case-stat-box">
+                <div class="num">100%</div>
+                <div class="lbl">Jest integration test pass rate (6/6 passing)</div>
+              </div>
+            </div>
+
+            <!-- Full-width UI Preview Shot -->
+            <div class="shots" style="margin-bottom: 24px;">
+              <div class="shot-wrap zoomable-image" data-img="assets/ecobag_ui_screenshot.png" data-caption="Ecobag-Addis: Production Storefront &amp; Localized Fulfillment Engine (11 Sub-Cities &amp; 15% VAT Included)">
+                <img loading="lazy" src="assets/ecobag_ui_screenshot.png" alt="Ecobag-Addis production web application showing sustainable bag catalog, artisan metrics, and 11 Addis Ababa sub-cities coverage">
+                <div class="shot-caption">
+                  <span>Ecobag-Addis Production Storefront &amp; Fulfillment System</span>
+                  <span class="shot-hint">Click to expand 🔍</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="tag-row" style="margin-bottom: 24px;">
+              <span class="tag">Next.js 14 App Router</span>
+              <span class="tag">TypeScript</span>
+              <span class="tag">Tailwind CSS</span>
+              <span class="tag">Prisma ORM</span>
+              <span class="tag">PostgreSQL</span>
+              <span class="tag">Zod Validation</span>
+              <span class="tag">Jest Suite</span>
+              <span class="tag">Ethiopic Typography</span>
+            </div>
+
+            <div class="stat-line">
+              <div class="stat-badge">Live Deployment: <b>ecobag-addis-web.vercel.app</b></div>
+              <div class="stat-badge">Couriers: <b>&lt; 2% Misdirection via Landmark Routing</b></div>
+            </div>
+          </div>
+
+        </div>
       </div>
+
+      <!-- ========================================================= -->
+      <!-- PROJECT 05: KALDI'S COFFEE INVENTORY & SALES ENGINE -->
+      <!-- ========================================================= -->
+      <div class="project-card reveal tool-group" id="project5">
+        <div class="project-header-bar">
+          <div class="project-header-info">
+            <span class="project-badge badge-ops">Project 05: Retail Operations &amp; Inventory Engine</span>
+            <h3>Kaldi's Coffee: Multi-Branch Inventory &amp; Sales Tracking Engine</h3>
+            <p>
+              Enterprise multi-branch inventory tracking, real-time recipe Bill of Materials (BOM) FIFO deduction, diurnal peak sales visualizer, and shift payment reconciliation engine for Kaldi's Coffee across 5 Addis Ababa branch locations.
+            </p>
+          </div>
+          <div class="project-header-actions">
+            <a class="header-btn-live" href="https://kaldis-inventory-system-web.vercel.app" target="_blank" rel="noopener">
+              <span class="live-pulse-dot"></span> Live Vercel App ↗
+            </a>
+            <a class="header-btn-gh" href="https://github.com/yordanos-ketema/kaldis-inventory-system" target="_blank" rel="noopener">
+              GitHub Repo ↗
+            </a>
+          </div>
+        </div>
+
+        <!-- Tool Selection Tab Bar -->
+        <div class="tabbar" role="tablist">
+          <button class="tab active" data-tool="kaldis-ba" role="tab" aria-selected="true">
+            <span class="swatch"></span> Operations &amp; BA Suite
+          </button>
+          <button class="tab" data-tool="kaldis-bom" role="tab" aria-selected="false">
+            <span class="swatch"></span> Recipe BOM &amp; Schema
+          </button>
+          <button class="tab" data-tool="kaldis-pos" role="tab" aria-selected="false">
+            <span class="swatch"></span> POS Engine &amp; Reconciliation
+          </button>
+          <button class="tab" data-tool="kaldis-roi" role="tab" aria-selected="false">
+            <span class="swatch"></span> Quantified ROI &amp; UAT
+          </button>
+        </div>
+
+        <div class="tab-panels">
+
+          <!-- TAB 1: OPERATIONS & BA SUITE -->
+          <div class="panel active" data-tool="kaldis-ba">
+            <div class="panel-head">
+              <h4>Multi-Branch Operations &amp; Formal BA Suite</h4>
+              <div class="panel-links">
+                <a class="live" href="https://kaldis-inventory-system-web.vercel.app" target="_blank" rel="noopener">
+                  Live Vercel Web App ↗
+                </a>
+                <a class="primary" href="https://github.com/yordanos-ketema/kaldis-inventory-system/blob/main/docs/CASE_STUDY.md" target="_blank" rel="noopener">
+                  Executive Case Study ↗
+                </a>
+                <a href="https://github.com/yordanos-ketema/kaldis-inventory-system/blob/main/docs/BRD.md" target="_blank" rel="noopener">
+                  BRD.md ↗
+                </a>
+                <a href="https://github.com/yordanos-ketema/kaldis-inventory-system/blob/main/docs/PROCESS_FLOWS.md" target="_blank" rel="noopener">
+                  BPMN Workflows ↗
+                </a>
+                <a href="https://github.com/yordanos-ketema/kaldis-inventory-system/blob/main/docs/RTM.md" target="_blank" rel="noopener">
+                  RTM.md ↗
+                </a>
+                <a href="https://github.com/yordanos-ketema/kaldis-inventory-system/blob/main/docs/UAT_PLAN.md" target="_blank" rel="noopener">
+                  UAT Scenarios ↗
+                </a>
+              </div>
+            </div>
+            <p class="desc">
+              Serving over 8,000 espresso beverages daily, Kaldi's Coffee previously suffered a 7.8% raw material shrinkage rate due to disconnected point-of-sale registers and untracked ingredient consumption during morning and evening rush hours. This system resolves operational blind spots across 5 key Addis Ababa branches:
+            </p>
+
+            <div class="feature-grid-3">
+              <div class="feature-item">
+                <div class="f-title">🏢 5-Branch Network</div>
+                <div class="f-desc">Full operational matrix for Bole (Edna Mall Corridor), Kazanchis (UNECA Hub), Sarbet (Diplomatic Zone), Piassa, and CMC branches.</div>
+              </div>
+              <div class="feature-item">
+                <div class="f-title">⏱️ Rush Hour Tracking</div>
+                <div class="f-desc">Visualizes diurnal demand curves: 08:00 - 10:30 AM morning coffee peak and 16:00 - 18:30 PM evening peak to prevent sudden stockouts.</div>
+              </div>
+              <div class="feature-item">
+                <div class="f-title">🥛 Cold-Chain &amp; FIFO</div>
+                <div class="f-desc">Automated batch shelf-life countdowns on pasteurized milk and barista oat milk to eliminate perishable dairy spoilage.</div>
+              </div>
+            </div>
+
+            <!-- UI Screenshot Gallery -->
+            <div class="shots" style="margin-bottom: 24px;">
+              <div class="shot-wrap zoomable-image" data-img="assets/kaldis_dashboard_screenshot.png" data-caption="Kaldi's Coffee: Sales &amp; Revenue Visualizer: Diurnal Peak Rush Hours Analysis across 5 Addis Ababa Branches">
+                <img loading="lazy" src="assets/kaldis_dashboard_screenshot.png" alt="Kaldi's Coffee operations dashboard showing diurnal peak sales hours analysis and morning/evening rush patterns">
+                <div class="shot-caption">
+                  <span>Kaldi's Coffee Sales &amp; Diurnal Rush Visualizer UI</span>
+                  <span class="shot-hint">Click to expand 🔍</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="stat-line">
+              <div class="stat-badge">Synthetic Dataset: <b>8,800+ Orders over 30 Days</b></div>
+              <div class="stat-badge">Gross Margins: <b>70% - 85% per Recipe</b></div>
+              <div class="stat-badge">Branches Covered: <b>5 Strategic Addis Corridors</b></div>
+            </div>
+          </div>
+
+          <!-- TAB 2: RECIPE BOM & SCHEMA -->
+          <div class="panel" data-tool="kaldis-bom">
+            <div class="panel-head">
+              <h4>Bill of Materials (BOM) &amp; Relational Prisma Schema</h4>
+              <div class="panel-links">
+                <a class="live" href="https://kaldis-inventory-system-web.vercel.app" target="_blank" rel="noopener">
+                  Live Vercel Web App ↗
+                </a>
+                <a class="primary" href="https://github.com/yordanos-ketema/kaldis-inventory-system/blob/main/packages/database/prisma/schema.prisma" target="_blank" rel="noopener">
+                  View schema.prisma on GitHub ↗
+                </a>
+                <a href="https://github.com/yordanos-ketema/kaldis-inventory-system" target="_blank" rel="noopener">
+                  View Monorepo Architecture ↗
+                </a>
+              </div>
+            </div>
+            <p class="desc">
+              Every menu item (Espresso, Ethiopian Macchiato, Caffe Latte) is mapped to exact grams of roasted beans, milliliters of milk, syrups, and packaging. When an order is registered, the atomic transaction engine queries the recipe Bill of Materials and depletes inventory from the oldest active batch under First-In, First-Out (FIFO) rules.
+            </p>
+
+            <div class="code-block-container">
+              <div class="code-header">
+                <span>Prisma Relational Recipe &amp; Batch Model</span>
+                <button class="copy-btn" data-target="kaldis-prisma-code">Copy Schema</button>
+              </div>
+              <div class="code-block">
+<pre id="kaldis-prisma-code"><span class="cm">// Kaldi's Multi-Branch Schema (packages/database/prisma/schema.prisma)</span>
+<span class="kw">model</span> <span class="type">BillOfMaterials</span> {
+  id                <span class="type">String</span>          @id @default(uuid())
+  finishedProductId <span class="type">String</span>
+  rawMaterialId     <span class="type">String</span>
+  quantityRequired  <span class="type">Float</span>           <span class="cm">// e.g. 18.0 (grams), 240.0 (ml), 1.0 (unit)</span>
+  unit              <span class="type">String</span>          <span class="cm">// "g", "ml", "unit"</span>
+  finishedProduct   <span class="type">FinishedProduct</span> @relation(fields: [finishedProductId], references: [id])
+  rawMaterial       <span class="type">RawMaterial</span>     @relation(fields: [rawMaterialId], references: [id])
+}
+
+<span class="kw">model</span> <span class="type">BatchStock</span> {
+  id              <span class="type">String</span>      @id @default(uuid())
+  branchId        <span class="type">String</span>
+  rawMaterialId   <span class="type">String</span>
+  batchNumber     <span class="type">String</span>      <span class="cm">// e.g. "BAT-2026-BOLE-089"</span>
+  expiryDate      <span class="type">DateTime</span>    <span class="cm">// FIFO deduction priority</span>
+  currentQuantity <span class="type">Float</span>
+  status          <span class="type">String</span>      <span class="cm">// "OPTIMAL", "LOW_STOCK", "CRITICAL", "DEPLETED"</span>
+}</pre>
+              </div>
+            </div>
+
+            <div class="stat-line">
+              <div class="stat-badge">BOM Precision: <b>Gram &amp; Milliliter Level Tracking</b></div>
+              <div class="stat-badge">Depletion: <b>Automatic FIFO Batch Consumption</b></div>
+              <div class="stat-badge">COGS Tracking: <b>Real-Time Unit Economics</b></div>
+            </div>
+          </div>
+
+          <!-- TAB 3: POS & RECONCILIATION -->
+          <div class="panel" data-tool="kaldis-pos">
+            <div class="panel-head">
+              <h4>Atomic POS Engine &amp; Shift Reconciliation</h4>
+              <div class="panel-links">
+                <a class="live" href="https://kaldis-inventory-system-web.vercel.app" target="_blank" rel="noopener">
+                  Live Vercel Web App ↗
+                </a>
+                <a class="primary" href="https://github.com/yordanos-ketema/kaldis-inventory-system/blob/main/apps/web/src/app/api/pos/order/route.ts" target="_blank" rel="noopener">
+                  View POS Order API ↗
+                </a>
+                <a href="https://github.com/yordanos-ketema/kaldis-inventory-system/blob/main/apps/web/src/app/api/reconciliation/route.ts" target="_blank" rel="noopener">
+                  View Reconciliation API ↗
+                </a>
+              </div>
+            </div>
+            <p class="desc">
+              Live Cashier POS terminal executing atomic Prisma transactions. Registers 15% Ethiopian VAT, handles multi-channel payments across Telebirr (46%), CBE Birr (28%), Cash (18%), and POS Cards (8%), and provides automated shift reconciliation auditing physical cash drawers against digital ledgers.
+            </p>
+
+            <div class="code-block-container">
+              <div class="code-header">
+                <span>Atomic Transaction &amp; FIFO Batch Deduction</span>
+                <button class="copy-btn" data-target="kaldis-fifo-code">Copy TypeScript</button>
+              </div>
+              <div class="code-block">
+<pre id="kaldis-fifo-code"><span class="cm">// Atomic POS Order &amp; FIFO Inventory Depletion (api/pos/order/route.ts)</span>
+<span class="kw">return await</span> prisma.$transaction(<span class="kw">async</span> (tx) => {
+  <span class="cm">// 1. Create SalesTransaction with 15% VAT calculation</span>
+  <span class="kw">const</span> sale = <span class="kw">await</span> tx.salesTransaction.create({
+    data: { branchId, subtotalETB, vatETB: subtotalETB * 0.15, totalETB, paymentMethod }
+  });
+
+  <span class="cm">// 2. Deduct raw materials based on Recipe Bill of Materials</span>
+  <span class="kw">for</span> (<span class="kw">const</span> item <span class="kw">of</span> items) {
+    <span class="kw">const</span> boms = <span class="kw">await</span> tx.billOfMaterials.findMany({ where: { finishedProductId: item.productId } });
+    <span class="kw">for</span> (<span class="kw">const</span> bom <span class="kw">of</span> boms) {
+      <span class="kw">const</span> totalNeeded = bom.quantityRequired * item.quantity;
+      <span class="cm">// Allocate from oldest active batch (FIFO)</span>
+      <span class="kw">await</span> deductBatchStockFIFO(tx, branchId, bom.rawMaterialId, totalNeeded);
+    }
+  }
+  <span class="kw">return</span> sale;
+});</pre>
+              </div>
+            </div>
+
+            <div class="stat-line">
+              <div class="stat-badge">Telebirr: <b>46% Volume</b></div>
+              <div class="stat-badge">CBE Birr: <b>28% Volume</b></div>
+              <div class="stat-badge">Cash &amp; Cards: <b>26% Volume</b></div>
+              <div class="stat-badge">VAT: <b>15% Automated Tax Compliance</b></div>
+            </div>
+          </div>
+
+          <!-- TAB 4: ROI & UAT -->
+          <div class="panel" data-tool="kaldis-roi">
+            <div class="panel-head">
+              <h4>Quantified Operational Results &amp; UAT Suite</h4>
+              <div class="panel-links">
+                <a class="live primary" href="https://kaldis-inventory-system-web.vercel.app" target="_blank" rel="noopener">
+                  <span class="live-pulse-dot"></span> Visit Live Web Demo on Vercel ↗
+                </a>
+                <a href="https://github.com/yordanos-ketema/kaldis-inventory-system/blob/main/docs/CASE_STUDY.md" target="_blank" rel="noopener">
+                  View Full ROI Case Study ↗
+                </a>
+                <a href="https://github.com/yordanos-ketema/kaldis-inventory-system/blob/main/docs/UAT_PLAN.md" target="_blank" rel="noopener">
+                  View 6 Gherkin UAT Scenarios ↗
+                </a>
+                <a href="https://github.com/yordanos-ketema/kaldis-inventory-system" target="_blank" rel="noopener">
+                  View GitHub Repository ↗
+                </a>
+              </div>
+            </div>
+            <p class="desc">
+              Demonstrated immediate, verified business impact across all 5 branches during the initial 30-day operating window. Verified with 6 end-to-end Gherkin BDD User Acceptance Testing scenarios.
+            </p>
+
+            <div class="case-stat-grid" style="margin-bottom: 24px;">
+              <div class="case-stat-box">
+                <div class="num">38.5%</div>
+                <div class="lbl">Reduction in raw material inventory shrinkage</div>
+              </div>
+              <div class="case-stat-box">
+                <div class="num">1.84M</div>
+                <div class="lbl">ETB annualized cost recovery via loss prevention</div>
+              </div>
+              <div class="case-stat-box">
+                <div class="num">&lt; 8 min</div>
+                <div class="lbl">Shift reconciliation time (down from 45 min)</div>
+              </div>
+            </div>
+
+            <!-- Full-width UI Preview Shot -->
+            <div class="shots" style="margin-bottom: 24px;">
+              <div class="shot-wrap zoomable-image" data-img="assets/kaldis_dashboard_screenshot.png" data-caption="Kaldi's Coffee: Sales &amp; Revenue Visualizer: Diurnal Peak Rush Hours Analysis across 5 Addis Ababa Branches">
+                <img loading="lazy" src="assets/kaldis_dashboard_screenshot.png" alt="Kaldi's Coffee operations dashboard showing diurnal peak sales hours analysis and morning/evening rush patterns">
+                <div class="shot-caption">
+                  <span>Kaldi's Coffee Sales &amp; Diurnal Rush Visualizer UI</span>
+                  <span class="shot-hint">Click to expand 🔍</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="tag-row" style="margin-bottom: 24px;">
+              <span class="tag">Next.js 14</span>
+              <span class="tag">TypeScript</span>
+              <span class="tag">Prisma ORM</span>
+              <span class="tag">Tailwind CSS</span>
+              <span class="tag">Recharts</span>
+              <span class="tag">Atomic Transactions</span>
+              <span class="tag">BOM Engine</span>
+              <span class="tag">FIFO Allocation</span>
+            </div>
+
+            <div class="stat-line">
+              <div class="stat-badge">Shift Audit Acceleration: <b>82.2% Faster Balancing</b></div>
+              <div class="stat-badge">Tax Compliance: <b>100% Automated 15% VAT Logging</b></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ========================================================= -->
+      <!-- TEMPLATE FOR FUTURE PROJECTS (Copy & Paste to add new projects)
+      <div class="project-card reveal tool-group" id="project6">
+        <div class="project-header-bar">
+          <div class="project-header-info">
+            <span class="project-badge badge-analytics">Project 06: Title</span>
+            <h3>Project Name Here</h3>
+            <p>Brief 1-2 sentence business context and technical summary.</p>
+          </div>
+          <div class="project-header-actions">
+            <a class="header-btn-live" href="https://your-vercel-app.vercel.app" target="_blank" rel="noopener">
+              <span class="live-pulse-dot"></span> Live Demo ↗
+            </a>
+            <a class="header-btn-gh" href="https://github.com/yordanos-ketema/repo-name" target="_blank" rel="noopener">
+              Repository ↗
+            </a>
+          </div>
+        </div>
+        ... (Insert tabbar and tab-panels or case-study-body here) ...
+      </div>
+      ========================================================= -->
+
     </div>
   </section>
 
-  <!-- SKILLS -->
+  <!-- SKILLS SECTION -->
   <section id="skills">
     <div class="wrap">
       <div class="sec-head reveal">
-        <div class="sec-tag">// skills</div>
-        <h2>Tools &amp; concepts</h2>
+        <span class="sec-tag">// Core Competencies</span>
+        <h2>Technical &amp; Analytical Skills</h2>
       </div>
-      <div class="skills-grid reveal">
-        <div class="skill-group">
-          <h3>Languages &amp; tools</h3>
+
+      <div class="skills-matrix reveal">
+        <div class="skill-card">
+          <h3>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7v10c0 2 1.5 3 3.5 3h9c2 0 3.5-1 3.5-3V7c0-2-1.5-3-3.5-3h-9C5.5 4 4 5 4 7z"/><path d="M9 12h6"/><path d="M12 9v6"/></svg>
+            BI &amp; Analytics
+          </h3>
           <div class="tag-row">
-            <span class="tag">SQL</span>
-            <span class="tag">Python</span>
-            <span class="tag">pandas</span>
-            <span class="tag">DAX</span>
-            <span class="tag">Power Query</span>
-            <span class="tag">Excel</span>
+            <span class="tag">SQL (Queries, Joins, CTEs, Window Functions)</span>
             <span class="tag">Power BI</span>
-            <span class="tag">Git &amp; GitHub</span>
-            <span class="tag">HTML / CSS</span>
+            <span class="tag">DAX Measures &amp; Calculations</span>
+            <span class="tag">Power Query &amp; M</span>
+            <span class="tag">Excel (Formulas, Pivot Tables, Dashboards)</span>
+            <span class="tag">Cross-Source Reconciliation</span>
           </div>
         </div>
-        <div class="skill-group">
-          <h3>Concepts</h3>
+
+        <div class="skill-card">
+          <h3>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+            Business Analysis &amp; Operations Architecture
+          </h3>
           <div class="tag-row">
-            <span class="tag">Data modeling</span>
-            <span class="tag">Star schemas</span>
-            <span class="tag">ETL &amp; data cleaning</span>
-            <span class="tag">Dashboard design</span>
-            <span class="tag">Data visualization</span>
-            <span class="tag">Statistical summarization</span>
+            <span class="tag">Business Requirements Document (BRD)</span>
+            <span class="tag">Requirements Traceability Matrix (RTM)</span>
+            <span class="tag">Recipe Bill of Materials (BOM)</span>
+            <span class="tag">FIFO Inventory Allocation</span>
+            <span class="tag">BPMN Process Flows &amp; Swimlanes</span>
+            <span class="tag">User Acceptance Testing (UAT Scenarios)</span>
+            <span class="tag">Shift Reconciliation Audits</span>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <h3>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+            Programming &amp; Data Science
+          </h3>
+          <div class="tag-row">
+            <span class="tag">Python</span>
+            <span class="tag">pandas</span>
+            <span class="tag">NumPy</span>
+            <span class="tag">Matplotlib &amp; Seaborn</span>
+            <span class="tag">Jupyter Notebooks</span>
+            <span class="tag">Data Cleaning &amp; EDA</span>
+            <span class="tag">Trend Forecasting</span>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <h3>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+            Web, Database &amp; FinTech
+          </h3>
+          <div class="tag-row">
+            <span class="tag">TypeScript &amp; Next.js 14</span>
+            <span class="tag">Prisma ORM &amp; PostgreSQL/SQLite</span>
+            <span class="tag">Atomic Transactions</span>
+            <span class="tag">PHP &amp; MySQL</span>
+            <span class="tag">FinTech APIs (Telebirr, CBE Birr, Chapa)</span>
+            <span class="tag">HMAC-SHA256 Webhooks</span>
+            <span class="tag">Tailwind CSS</span>
+            <span class="tag">Git &amp; GitHub</span>
           </div>
         </div>
       </div>
@@ -652,72 +1778,167 @@
 
 </main>
 
+<!-- CONTACT & FOOTER -->
 <footer id="contact">
   <div class="wrap">
     <div class="footer-top reveal">
-      <h2>Let's work together.</h2>
+      <div>
+        <h2>Let's build reliable data &amp; software solutions together.</h2>
+        <p style="color: var(--text-muted); font-size: 15px; margin-top: 12px; max-width: 500px;">
+          Available for BI Analyst, Business Analyst, Data Analyst, and Technical Product roles.
+        </p>
+      </div>
+
       <div class="footer-links">
-        <!-- TODO: replace with your real email -->
-        <a href="mailto:yordanosketema13@gmail.com">yordanosketema13@gmail.com ↗</a>
-        <a href="https://github.com/yordanos-ketema" target="_blank" rel="noopener">github.com/yordanos-ketema ↗</a>
+        <a href="assets/Yordanos_Ketema_Resume.pdf" target="_blank" rel="noopener">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          <span>Download Resume (PDF) ↗</span>
+        </a>
+        <a href="mailto:yordanosketema13@gmail.com">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          <span>yordanosketema13@gmail.com ↗</span>
+        </a>
+        <a href="https://github.com/yordanos-ketema" target="_blank" rel="noopener">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          <span>github.com/yordanos-ketema ↗</span>
+        </a>
       </div>
     </div>
+
     <div class="footer-bottom">
-      <span>© 2026 Yordanos Ketema</span>
-      <span>Built with SQL, Excel, Python, and Power BI</span>
+      <span>&copy; 2026 Yordanos Ketema. All rights reserved.</span>
+      <span>Engineered with SQL, Power BI, Python, Business Analysis, and Modern Web Standards</span>
     </div>
   </div>
 </footer>
 
+<!-- SCRIPTS: EXTENSIBLE & MODULAR JAVASCRIPT -->
 <script>
-  // Tab switching (scoped per project so multiple tab groups don't collide)
+  // 1. Modular Tab Switching (Works dynamically for any number of project cards)
   document.querySelectorAll('.tool-group').forEach(group => {
-    group.querySelectorAll('.tab').forEach(tab => {
+    const tabs = group.querySelectorAll('.tab');
+    const panels = group.querySelectorAll('.panel');
+
+    tabs.forEach(tab => {
       tab.addEventListener('click', () => {
         const tool = tab.getAttribute('data-tool');
-        group.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-        group.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+        tabs.forEach(t => {
+          t.classList.remove('active');
+          t.setAttribute('aria-selected', 'false');
+        });
+        panels.forEach(p => p.classList.remove('active'));
+
         tab.classList.add('active');
-        group.querySelector(`.panel[data-tool="${tool}"]`).classList.add('active');
+        tab.setAttribute('aria-selected', 'true');
+        const targetPanel = group.querySelector(`.panel[data-tool="${tool}"]`);
+        if (targetPanel) {
+          targetPanel.classList.add('active');
+        }
       });
     });
   });
 
-  // Scroll reveal
+  // 2. Click-to-Zoom Lightbox Modal for Dashboards & Charts
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+  const lightboxCaption = document.getElementById('lightbox-caption');
+  const lightboxClose = document.getElementById('lightbox-close');
+
+  function openLightbox(src, caption) {
+    lightboxImg.src = src;
+    lightboxCaption.textContent = caption || '';
+    lightbox.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll('.zoomable-image').forEach(item => {
+    item.addEventListener('click', () => {
+      const src = item.getAttribute('data-img');
+      const caption = item.getAttribute('data-caption');
+      if (src) openLightbox(src, caption);
+    });
+  });
+
+  if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
+  if (lightbox) {
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) closeLightbox();
+    });
+  }
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+      closeLightbox();
+    }
+  });
+
+  // 3. Copy Code Buttons
+  document.querySelectorAll('.copy-btn').forEach(button => {
+    button.addEventListener('click', () => {
+      const targetId = button.getAttribute('data-target');
+      const codeElement = document.getElementById(targetId);
+      if (codeElement) {
+        navigator.clipboard.writeText(codeElement.innerText).then(() => {
+          const originalText = button.innerText;
+          button.innerText = 'Copied!';
+          button.style.borderColor = 'var(--green)';
+          button.style.color = 'var(--green)';
+          setTimeout(() => {
+            button.innerText = originalText;
+            button.style.borderColor = '';
+            button.style.color = '';
+          }, 2000);
+        });
+      }
+    });
+  });
+
+  // 4. Mobile Menu Toggle
+  const navToggle = document.getElementById('nav-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+  if (navToggle && mobileMenu) {
+    navToggle.addEventListener('click', () => {
+      mobileMenu.classList.toggle('open');
+    });
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.remove('open');
+      });
+    });
+  }
+
+  // 5. Scroll Reveal
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-      if(entry.isIntersecting){
+      if (entry.isIntersecting) {
         entry.target.classList.add('in');
         observer.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.12 });
+  }, { threshold: 0.1 });
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-  // Nav active-section highlighting
-  const navMap = {
-    about: 'about', project: 'project', project2: 'project', project3: 'project', project4: 'project',
-    skills: 'skills', contact: 'contact'
-  };
-  const navLinks = {};
-  document.querySelectorAll('.nav-links a').forEach(a => {
-    const id = a.getAttribute('href').replace('#', '');
-    navLinks[id] = a;
-  });
+  // 6. Navigation Active Section Highlighting
+  const sections = document.querySelectorAll('main > section, footer');
+  const navLinks = document.querySelectorAll('.nav-links a');
+
   const navObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        const target = navMap[entry.target.id];
-        if (target && navLinks[target]) {
-          Object.values(navLinks).forEach(a => a.classList.remove('active'));
-          navLinks[target].classList.add('active');
-        }
+        const id = entry.target.getAttribute('id');
+        navLinks.forEach(link => {
+          link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
+        });
       }
     });
-  }, { rootMargin: '-40% 0px -55% 0px' });
-  Object.keys(navMap).forEach(id => {
-    const el = document.getElementById(id);
-    if (el) navObserver.observe(el);
+  }, { rootMargin: '-30% 0px -60% 0px' });
+
+  sections.forEach(section => {
+    if (section.id) navObserver.observe(section);
   });
 </script>
 
