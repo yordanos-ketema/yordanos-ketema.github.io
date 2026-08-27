@@ -161,10 +161,52 @@
     100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
   }
 
-  .hero h1 { font-size: clamp(38px, 6vw, 62px); line-height: 1.08; margin-bottom: 20px; }
+  .hero h1 { font-size: clamp(38px, 6vw, 62px); line-height: 1.15; margin-bottom: 20px; }
   .hero h1 .accent-name {
-    background: linear-gradient(135deg, #FFFFFF 30%, var(--text-muted) 100%);
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    display: inline-block;
+    background: linear-gradient(90deg, #FFFFFF 0%, #F59E0B 25%, #38BDF8 50%, #E879F9 75%, #FFFFFF 100%);
+    background-size: 250% 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: name-shimmer 6s linear infinite, name-float 4s ease-in-out infinite;
+    filter: drop-shadow(0 0 20px rgba(245, 158, 11, 0.2));
+  }
+  @keyframes name-shimmer {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 250% 50%; }
+  }
+  @keyframes name-float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-4px); }
+  }
+
+  .animated-title-wrap {
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+    color: var(--blue);
+    background: linear-gradient(135deg, #38BDF8 0%, #A78BFA 50%, #F59E0B 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: title-gradient 5s ease infinite alternate;
+  }
+  @keyframes title-gradient {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
+  }
+  .typing-cursor {
+    display: inline-block;
+    color: var(--amber);
+    -webkit-text-fill-color: var(--amber);
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 300;
+    margin-left: 2px;
+    animation: blink-cursor 0.9s infinite;
+  }
+  @keyframes blink-cursor {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
   }
   .hero .sub {
     font-size: 19px; color: var(--text-muted); max-width: 720px; margin-bottom: 34px;
@@ -834,7 +876,9 @@
       
       <h1>
         <span class="accent-name">Yordanos Ketema</span><br>
-        BI Analyst &amp; Systems Architect
+        <span class="animated-title-wrap">
+          <span id="dynamic-hero-title" class="animated-title">BI Analyst &amp; Systems Architect</span><span class="typing-cursor">_</span>
+        </span>
       </h1>
       
       <p class="sub">
@@ -3157,6 +3201,51 @@ Let's connect immediately via email: <a href="mailto:yordanosketema13@gmail.com"
     }
 
     arcadeAnimationId = requestAnimationFrame(gameLoop);
+  }
+
+  // =========================================================
+  // 7. DYNAMIC HERO TITLE TYPING & MORPHING ANIMATION
+  // =========================================================
+  const dynamicTitleElem = document.getElementById('dynamic-hero-title');
+  if (dynamicTitleElem) {
+    const titles = [
+      "BI Analyst & Systems Architect",
+      "SQL, Power BI & DAX Specialist",
+      "Business Analyst & Process Architect",
+      "Python Analytics & Forecasting Engineer",
+      "Full-Stack FinTech Solutions Builder"
+    ];
+    let titleIdx = 0;
+    let charIdx = titles[0].length;
+    let isDeleting = false;
+    let typeSpeed = 70;
+
+    function typeTitleLoop() {
+      const currentTitle = titles[titleIdx];
+
+      if (isDeleting) {
+        dynamicTitleElem.textContent = currentTitle.substring(0, charIdx - 1);
+        charIdx--;
+        typeSpeed = 35;
+      } else {
+        dynamicTitleElem.textContent = currentTitle.substring(0, charIdx + 1);
+        charIdx++;
+        typeSpeed = 65;
+      }
+
+      if (!isDeleting && charIdx === currentTitle.length) {
+        typeSpeed = 2800;
+        isDeleting = true;
+      } else if (isDeleting && charIdx === 0) {
+        isDeleting = false;
+        titleIdx = (titleIdx + 1) % titles.length;
+        typeSpeed = 400;
+      }
+
+      setTimeout(typeTitleLoop, typeSpeed);
+    }
+
+    setTimeout(typeTitleLoop, 2500);
   }
 </script>
 
