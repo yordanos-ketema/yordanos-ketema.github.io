@@ -164,45 +164,69 @@
   .hero h1 { font-size: clamp(38px, 6vw, 62px); line-height: 1.15; margin-bottom: 20px; }
   .hero h1 .accent-name {
     display: inline-block;
-    background: linear-gradient(90deg, #FFFFFF 0%, #F59E0B 25%, #38BDF8 50%, #E879F9 75%, #FFFFFF 100%);
-    background-size: 250% 100%;
+    background: linear-gradient(
+      115deg,
+      #FFFFFF 0%,
+      var(--blue) 16%,
+      var(--magenta) 32%,
+      var(--amber) 48%,
+      var(--green) 64%,
+      var(--blue) 80%,
+      #FFFFFF 100%
+    );
+    background-size: 300% 100%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    animation: name-shimmer 6s linear infinite, name-float 4s ease-in-out infinite;
-    filter: drop-shadow(0 0 20px rgba(245, 158, 11, 0.2));
+    animation: holo-shimmer 5.5s linear infinite, holo-float 4s ease-in-out infinite;
+    filter: drop-shadow(0 0 24px rgba(56, 189, 248, 0.22));
+    letter-spacing: -0.02em;
+    will-change: background-position, transform;
   }
-  @keyframes name-shimmer {
+  @keyframes holo-shimmer {
     0% { background-position: 0% 50%; }
-    100% { background-position: 250% 50%; }
+    100% { background-position: 300% 50%; }
   }
-  @keyframes name-float {
+  @keyframes holo-float {
     0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-4px); }
+    50% { transform: translateY(-3.5px); }
   }
 
   .animated-title-wrap {
     display: inline-flex;
     align-items: center;
     position: relative;
-    color: var(--blue);
-    background: linear-gradient(135deg, #38BDF8 0%, #A78BFA 50%, #F59E0B 100%);
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    min-height: 1.2em;
+  }
+  .animated-title {
+    background: linear-gradient(135deg, var(--blue) 0%, #A78BFA 50%, var(--amber) 100%);
     background-size: 200% auto;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    animation: title-gradient 5s ease infinite alternate;
+    animation: title-gradient 6s ease infinite alternate;
+    display: inline-block;
+    letter-spacing: -0.015em;
   }
   @keyframes title-gradient {
     0% { background-position: 0% 50%; }
     100% { background-position: 100% 50%; }
+  }
+  .scramble-glyph {
+    color: var(--green);
+    -webkit-text-fill-color: var(--green);
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 500;
+    opacity: 0.85;
   }
   .typing-cursor {
     display: inline-block;
     color: var(--amber);
     -webkit-text-fill-color: var(--amber);
     font-family: 'JetBrains Mono', monospace;
-    font-weight: 300;
-    margin-left: 2px;
-    animation: blink-cursor 0.9s infinite;
+    font-weight: 400;
+    margin-left: 4px;
+    animation: blink-cursor 0.8s infinite;
   }
   @keyframes blink-cursor {
     0%, 100% { opacity: 1; }
@@ -3204,48 +3228,81 @@ Let's connect immediately via email: <a href="mailto:yordanosketema13@gmail.com"
   }
 
   // =========================================================
-  // 7. DYNAMIC HERO TITLE TYPING & MORPHING ANIMATION
+  // 7. DYNAMIC HACKER / MATRIX TEXT SCRAMBLE ENGINE
   // =========================================================
+  class HackerTextScramble {
+    constructor(el) {
+      this.el = el;
+      this.chars = '!<>_\\/[]{}~=+*^?#0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+      this.update = this.update.bind(this);
+    }
+    setText(newText) {
+      const oldText = this.el.innerText;
+      const length = Math.max(oldText.length, newText.length);
+      const promise = new Promise((resolve) => this.resolve = resolve);
+      this.queue = [];
+      for (let i = 0; i < length; i++) {
+        const from = oldText[i] || '';
+        const to = newText[i] || '';
+        const start = Math.floor(Math.random() * 18);
+        const end = start + Math.floor(Math.random() * 18) + 12;
+        this.queue.push({ from, to, start, end, char: '' });
+      }
+      cancelAnimationFrame(this.frameRequest);
+      this.frame = 0;
+      this.update();
+      return promise;
+    }
+    update() {
+      let output = '';
+      let complete = 0;
+      for (let i = 0, n = this.queue.length; i < n; i++) {
+        let { from, to, start, end, char } = this.queue[i];
+        if (this.frame >= end) {
+          complete++;
+          output += to;
+        } else if (this.frame >= start) {
+          if (!char || Math.random() < 0.28) {
+            char = this.randomChar();
+            this.queue[i].char = char;
+          }
+          output += `<span class="scramble-glyph">${char}</span>`;
+        } else {
+          output += from;
+        }
+      }
+      this.el.innerHTML = output;
+      if (complete === this.queue.length) {
+        this.resolve();
+      } else {
+        this.frameRequest = requestAnimationFrame(this.update);
+        this.frame++;
+      }
+    }
+    randomChar() {
+      return this.chars[Math.floor(Math.random() * this.chars.length)];
+    }
+  }
+
   const dynamicTitleElem = document.getElementById('dynamic-hero-title');
   if (dynamicTitleElem) {
     const titles = [
-      "BI Analyst & Systems Architect",
-      "SQL, Power BI & DAX Specialist",
-      "Business Analyst & Process Architect",
-      "Python Analytics & Forecasting Engineer",
-      "Full-Stack FinTech Solutions Builder"
+      'BI Analyst & Systems Architect',
+      'Enterprise Data & SQL Engineer',
+      'BOM Inventory Engine Developer',
+      'Full-Stack FinTech Architect'
     ];
-    let titleIdx = 0;
-    let charIdx = titles[0].length;
-    let isDeleting = false;
-    let typeSpeed = 70;
+    const scrambler = new HackerTextScramble(dynamicTitleElem);
+    let titleIdx = 1;
 
-    function typeTitleLoop() {
-      const currentTitle = titles[titleIdx];
+    const cycleTitle = () => {
+      scrambler.setText(titles[titleIdx]).then(() => {
+        setTimeout(cycleTitle, 3000);
+      });
+      titleIdx = (titleIdx + 1) % titles.length;
+    };
 
-      if (isDeleting) {
-        dynamicTitleElem.textContent = currentTitle.substring(0, charIdx - 1);
-        charIdx--;
-        typeSpeed = 35;
-      } else {
-        dynamicTitleElem.textContent = currentTitle.substring(0, charIdx + 1);
-        charIdx++;
-        typeSpeed = 65;
-      }
-
-      if (!isDeleting && charIdx === currentTitle.length) {
-        typeSpeed = 2800;
-        isDeleting = true;
-      } else if (isDeleting && charIdx === 0) {
-        isDeleting = false;
-        titleIdx = (titleIdx + 1) % titles.length;
-        typeSpeed = 400;
-      }
-
-      setTimeout(typeTitleLoop, typeSpeed);
-    }
-
-    setTimeout(typeTitleLoop, 2500);
+    setTimeout(cycleTitle, 2800);
   }
 </script>
 
