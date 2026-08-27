@@ -792,6 +792,528 @@
     background: #05080C; position: relative; width: 100%; height: 480px;
   }
   #arcade-canvas { width: 100%; height: 100%; display: block; }
+
+  /* ========================================================= */
+  /* RESPONSIVE MEDIA QUERIES: TABLET & MOBILE                 */
+  /* ========================================================= */
+
+  @media (max-width: 860px) {
+    /* Base Container & Section Padding */
+    .wrap {
+      padding: 0 20px;
+    }
+    section {
+      padding: 56px 0;
+    }
+    .sec-head {
+      margin-bottom: 24px;
+    }
+    .sec-head h2 {
+      font-size: clamp(24px, 5vw, 30px);
+    }
+
+    /* Navigation & Mobile Hamburger */
+    .nav .wrap {
+      height: 64px;
+      padding: 0 20px;
+    }
+    .nav-links,
+    .nav-resume,
+    .nav-gh,
+    .nav-cta {
+      display: none !important;
+    }
+    .nav-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      color: var(--text);
+      font-size: 22px;
+      width: 40px;
+      height: 40px;
+      padding: 0;
+      cursor: pointer;
+      transition: all .2s ease;
+    }
+    .nav-toggle:hover {
+      border-color: var(--amber);
+      color: var(--amber);
+    }
+    .mobile-menu {
+      top: 64px;
+      padding: 20px 24px;
+      max-height: calc(100vh - 64px);
+      overflow-y: auto;
+      box-shadow: var(--shadow-lg);
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 52px 0 40px;
+    }
+    .hero::before {
+      width: 100%;
+      height: 280px;
+    }
+    .hero h1 {
+      font-size: clamp(30px, 6.5vw, 44px);
+      margin-bottom: 16px;
+    }
+    .hero .sub {
+      font-size: 16px;
+      margin-bottom: 28px;
+    }
+    .hero-buttons {
+      margin-bottom: 36px;
+      gap: 10px;
+    }
+    .btn-primary,
+    .btn-resume,
+    .btn-secondary {
+      padding: 11px 18px;
+      font-size: 13px;
+    }
+
+    /* Multi-Column Grids Reflow */
+    .kpi-strip {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+    .kpi-card {
+      padding: 18px 16px;
+    }
+    .kpi-card .num {
+      font-size: 22px;
+    }
+
+    .about-grid {
+      grid-template-columns: 1fr;
+      gap: 28px;
+    }
+
+    .feature-grid-3 {
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .case-study-body {
+      grid-template-columns: 1fr;
+      gap: 24px;
+      padding: 24px 20px;
+    }
+    .case-stat-grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    .skills-matrix {
+      grid-template-columns: 1fr;
+      gap: 18px;
+    }
+    .skill-card {
+      padding: 22px 20px;
+    }
+
+    .panel .shots.two {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    /* Project Cards & Headers */
+    .project-card {
+      margin-bottom: 36px;
+    }
+    .project-intro {
+      font-size: 14.5px;
+      margin-bottom: 24px;
+    }
+    .project-header-bar {
+      padding: 20px;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 16px;
+    }
+    .project-header-info {
+      min-width: 100%;
+    }
+    .project-header-info h3 {
+      font-size: 20px;
+    }
+    .project-header-actions {
+      width: 100%;
+      justify-content: flex-start;
+    }
+
+    /* Tab Bar & Panels */
+    .tabbar {
+      padding: 0 10px;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    .tabbar::-webkit-scrollbar {
+      display: none;
+    }
+    .tab {
+      padding: 12px 16px;
+      font-size: 12.5px;
+    }
+    .tab-panels {
+      padding: 24px 20px;
+    }
+    .panel-head {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 12px;
+    }
+    .panel-head h4 {
+      font-size: 18px;
+    }
+    .panel-links {
+      width: 100%;
+    }
+    .panel-links a {
+      font-size: 12px;
+      padding: 7px 12px;
+    }
+
+    /* Fixed-Position UI: Telemetry HUD */
+    .telemetry-hud {
+      bottom: 14px;
+      right: 14px;
+      max-width: calc(100vw - 28px);
+      min-width: 220px;
+      padding: 10px 14px;
+    }
+    .telemetry-hud.collapsed {
+      padding: 6px 12px;
+    }
+
+    /* Fixed-Position UI: Terminal Overlay */
+    .terminal-overlay {
+      height: 65vh;
+      min-height: 280px;
+    }
+    .terminal-header {
+      padding: 8px 12px;
+      gap: 8px;
+    }
+    .terminal-title {
+      font-size: 11px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: calc(100vw - 120px);
+    }
+    .terminal-title kbd {
+      display: none;
+    }
+    .terminal-body {
+      padding: 12px 14px;
+      font-size: 12px;
+    }
+    .terminal-prompt-line {
+      flex-wrap: wrap;
+      gap: 4px;
+    }
+    .terminal-prompt {
+      font-size: 11.5px;
+    }
+    .terminal-input {
+      font-size: 12px;
+      width: 100%;
+      min-width: 100%;
+    }
+    .t-table {
+      display: block;
+      overflow-x: auto;
+      width: 100%;
+      -webkit-overflow-scrolling: touch;
+      font-size: 11px;
+    }
+
+    /* Fixed-Position UI: Konami Arcade */
+    .arcade-container {
+      width: 96%;
+      max-height: 94vh;
+    }
+    .arcade-header {
+      padding: 10px 14px;
+    }
+    .arcade-title {
+      font-size: 12px;
+    }
+    .arcade-hud-bar {
+      padding: 8px 12px;
+      font-size: 11px;
+    }
+    .arcade-controls-hint {
+      font-size: 10.5px;
+    }
+    .arcade-canvas-wrap {
+      height: auto;
+      aspect-ratio: 800 / 480;
+      max-height: 52vh;
+    }
+
+    /* Lightbox Modal */
+    .lightbox-modal {
+      padding: 16px;
+    }
+    .lightbox-content {
+      max-width: 96vw;
+      max-height: 92vh;
+    }
+    .lightbox-content img {
+      max-height: 75vh;
+    }
+    .lightbox-close {
+      top: -12px;
+      right: -8px;
+      width: 32px;
+      height: 32px;
+      font-size: 18px;
+    }
+    .lightbox-caption {
+      font-size: 12px;
+      padding: 6px 14px;
+      margin-top: 10px;
+    }
+
+    /* Footer */
+    footer {
+      padding: 56px 0 36px;
+    }
+    .footer-top {
+      flex-direction: column;
+      gap: 28px;
+      margin-bottom: 36px;
+    }
+    .footer-top h2 {
+      font-size: clamp(22px, 5vw, 30px);
+    }
+    .footer-bottom {
+      flex-direction: column;
+      gap: 10px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    /* Mobile Layout Refinements (<480px) */
+    .wrap {
+      padding: 0 16px;
+    }
+    section {
+      padding: 42px 0;
+    }
+    .sec-head h2 {
+      font-size: 22px;
+    }
+
+    /* Hero */
+    .hero {
+      padding: 36px 0 28px;
+    }
+    .hero h1 {
+      font-size: 27px;
+      line-height: 1.2;
+      margin-bottom: 14px;
+    }
+    .hero .sub {
+      font-size: 14.5px;
+      line-height: 1.55;
+      margin-bottom: 22px;
+    }
+    .eyebrow {
+      font-size: 11px;
+      padding: 5px 11px;
+      margin-bottom: 16px;
+    }
+    .hero-buttons {
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 30px;
+    }
+    .btn-primary,
+    .btn-resume,
+    .btn-secondary {
+      width: 100%;
+      justify-content: center;
+      text-align: center;
+    }
+
+    /* KPI Strip 1-column Collapse */
+    .kpi-strip {
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+    .kpi-card {
+      padding: 14px 14px;
+    }
+    .kpi-card .num {
+      font-size: 20px;
+    }
+
+    /* Case Study & Stats */
+    .case-study-body {
+      padding: 18px 14px;
+    }
+    .case-stat-grid {
+      grid-template-columns: 1fr;
+      gap: 8px;
+    }
+    .case-stat-box {
+      padding: 10px 12px;
+    }
+    .case-stat-box .num {
+      font-size: 17px;
+    }
+
+    /* Stat Line */
+    .stat-line {
+      flex-direction: column;
+      gap: 6px;
+      margin-top: 14px;
+      padding-top: 12px;
+    }
+    .stat-badge {
+      width: 100%;
+      justify-content: space-between;
+      font-size: 11.5px;
+      padding: 6px 10px;
+    }
+
+    /* Project Cards & Tabs */
+    .project-header-bar {
+      padding: 16px 14px;
+    }
+    .project-header-info h3 {
+      font-size: 18px;
+    }
+    .header-btn-live,
+    .header-btn-gh {
+      width: 100%;
+      justify-content: center;
+    }
+    .tab-panels {
+      padding: 18px 14px;
+    }
+    .panel-links a {
+      width: 100%;
+      justify-content: center;
+    }
+
+    /* Code Block */
+    .code-block {
+      padding: 12px 10px;
+    }
+    .code-block pre {
+      font-size: 11px;
+      line-height: 1.5;
+    }
+    .code-header {
+      padding: 6px 10px;
+      font-size: 10.5px;
+    }
+    .copy-btn {
+      font-size: 10px;
+      padding: 3px 8px;
+    }
+
+    /* Tags */
+    .tag {
+      font-size: 11px;
+      padding: 4px 10px;
+    }
+
+    /* Cards */
+    .edu-card {
+      padding: 20px 16px;
+    }
+    .skill-card {
+      padding: 20px 16px;
+    }
+
+    /* Telemetry HUD on Compact Screen */
+    .telemetry-hud {
+      bottom: 8px;
+      right: 8px;
+      max-width: calc(100vw - 16px);
+      min-width: auto;
+      padding: 8px 10px;
+    }
+    .hud-header {
+      gap: 8px;
+      margin-bottom: 6px;
+    }
+    .hud-live-pill {
+      font-size: 10px;
+    }
+    .hud-row {
+      font-size: 10.5px;
+    }
+    .hud-label,
+    .hud-val {
+      font-size: 10px;
+    }
+    .hud-btn {
+      font-size: 10px;
+      padding: 5px 6px;
+    }
+
+    /* Terminal on Compact Screen */
+    .terminal-overlay {
+      height: 75vh;
+    }
+    .t-badge {
+      display: none;
+    }
+    .terminal-title {
+      font-size: 10px;
+      max-width: 60vw;
+    }
+    .t-table {
+      font-size: 10px;
+    }
+    .t-table th,
+    .t-table td {
+      padding: 3px 6px;
+    }
+
+    /* Arcade on Compact Screen */
+    .arcade-container {
+      width: 98%;
+    }
+    .arcade-title {
+      font-size: 11px;
+    }
+    .arcade-tag {
+      display: none;
+    }
+    .arcade-controls-hint {
+      display: none;
+    }
+    .arcade-hud-bar {
+      font-size: 10px;
+      padding: 6px 8px;
+    }
+    .arcade-close {
+      font-size: 11px;
+      padding: 4px 10px;
+    }
+
+    /* Footer */
+    .footer-top h2 {
+      font-size: 20px;
+    }
+    .footer-links a {
+      font-size: 12.5px;
+      padding: 6px 8px;
+      word-break: break-all;
+    }
+  }
 </style>
 </head>
 <body>
