@@ -540,27 +540,230 @@
     .eyebrow .dot { animation: none; }
   }
 
-  /* ---------- RESPONSIVE MEDIA QUERIES ---------- */
-  @media (max-width: 920px) {
-    .about-grid { grid-template-columns: 1fr; }
-    .skills-matrix { grid-template-columns: 1fr; }
-    .case-study-body { grid-template-columns: 1fr; }
-    .kpi-strip { grid-template-columns: repeat(2, 1fr); }
-    .panel .shots.two { grid-template-columns: 1fr; }
-    .feature-grid-3 { grid-template-columns: 1fr; }
-    .project-header-bar { flex-direction: column; gap: 16px; }
-    .project-header-actions { width: 100%; justify-content: flex-start; }
+  /* ========================================================= */
+  /* ZERO-G MODE, TERMINAL HUD, & RETRO ARCADE STYLES          */
+  /* ========================================================= */
+
+  /* Zero-G Toggle in Navbar */
+  .nav-zerog {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 13px; font-family: 'JetBrains Mono', monospace; font-weight: 700;
+    color: #F59E0B; background: rgba(245, 158, 11, 0.12);
+    border: 1px solid rgba(245, 158, 11, 0.5);
+    padding: 8px 14px; border-radius: var(--radius-sm);
+    cursor: pointer; transition: all .2s ease;
+    box-shadow: 0 0 12px rgba(245, 158, 11, 0.2);
+    animation: zerog-pulse 2.5s infinite;
   }
-  @media (max-width: 680px) {
-    .nav-links, .nav-gh { display: none; }
-    .nav-toggle { display: block; }
-    .kpi-strip { grid-template-columns: 1fr; }
-    .case-stat-grid { grid-template-columns: 1fr; }
-    .tabbar { padding: 0 8px; }
-    .tab { padding: 12px 14px; font-size: 12.5px; }
-    .tab-panels, .case-study-body { padding: 24px 18px; }
-    .project-header-bar { padding: 20px 18px; }
+  @keyframes zerog-pulse {
+    0%, 100% { box-shadow: 0 0 8px rgba(245, 158, 11, 0.2); border-color: rgba(245, 158, 11, 0.4); }
+    50% { box-shadow: 0 0 18px rgba(245, 158, 11, 0.5); border-color: rgba(245, 158, 11, 0.9); }
   }
+  .nav-zerog:hover {
+    background: #F59E0B; color: #0B1118; box-shadow: 0 0 24px rgba(245, 158, 11, 0.7); transform: translateY(-1px);
+  }
+  .zerog-glow-dot {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: #F59E0B; box-shadow: 0 0 8px #F59E0B;
+  }
+
+  /* Floating Restore Layout Button */
+  .restore-layout-btn {
+    position: fixed; top: 90px; left: 50%; transform: translateX(-50%);
+    z-index: 10000; display: none; align-items: center; gap: 10px;
+    background: #EF4444; color: #FFFFFF; font-family: 'JetBrains Mono', monospace;
+    font-weight: 700; font-size: 14px; padding: 12px 24px; border-radius: 30px;
+    border: 2px solid #FFFFFF; cursor: pointer; box-shadow: 0 0 30px rgba(239, 68, 68, 0.8);
+    animation: restore-bounce 1.5s infinite alternate;
+  }
+  .restore-layout-btn.active { display: inline-flex; }
+  @keyframes restore-bounce {
+    0% { transform: translateX(-50%) translateY(0); }
+    100% { transform: translateX(-50%) translateY(-6px); }
+  }
+
+  /* Telemetry Live Systems HUD */
+  .telemetry-hud {
+    position: fixed; bottom: 20px; right: 20px; z-index: 95;
+    background: rgba(11, 17, 24, 0.92); backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--border-light); border-radius: var(--radius);
+    padding: 12px 16px; box-shadow: var(--shadow-lg), 0 0 20px rgba(56, 189, 248, 0.08);
+    min-width: 250px; transition: all .3s ease;
+  }
+  .telemetry-hud.collapsed .hud-body { display: none; }
+  .telemetry-hud.collapsed { min-width: auto; padding: 8px 12px; }
+  .hud-header {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 12px; margin-bottom: 8px;
+  }
+  .telemetry-hud.collapsed .hud-header { margin-bottom: 0; }
+  .hud-live-pill {
+    display: flex; align-items: center; gap: 6px;
+    font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 700;
+    color: var(--green); letter-spacing: 0.05em;
+  }
+  .hud-beacon {
+    width: 6px; height: 6px; border-radius: 50%; background: var(--green);
+    box-shadow: 0 0 8px var(--green); animation: beacon-blink 1.2s infinite;
+  }
+  @keyframes beacon-blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+  .hud-toggle-btn {
+    background: none; border: none; color: var(--text-muted); cursor: pointer;
+    font-family: 'JetBrains Mono', monospace; font-size: 13px; padding: 2px 4px;
+  }
+  .hud-toggle-btn:hover { color: var(--text); }
+  .hud-body { display: flex; flex-direction: column; gap: 6px; }
+  .hud-row {
+    display: flex; align-items: center; justify-content: space-between;
+    font-size: 11.5px;
+  }
+  .hud-label { color: var(--text-dim); font-weight: 500; font-family: 'JetBrains Mono', monospace; font-size: 11px; }
+  .hud-val { font-weight: 600; font-size: 11.5px; }
+  .hud-actions {
+    display: flex; gap: 6px; margin-top: 8px; padding-top: 8px;
+    border-top: 1px solid var(--border);
+  }
+  .hud-btn {
+    flex: 1; display: inline-flex; align-items: center; justify-content: center; gap: 4px;
+    font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 600;
+    padding: 6px 8px; border-radius: 6px; border: 1px solid var(--border);
+    background: var(--surface); color: var(--text-muted); cursor: pointer;
+    transition: all .15s ease;
+  }
+  .hud-btn:hover { color: var(--amber); border-color: var(--amber); background: var(--surface-hover); }
+  .hud-terminal-btn { color: var(--blue); border-color: rgba(56, 189, 248, 0.3); }
+  .hud-terminal-btn:hover { color: #0B1118; background: var(--blue); border-color: var(--blue); }
+
+  /* Quake Terminal Overlay */
+  .terminal-overlay {
+    position: fixed; bottom: 0; left: 0; right: 0; height: 50vh; min-height: 330px;
+    background: rgba(7, 11, 16, 0.96); backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-top: 2px solid var(--amber); box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.75);
+    z-index: 9999; display: flex; flex-direction: column;
+    transform: translateY(100%); transition: transform .28s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .terminal-overlay.open { transform: translateY(0); }
+  .terminal-overlay.fullscreen { height: 88vh; }
+  .terminal-header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 8px 16px; background: rgba(18, 27, 36, 0.95);
+    border-bottom: 1px solid var(--border);
+  }
+  .terminal-traffic-lights { display: flex; gap: 6px; }
+  .t-btn {
+    width: 12px; height: 12px; border-radius: 50%; border: none; cursor: pointer;
+  }
+  .t-close { background: #EF4444; }
+  .t-min { background: #F59E0B; }
+  .t-max { background: #10B981; }
+  .terminal-title {
+    font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--text-muted);
+    display: flex; align-items: center; gap: 8px;
+  }
+  .terminal-title kbd {
+    background: var(--surface-2); border: 1px solid var(--border-light);
+    border-radius: 4px; padding: 1px 5px; font-size: 11px; color: var(--amber);
+  }
+  .t-badge {
+    font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 700;
+    color: var(--green); background: rgba(16, 185, 129, 0.15); border: 1px solid rgba(16, 185, 129, 0.4);
+    padding: 2px 8px; border-radius: 12px;
+  }
+  .terminal-body {
+    flex: 1; padding: 16px 20px; overflow-y: auto; position: relative;
+    font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #E2E8F0;
+    display: flex; flex-direction: column;
+  }
+  .matrix-canvas {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none; opacity: 0; transition: opacity .4s ease; z-index: 1;
+  }
+  .matrix-canvas.active { opacity: 0.35; }
+  .terminal-output {
+    position: relative; z-index: 2; display: flex; flex-direction: column; gap: 8px;
+    margin-bottom: 12px; white-space: pre-wrap; word-break: break-word; line-height: 1.5;
+  }
+  .terminal-prompt-line {
+    position: relative; z-index: 2; display: flex; align-items: center; gap: 8px;
+  }
+  .terminal-prompt { font-weight: 700; white-space: nowrap; }
+  .t-user { color: var(--green); }
+  .t-at { color: var(--text-dim); }
+  .t-host { color: var(--blue); }
+  .t-sep { color: var(--text-dim); }
+  .t-path { color: var(--magenta); }
+  .t-dollar { color: var(--amber); }
+  .terminal-input {
+    flex: 1; background: transparent; border: none; outline: none;
+    font-family: 'JetBrains Mono', monospace; font-size: 13.5px; color: #F1F5F9;
+    caret-color: var(--amber);
+  }
+  .t-table {
+    border-collapse: collapse; font-family: 'JetBrains Mono', monospace; font-size: 12px;
+    margin: 8px 0; background: rgba(18, 27, 36, 0.85); border: 1px solid var(--border-light);
+    width: 100%; max-width: 100%; overflow-x: auto;
+  }
+  .t-table th, .t-table td {
+    padding: 6px 12px; border: 1px solid var(--border); text-align: left;
+  }
+  .t-table th { background: rgba(56, 189, 248, 0.12); color: var(--blue); font-weight: 600; }
+  .t-highlight { color: var(--amber); font-weight: 600; }
+  .t-info { color: var(--blue); }
+  .t-success { color: var(--green); }
+  .t-err { color: #EF4444; }
+
+  /* Konami Arcade Easter Egg Modal */
+  .arcade-modal {
+    position: fixed; inset: 0; z-index: 100000; background: #000000;
+    display: none; align-items: center; justify-content: center;
+    overflow: hidden;
+  }
+  .arcade-modal.active { display: flex; }
+  .arcade-crt-overlay {
+    position: absolute; inset: 0; pointer-events: none; z-index: 3;
+    background: radial-gradient(circle at center, rgba(30, 255, 120, 0.04) 0%, rgba(0, 0, 0, 0.75) 100%);
+    box-shadow: inset 0 0 100px rgba(0, 255, 120, 0.2);
+  }
+  .arcade-scanlines {
+    position: absolute; inset: 0; pointer-events: none; z-index: 4;
+    background: repeating-linear-gradient(0deg, rgba(0,0,0,0.35) 0px, rgba(0,0,0,0.35) 1px, transparent 2px, transparent 4px);
+  }
+  .arcade-container {
+    position: relative; z-index: 2; width: 94%; max-width: 860px;
+    background: #0B1118; border: 2px solid #10B981; border-radius: 12px;
+    box-shadow: 0 0 40px rgba(16, 185, 129, 0.4), inset 0 0 20px rgba(16, 185, 129, 0.2);
+    overflow: hidden; display: flex; flex-direction: column;
+  }
+  .arcade-header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 12px 20px; background: #121B24; border-bottom: 2px solid #10B981;
+  }
+  .arcade-title {
+    font-family: 'JetBrains Mono', monospace; font-size: 14px; font-weight: 700;
+    color: #10B981; display: flex; align-items: center; gap: 10px;
+  }
+  .arcade-tag {
+    font-size: 10px; background: rgba(16, 185, 129, 0.2); border: 1px solid #10B981;
+    padding: 2px 6px; border-radius: 4px;
+  }
+  .arcade-close {
+    background: #EF4444; color: #FFFFFF; border: none; font-family: 'JetBrains Mono', monospace;
+    font-size: 12px; font-weight: 700; padding: 6px 14px; border-radius: 6px;
+    cursor: pointer; transition: all .15s ease;
+  }
+  .arcade-close:hover { background: #DC2626; box-shadow: 0 0 12px rgba(239, 68, 68, 0.6); }
+  .arcade-hud-bar {
+    display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px;
+    padding: 10px 20px; background: #070B10; border-bottom: 1px solid #1E2D3D;
+    font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--text-muted);
+  }
+  .arcade-score span, .arcade-streak span { color: #F59E0B; font-weight: 700; }
+  .arcade-canvas-wrap {
+    background: #05080C; position: relative; width: 100%; height: 480px;
+  }
+  #arcade-canvas { width: 100%; height: 100%; display: block; }
 </style>
 </head>
 <body>
@@ -590,6 +793,10 @@
     </nav>
 
     <div class="nav-actions">
+      <button id="zero-g-toggle" class="nav-zerog" title="Trigger Zero-G Physics Mode">
+        <span class="zerog-glow-dot"></span>
+        <span>⚠️ Zero-G Mode</span>
+      </button>
       <a href="assets/Yordanos_Ketema_Resume.pdf" target="_blank" rel="noopener" class="nav-resume">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
         <span>Resume (PDF)</span>
@@ -609,6 +816,8 @@
     <a href="#projects">Projects</a>
     <a href="#skills">Skills</a>
     <a href="#contact">Contact</a>
+    <a href="javascript:void(0)" id="mobile-zero-g-btn" style="color: #F59E0B; font-weight: 700;">⚠️ Zero-G Mode</a>
+    <a href="javascript:void(0)" id="mobile-terminal-btn" style="color: var(--blue);">⚡ SQL Terminal (CLI)</a>
     <a href="assets/Yordanos_Ketema_Resume.pdf" target="_blank" rel="noopener">Download Resume (PDF) 📄</a>
     <a href="https://github.com/yordanos-ketema" target="_blank" rel="noopener">GitHub Profile ↗</a>
   </div>
@@ -1812,9 +2021,96 @@
   </div>
 </footer>
 
+<!-- FLOATING RESTORE LAYOUT BUTTON FOR ZERO-G MODE -->
+<button id="restore-layout-btn" class="restore-layout-btn" title="Restore Normal Layout">
+  <span>🧲 RESTORE LAYOUT</span>
+</button>
+
+<!-- LIVE SYSTEMS TELEMETRY HUD -->
+<div id="telemetry-hud" class="telemetry-hud" role="complementary" aria-label="Systems Telemetry HUD">
+  <div class="hud-header">
+    <div class="hud-live-pill"><span class="hud-beacon"></span> LIVE TELEMETRY</div>
+    <button class="hud-toggle-btn" id="hud-collapse-btn" title="Toggle HUD">−</button>
+  </div>
+  <div class="hud-body">
+    <div class="hud-row">
+      <span class="hud-label">ADDIS ABABA (EAT)</span>
+      <span class="hud-val mono" id="hud-clock">--:--:-- UTC+3</span>
+    </div>
+    <div class="hud-row">
+      <span class="hud-label">RENDER FPS</span>
+      <span class="hud-val mono" id="hud-fps" style="color: var(--green);">60.0 FPS</span>
+    </div>
+    <div class="hud-row">
+      <span class="hud-label">DB LATENCY</span>
+      <span class="hud-val mono" id="hud-latency" style="color: var(--blue);">2.4 ms</span>
+    </div>
+    <div class="hud-actions">
+      <button class="hud-btn" id="hud-audio-btn" title="Toggle Web Audio Synthesizer">
+        <span id="hud-audio-icon">🔊</span> <span id="hud-audio-text">Audio: ON</span>
+      </button>
+      <button class="hud-btn hud-terminal-btn" id="hud-terminal-btn" title="Open SQL Terminal (Key: ~)">
+        <span>[~] SQL CLI</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- QUAKE TERMINAL OVERLAY -->
+<div id="terminal-overlay" class="terminal-overlay" role="dialog" aria-modal="true" aria-label="Quake In-Memory SQL Terminal">
+  <div class="terminal-header">
+    <div class="terminal-traffic-lights">
+      <button class="t-btn t-close" id="t-close-btn" title="Close Terminal [~]"></button>
+      <button class="t-btn t-min" id="t-min-btn" title="Minimize"></button>
+      <button class="t-btn t-max" id="t-max-btn" title="Maximize"></button>
+    </div>
+    <div class="terminal-title">
+      <span>⚡</span> yordanos-terminal v2.4 (in-memory sql query engine) : press <kbd>~</kbd> or <kbd>`</kbd> to toggle
+    </div>
+    <div class="terminal-header-tools">
+      <span class="t-badge">SQL ENGINE READY</span>
+    </div>
+  </div>
+  <div class="terminal-body" id="terminal-body">
+    <canvas id="matrix-canvas" class="matrix-canvas"></canvas>
+    <div id="terminal-output" class="terminal-output"></div>
+    <div class="terminal-prompt-line">
+      <span class="terminal-prompt"><span class="t-user">guest</span><span class="t-at">@</span><span class="t-host">yordanos-analytics</span><span class="t-sep">:</span><span class="t-path">~</span><span class="t-dollar">$</span></span>
+      <input type="text" id="terminal-input" class="terminal-input" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+    </div>
+  </div>
+</div>
+
+<!-- KONAMI RETRO ARCADE MODAL (SQL INVADERS) -->
+<div id="arcade-modal" class="arcade-modal" role="dialog" aria-modal="true" aria-label="SQL Invaders Retro Arcade">
+  <div class="arcade-crt-overlay"></div>
+  <div class="arcade-scanlines"></div>
+  <div class="arcade-container">
+    <div class="arcade-header">
+      <div class="arcade-title">
+        <span>👾</span> SQL INVADERS: RETRO DEFENDER <span class="arcade-tag">KONAMI ARCADE EDITION</span>
+      </div>
+      <button class="arcade-close" id="arcade-close-btn" title="Exit Arcade [ESC]">&times; EXIT</button>
+    </div>
+    <div class="arcade-hud-bar">
+      <div class="arcade-score">SCORE: <span id="arcade-score-val">0000</span></div>
+      <div class="arcade-streak">WAVE: <span id="arcade-wave-val">1</span></div>
+      <div class="arcade-lives">SHIELDS: <span id="arcade-lives-val">❤️❤️❤️</span></div>
+      <div class="arcade-controls-hint">← → / A D : Move | SPACE / CLICK : Execute Query Laser</div>
+    </div>
+    <div class="arcade-canvas-wrap">
+      <canvas id="arcade-canvas" width="800" height="480"></canvas>
+    </div>
+  </div>
+</div>
+
 <!-- SCRIPTS: EXTENSIBLE & MODULAR JAVASCRIPT -->
 <script>
-  // 1. Modular Tab Switching (Works dynamically for any number of project cards)
+  // =========================================================
+  // 1. CORE FUNCTIONALITY (TABS, LIGHTBOX, COPY, NAV)
+  // =========================================================
+
+  // Modular Tab Switching
   document.querySelectorAll('.tool-group').forEach(group => {
     const tabs = group.querySelectorAll('.tab');
     const panels = group.querySelectorAll('.panel');
@@ -1838,7 +2134,7 @@
     });
   });
 
-  // 2. Click-to-Zoom Lightbox Modal for Dashboards & Charts
+  // Click-to-Zoom Lightbox Modal
   const lightbox = document.getElementById('lightbox');
   const lightboxImg = document.getElementById('lightbox-img');
   const lightboxCaption = document.getElementById('lightbox-caption');
@@ -1870,13 +2166,8 @@
       if (e.target === lightbox) closeLightbox();
     });
   }
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && lightbox.classList.contains('active')) {
-      closeLightbox();
-    }
-  });
 
-  // 3. Copy Code Buttons
+  // Copy Code Buttons
   document.querySelectorAll('.copy-btn').forEach(button => {
     button.addEventListener('click', () => {
       const targetId = button.getAttribute('data-target');
@@ -1887,6 +2178,7 @@
           button.innerText = 'Copied!';
           button.style.borderColor = 'var(--green)';
           button.style.color = 'var(--green)';
+          if (SoundFX.enabled) SoundFX.beep(600, 'square', 0.05, 0.08);
           setTimeout(() => {
             button.innerText = originalText;
             button.style.borderColor = '';
@@ -1897,7 +2189,7 @@
     });
   });
 
-  // 4. Mobile Menu Toggle
+  // Mobile Menu Toggle
   const navToggle = document.getElementById('nav-toggle');
   const mobileMenu = document.getElementById('mobile-menu');
   if (navToggle && mobileMenu) {
@@ -1911,7 +2203,7 @@
     });
   }
 
-  // 5. Scroll Reveal
+  // Scroll Reveal
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -1922,7 +2214,7 @@
   }, { threshold: 0.1 });
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-  // 6. Navigation Active Section Highlighting
+  // Navigation Active Section Highlighting
   const sections = document.querySelectorAll('main > section, footer');
   const navLinks = document.querySelectorAll('.nav-links a');
 
@@ -1940,6 +2232,932 @@
   sections.forEach(section => {
     if (section.id) navObserver.observe(section);
   });
+
+  // =========================================================
+  // 2. WEB AUDIO SYNTHESIZER ENGINE
+  // =========================================================
+  const SoundFX = {
+    ctx: null,
+    enabled: true,
+    init() {
+      if (!this.ctx) {
+        const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+        if (AudioContextClass) this.ctx = new AudioContextClass();
+      }
+    },
+    beep(freq = 440, type = 'square', duration = 0.08, gainVal = 0.1) {
+      if (!this.enabled) return;
+      this.init();
+      if (!this.ctx) return;
+      try {
+        if (this.ctx.state === 'suspended') this.ctx.resume();
+        const osc = this.ctx.createOscillator();
+        const gain = this.ctx.createGain();
+        osc.type = type;
+        osc.frequency.setValueAtTime(freq, this.ctx.currentTime);
+        gain.gain.setValueAtTime(gainVal, this.ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + duration);
+        osc.connect(gain);
+        gain.connect(this.ctx.destination);
+        osc.start();
+        osc.stop(this.ctx.currentTime + duration);
+      } catch (e) {}
+    },
+    laser() {
+      if (!this.enabled) return;
+      this.init();
+      if (!this.ctx) return;
+      try {
+        if (this.ctx.state === 'suspended') this.ctx.resume();
+        const osc = this.ctx.createOscillator();
+        const gain = this.ctx.createGain();
+        osc.type = 'sawtooth';
+        osc.frequency.setValueAtTime(880, this.ctx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(110, this.ctx.currentTime + 0.12);
+        gain.gain.setValueAtTime(0.12, this.ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + 0.12);
+        osc.connect(gain);
+        gain.connect(this.ctx.destination);
+        osc.start();
+        osc.stop(this.ctx.currentTime + 0.12);
+      } catch (e) {}
+    },
+    explosion() {
+      if (!this.enabled) return;
+      this.init();
+      if (!this.ctx) return;
+      try {
+        if (this.ctx.state === 'suspended') this.ctx.resume();
+        const bufferSize = Math.floor(this.ctx.sampleRate * 0.2);
+        const buffer = this.ctx.createBuffer(1, bufferSize, this.ctx.sampleRate);
+        const data = buffer.getChannelData(0);
+        for (let i = 0; i < bufferSize; i++) {
+          data[i] = (Math.random() * 2 - 1) * Math.exp(-i / (bufferSize * 0.3));
+        }
+        const noise = this.ctx.createBufferSource();
+        noise.buffer = buffer;
+        const filter = this.ctx.createBiquadFilter();
+        filter.type = 'lowpass';
+        filter.frequency.setValueAtTime(700, this.ctx.currentTime);
+        filter.frequency.exponentialRampToValueAtTime(80, this.ctx.currentTime + 0.2);
+        const gain = this.ctx.createGain();
+        gain.gain.setValueAtTime(0.18, this.ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + 0.2);
+        noise.connect(filter);
+        filter.connect(gain);
+        gain.connect(this.ctx.destination);
+        noise.start();
+      } catch (e) {}
+    },
+    fanfare() {
+      if (!this.enabled) return;
+      const notes = [261.63, 329.63, 392.00, 523.25, 659.25, 783.99, 1046.50];
+      notes.forEach((freq, idx) => {
+        setTimeout(() => {
+          this.beep(freq, 'triangle', 0.18, 0.15);
+        }, idx * 80);
+      });
+    }
+  };
+
+  // =========================================================
+  // 3. LIVE SYSTEMS TELEMETRY HUD
+  // =========================================================
+  const hudClock = document.getElementById('hud-clock');
+  const hudFps = document.getElementById('hud-fps');
+  const hudLatency = document.getElementById('hud-latency');
+  const hudAudioBtn = document.getElementById('hud-audio-btn');
+  const hudAudioIcon = document.getElementById('hud-audio-icon');
+  const hudAudioText = document.getElementById('hud-audio-text');
+  const hudCollapseBtn = document.getElementById('hud-collapse-btn');
+  const telemetryHud = document.getElementById('telemetry-hud');
+  const hudTerminalBtn = document.getElementById('hud-terminal-btn');
+
+  // Addis Ababa Clock (EAT UTC+3)
+  function updateAddisClock() {
+    const now = new Date();
+    const eatTime = new Intl.DateTimeFormat('en-GB', {
+      timeZone: 'Africa/Addis_Ababa',
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+      hour12: false
+    }).format(now);
+    if (hudClock) hudClock.textContent = `${eatTime} EAT (UTC+3)`;
+  }
+  setInterval(updateAddisClock, 1000);
+  updateAddisClock();
+
+  // Dynamic FPS Counter
+  let lastTime = performance.now();
+  let frameCount = 0;
+  let currentFps = 60.0;
+
+  function updateFpsCounter(now) {
+    frameCount++;
+    if (now - lastTime >= 1000) {
+      currentFps = (frameCount * 1000) / (now - lastTime);
+      if (hudFps) {
+        hudFps.textContent = `${currentFps.toFixed(1)} FPS`;
+        hudFps.style.color = currentFps > 45 ? 'var(--green)' : currentFps > 25 ? 'var(--amber)' : '#EF4444';
+      }
+      frameCount = 0;
+      lastTime = now;
+    }
+    requestAnimationFrame(updateFpsCounter);
+  }
+  requestAnimationFrame(updateFpsCounter);
+
+  // Simulated DB Latency Jitter
+  setInterval(() => {
+    if (hudLatency) {
+      const lat = (2.1 + (Math.random() * 0.8 - 0.4)).toFixed(1);
+      hudLatency.textContent = `${lat} ms`;
+    }
+  }, 2400);
+
+  // Audio Toggle
+  if (hudAudioBtn) {
+    hudAudioBtn.addEventListener('click', () => {
+      SoundFX.enabled = !SoundFX.enabled;
+      if (SoundFX.enabled) {
+        hudAudioIcon.textContent = '🔊';
+        hudAudioText.textContent = 'Audio: ON';
+        SoundFX.beep(520, 'sine', 0.1, 0.1);
+      } else {
+        hudAudioIcon.textContent = '🔇';
+        hudAudioText.textContent = 'Audio: MUTED';
+      }
+    });
+  }
+
+  // HUD Collapse Toggle
+  if (hudCollapseBtn && telemetryHud) {
+    hudCollapseBtn.addEventListener('click', () => {
+      telemetryHud.classList.toggle('collapsed');
+      hudCollapseBtn.textContent = telemetryHud.classList.contains('collapsed') ? '+' : '−';
+    });
+  }
+
+  // =========================================================
+  // 4. QUAKE TERMINAL & IN-MEMORY SQL ENGINE
+  // =========================================================
+  const terminalOverlay = document.getElementById('terminal-overlay');
+  const terminalInput = document.getElementById('terminal-input');
+  const terminalOutput = document.getElementById('terminal-output');
+  const terminalBody = document.getElementById('terminal-body');
+  const tCloseBtn = document.getElementById('t-close-btn');
+  const tMinBtn = document.getElementById('t-min-btn');
+  const tMaxBtn = document.getElementById('t-max-btn');
+  const matrixCanvas = document.getElementById('matrix-canvas');
+
+  // In-Memory Structured Datasets
+  const DB = {
+    east_africa: [
+      { country: "Ethiopia", population_m: 132.1, gdp_b: 163.7, gdp_per_capita: 1272, growth_14yr: "+46.0%" },
+      { country: "Kenya", population_m: 55.1, gdp_b: 107.4, gdp_per_capita: 1942, growth_14yr: "+35.7%" },
+      { country: "Tanzania", population_m: 68.6, gdp_b: 79.2, gdp_per_capita: 1154, growth_14yr: "+48.8%" },
+      { country: "Uganda", population_m: 49.9, gdp_b: 49.3, gdp_per_capita: 988, growth_14yr: "+47.6%" },
+      { country: "Rwanda", population_m: 14.1, gdp_b: 14.1, gdp_per_capita: 1000, growth_14yr: "+38.2%" }
+    ],
+    covid_records: [
+      { location: "Global", cases: 150574977, deaths: 3180206, cfr_pct: 2.11, top_continent: "Europe (~1.02M)" },
+      { location: "United States", cases: 32346971, deaths: 576232, cfr_pct: 1.78, fully_vax_pct: 30.3 },
+      { location: "Brazil", cases: 14659011, deaths: 403781, cfr_pct: 2.75, fully_vax_pct: 7.5 },
+      { location: "Mexico", cases: 2344555, deaths: 216907, cfr_pct: 9.25, fully_vax_pct: 6.1 },
+      { location: "India", cases: 18762976, deaths: 208330, cfr_pct: 1.11, fully_vax_pct: 1.9 },
+      { location: "Andorra", cases: 13232, deaths: 125, cfr_pct: 0.94, infected_pop_pct: 17.1 },
+      { location: "Gibraltar", cases: 4283, deaths: 94, cfr_pct: 2.19, fully_vax_pct: 97.5 }
+    ],
+    kaldis_branches: [
+      { branch_id: "BR-01", location: "Bole Medhanialem", shift_efficiency: "94.2%", daily_orders: 1420, peak_window: "08:30-10:00" },
+      { branch_id: "BR-02", location: "Kazanchis Hub", shift_efficiency: "91.8%", daily_orders: 1180, peak_window: "12:30-14:00" },
+      { branch_id: "BR-03", location: "Sarbet Old Airport", shift_efficiency: "88.5%", daily_orders: 960, peak_window: "16:00-18:00" },
+      { branch_id: "BR-04", location: "CMC Summit", shift_efficiency: "89.4%", daily_orders: 840, peak_window: "08:00-09:30" },
+      { branch_id: "BR-05", location: "Mexico Square", shift_efficiency: "92.1%", daily_orders: 1250, peak_window: "12:00-13:30" }
+    ],
+    ecobag_zones: [
+      { zone: "Bole Sub-City", dispatch_hub: "Hub Alpha", avg_delivery_min: 38, couriers: 18, status: "OPTIMAL" },
+      { zone: "Kirkos / Kazanchis", dispatch_hub: "Central Hub", avg_delivery_min: 29, couriers: 14, status: "OPTIMAL" },
+      { zone: "Yeka / CMC", dispatch_hub: "East Depot", avg_delivery_min: 44, couriers: 12, status: "NORMAL" },
+      { zone: "Nifas Silk", dispatch_hub: "South Depot", avg_delivery_min: 41, couriers: 10, status: "OPTIMAL" }
+    ],
+    skills: [
+      { category: "BI & Analytics", tools: "SQL (CTEs, Windows), Power BI, DAX, Power Query, Excel" },
+      { category: "Business Analysis", tools: "BRD, RTM, Recipe BOM, FIFO Inventory, BPMN, UAT" },
+      { category: "Data Science", tools: "Python, pandas, NumPy, Matplotlib, Seaborn, Forecasting" },
+      { category: "Software & Web", tools: "TypeScript, Next.js 14, Prisma ORM, PostgreSQL, FinTech APIs" }
+    ]
+  };
+
+  function toggleTerminal() {
+    if (!terminalOverlay) return;
+    terminalOverlay.classList.toggle('open');
+    if (terminalOverlay.classList.contains('open')) {
+      if (terminalInput) {
+        terminalInput.focus();
+        if (terminalOutput && terminalOutput.children.length === 0) {
+          printTerminalWelcome();
+        }
+      }
+      SoundFX.beep(480, 'sine', 0.08, 0.08);
+    }
+  }
+
+  function printTerminalWelcome() {
+    printToTerminal(`
+<span class="t-highlight">=================================================================================</span>
+<span class="t-info">  ⚡ YORDANOS KETEMA — IN-MEMORY SQL ANALYTICS & SYSTEMS TERMINAL v2.4</span>
+<span class="t-highlight">=================================================================================</span>
+Type <span class="t-highlight">help</span> to view available system commands and database tables.
+Run SQL queries e.g.: <span class="t-success">SELECT country, gdp_b FROM east_africa WHERE gdp_b > 50</span>
+`);
+  }
+
+  function printToTerminal(html) {
+    if (!terminalOutput) return;
+    const line = document.createElement('div');
+    line.innerHTML = html;
+    terminalOutput.appendChild(line);
+    if (terminalBody) terminalBody.scrollTop = terminalBody.scrollHeight;
+  }
+
+  // Render ASCII table for SQL query results
+  function renderSqlAsciiTable(rows) {
+    if (!rows || rows.length === 0) {
+      return `<span class="t-err">0 rows returned.</span>`;
+    }
+    const cols = Object.keys(rows[0]);
+    let tableHtml = `<table class="t-table"><thead><tr>`;
+    cols.forEach(c => tableHtml += `<th>${c}</th>`);
+    tableHtml += `</tr></thead><tbody>`;
+    rows.forEach(r => {
+      tableHtml += `<tr>`;
+      cols.forEach(c => tableHtml += `<td>${r[c] !== undefined ? r[c] : 'NULL'}</td>`);
+      tableHtml += `</tr>`;
+    });
+    tableHtml += `</tbody></table>`;
+    return tableHtml + `<span class="t-info">${rows.length} row(s) returned in ${(1.2 + Math.random() * 1.5).toFixed(1)}ms</span>`;
+  }
+
+  // SQL SELECT Statement Parser
+  function executeSql(query) {
+    const clean = query.trim().replace(/;$/, '');
+    const selectMatch = clean.match(/^SELECT\s+(.+?)\s+FROM\s+([a-zA-Z0-9_]+)(\s+WHERE\s+(.+?))?(\s+ORDER\s+BY\s+(.+?))?(\s+LIMIT\s+(\d+))?$/i);
+    if (!selectMatch) {
+      return `<span class="t-err">Syntax Error: SQL parser supports SELECT &lt;cols&gt; FROM &lt;table&gt; [WHERE ...] [ORDER BY ...] [LIMIT ...]</span>`;
+    }
+
+    const selectColsStr = selectMatch[1].trim();
+    const tableName = selectMatch[2].toLowerCase().trim();
+    const whereClause = selectMatch[4] ? selectMatch[4].trim() : null;
+    const orderByClause = selectMatch[6] ? selectMatch[6].trim() : null;
+    const limitCount = selectMatch[8] ? parseInt(selectMatch[8], 10) : null;
+
+    if (!DB[tableName]) {
+      const avail = Object.keys(DB).join(', ');
+      return `<span class="t-err">Table '${tableName}' not found. Available tables: ${avail}</span>`;
+    }
+
+    let rows = [...DB[tableName]];
+
+    // Process WHERE clause
+    if (whereClause) {
+      const opMatch = whereClause.match(/^([a-zA-Z0-9_]+)\s*(=|!=|>|<|>=|<=|LIKE)\s*(.+)$/i);
+      if (opMatch) {
+        const col = opMatch[1];
+        const op = opMatch[2].toUpperCase();
+        let rawVal = opMatch[3].trim().replace(/^['"]|['"]$/g, '');
+        const numVal = parseFloat(rawVal);
+        const isNum = !isNaN(numVal) && String(numVal) === rawVal;
+
+        rows = rows.filter(r => {
+          const val = r[col];
+          if (val === undefined) return false;
+          if (op === '=') return String(val).toLowerCase() === rawVal.toLowerCase();
+          if (op === '!=') return String(val).toLowerCase() !== rawVal.toLowerCase();
+          if (op === 'LIKE') return String(val).toLowerCase().includes(rawVal.toLowerCase().replace(/%/g, ''));
+          if (isNum && typeof val === 'number') {
+            if (op === '>') return val > numVal;
+            if (op === '<') return val < numVal;
+            if (op === '>=') return val >= numVal;
+            if (op === '<=') return val <= numVal;
+          }
+          return true;
+        });
+      }
+    }
+
+    // Process ORDER BY
+    if (orderByClause) {
+      const orderParts = orderByClause.split(/\s+/);
+      const orderCol = orderParts[0];
+      const isDesc = orderParts[1] && orderParts[1].toUpperCase() === 'DESC';
+      rows.sort((a, b) => {
+        if (a[orderCol] < b[orderCol]) return isDesc ? 1 : -1;
+        if (a[orderCol] > b[orderCol]) return isDesc ? -1 : 1;
+        return 0;
+      });
+    }
+
+    // Process LIMIT
+    if (limitCount && limitCount > 0) {
+      rows = rows.slice(0, limitCount);
+    }
+
+    // Process Projections
+    if (selectColsStr !== '*') {
+      const requestedCols = selectColsStr.split(',').map(c => c.trim());
+      rows = rows.map(r => {
+        const projection = {};
+        requestedCols.forEach(col => {
+          if (r[col] !== undefined) projection[col] = r[col];
+        });
+        return projection;
+      });
+    }
+
+    return renderSqlAsciiTable(rows);
+  }
+
+  // Handle Terminal Input
+  function handleTerminalCommand(cmdText) {
+    const raw = cmdText.trim();
+    if (!raw) return;
+
+    printToTerminal(`<span class="terminal-prompt"><span class="t-user">guest</span><span class="t-at">@</span><span class="t-host">yordanos-analytics</span><span class="t-sep">:</span><span class="t-path">~</span><span class="t-dollar">$</span></span> ${raw}`);
+    SoundFX.beep(750, 'sine', 0.04, 0.05);
+
+    const lower = raw.toLowerCase();
+
+    if (lower === 'help') {
+      printToTerminal(`
+<span class="t-highlight">AVAILABLE COMMANDS:</span>
+  <span class="t-success">help</span>           - View this help manual
+  <span class="t-success">clear</span>          - Clear terminal screen
+  <span class="t-success">whoami</span>         - View candidate background & credentials
+  <span class="t-success">cat resume</span>     - View structured CV / resume summary
+  <span class="t-success">contact</span>        - View direct contact info & channels
+  <span class="t-success">sudo hire</span>      - Execute instant candidate hiring protocol
+  <span class="t-success">matrix</span>         - Start / stop Matrix digital rain animation
+  <span class="t-success">exit</span>           - Close terminal overlay
+
+<span class="t-highlight">IN-MEMORY SQL TABLES:</span>
+  • <span class="t-info">east_africa</span>     (country, population_m, gdp_b, gdp_per_capita, growth_14yr)
+  • <span class="t-info">covid_records</span>   (location, cases, deaths, cfr_pct, fully_vax_pct)
+  • <span class="t-info">kaldis_branches</span> (branch_id, location, shift_efficiency, daily_orders, peak_window)
+  • <span class="t-info">ecobag_zones</span>    (zone, dispatch_hub, avg_delivery_min, couriers, status)
+  • <span class="t-info">skills</span>          (category, tools)
+
+<span class="t-highlight">EXAMPLE SQL QUERIES:</span>
+  <span class="t-success">SELECT country, gdp_b, gdp_per_capita FROM east_africa WHERE gdp_b > 50 ORDER BY gdp_b DESC</span>
+  <span class="t-success">SELECT * FROM kaldis_branches</span>
+  <span class="t-success">SELECT * FROM covid_records WHERE deaths > 200000</span>
+  <span class="t-success">SELECT * FROM ecobag_zones</span>
+  <span class="t-success">SELECT * FROM skills</span>
+`);
+    } else if (lower === 'clear') {
+      if (terminalOutput) terminalOutput.innerHTML = '';
+    } else if (lower === 'whoami') {
+      printToTerminal(`
+<span class="t-highlight">Yordanos Ketema</span> — BI Analyst & Systems Architect
+Location: Addis Ababa, Ethiopia
+Education: B.A. Business Administration & Information Systems (Addis Ababa University)
+Specialization: SQL, Power BI (DAX/Star Schema), Python (EDA/Forecasting), Enterprise Inventory & FinTech Web Platforms.
+`);
+    } else if (lower === 'cat resume' || lower === 'resume') {
+      printToTerminal(`
+<span class="t-highlight">RESUME SUMMARY: YORDANOS KETEMA</span>
+---------------------------------------------------------------------------------
+ROLE: BI Analyst | Systems Architect | Technical Product Analyst
+EXPERIENCE HIGHLIGHTS:
+  • COVID-19 Analytics: Reconciled 150.5M cases across SQL, Python, Excel & Power BI.
+  • East Africa Macroeconomics: Sourced multi-decade World Bank data; demographic forecasting.
+  • Kaldi's Coffee Ops Engine: Designed BOM, FIFO inventory & VAT compliance suite.
+  • Ecobag-Addis Web Platform: Full-stack Next.js 14, Prisma, PostgreSQL & Telebirr FinTech API.
+DOWNLOAD FULL PDF: <a href="assets/Yordanos_Ketema_Resume.pdf" target="_blank" style="color: var(--blue); text-decoration: underline;">assets/Yordanos_Ketema_Resume.pdf</a>
+`);
+    } else if (lower === 'contact') {
+      printToTerminal(`
+<span class="t-highlight">CONTACT CHANNELS:</span>
+  • Email:    <a href="mailto:yordanosketema13@gmail.com" style="color: var(--blue);">yordanosketema13@gmail.com</a>
+  • GitHub:   <a href="https://github.com/yordanos-ketema" target="_blank" style="color: var(--blue);">github.com/yordanos-ketema</a>
+  • Website:  <a href="https://yordanos-ketema.github.io" target="_blank" style="color: var(--blue);">yordanos-ketema.github.io</a>
+`);
+    } else if (lower === 'sudo hire' || lower === 'hire') {
+      SoundFX.fanfare();
+      printToTerminal(`
+<span class="t-success" style="font-size: 14px; font-weight: 700;">
+🎉 [ACCESS GRANTED] CANDIDATE HIRING PROTOCOL EXECUTED!
+</span>
+<span class="t-highlight">Thank you for extending an offer! Yordanos Ketema is excited to build high-impact systems with your team.</span>
+Let's connect immediately via email: <a href="mailto:yordanosketema13@gmail.com" style="color: var(--amber); text-decoration: underline; font-weight: 700;">yordanosketema13@gmail.com</a>
+`);
+    } else if (lower === 'matrix') {
+      toggleMatrixRain();
+    } else if (lower === 'matrix stop') {
+      stopMatrixRain();
+      printToTerminal(`<span class="t-info">Matrix rain halted.</span>`);
+    } else if (lower === 'exit') {
+      toggleTerminal();
+    } else if (lower.startsWith('select ')) {
+      const res = executeSql(raw);
+      printToTerminal(res);
+    } else {
+      printToTerminal(`<span class="t-err">Command not recognized: '${raw}'. Type <span class="t-highlight">help</span> or enter a SQL query.</span>`);
+    }
+  }
+
+  if (terminalInput) {
+    terminalInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        const val = terminalInput.value;
+        terminalInput.value = '';
+        handleTerminalCommand(val);
+      }
+    });
+  }
+
+  if (tCloseBtn) tCloseBtn.addEventListener('click', toggleTerminal);
+  if (tMinBtn) tMinBtn.addEventListener('click', () => {
+    if (terminalOverlay) terminalOverlay.classList.remove('fullscreen');
+  });
+  if (tMaxBtn) tMaxBtn.addEventListener('click', () => {
+    if (terminalOverlay) terminalOverlay.classList.toggle('fullscreen');
+  });
+
+  if (hudTerminalBtn) hudTerminalBtn.addEventListener('click', toggleTerminal);
+  const mobileTerminalBtn = document.getElementById('mobile-terminal-btn');
+  if (mobileTerminalBtn) mobileTerminalBtn.addEventListener('click', toggleTerminal);
+
+  // Global Key Listener for Backtick (~) Terminal Toggle
+  document.addEventListener('keydown', (e) => {
+    if (e.key === '`' || e.key === '~') {
+      // Ignore if typing in another input element
+      if (e.target && e.target.tagName === 'INPUT' && e.target.id !== 'terminal-input') return;
+      e.preventDefault();
+      toggleTerminal();
+    }
+    if (e.key === 'Escape') {
+      if (terminalOverlay && terminalOverlay.classList.contains('open')) toggleTerminal();
+    }
+  });
+
+  // Matrix Digital Rain Animation
+  let matrixInterval = null;
+  function toggleMatrixRain() {
+    if (matrixInterval) {
+      stopMatrixRain();
+      printToTerminal(`<span class="t-info">Matrix rain stopped.</span>`);
+    } else {
+      startMatrixRain();
+      printToTerminal(`<span class="t-success">Matrix digital rain initialized. Type 'matrix' to toggle.</span>`);
+    }
+  }
+
+  function startMatrixRain() {
+    if (!matrixCanvas) return;
+    matrixCanvas.classList.add('active');
+    const ctx = matrixCanvas.getContext('2d');
+    matrixCanvas.width = terminalBody ? terminalBody.clientWidth : window.innerWidth;
+    matrixCanvas.height = terminalBody ? terminalBody.clientHeight : window.innerHeight;
+
+    const letters = '010101SELECTFROMJOINWHEREDAVIDYORDANOSSQLPYTHONETL10101';
+    const fontSize = 14;
+    const columns = Math.floor(matrixCanvas.width / fontSize);
+    const drops = Array(columns).fill(1);
+
+    matrixInterval = setInterval(() => {
+      ctx.fillStyle = 'rgba(7, 11, 16, 0.08)';
+      ctx.fillRect(0, 0, matrixCanvas.width, matrixCanvas.height);
+      ctx.fillStyle = '#10B981';
+      ctx.font = `${fontSize}px monospace`;
+
+      for (let i = 0; i < drops.length; i++) {
+        const text = letters.charAt(Math.floor(Math.random() * letters.length));
+        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+        if (drops[i] * fontSize > matrixCanvas.height && Math.random() > 0.975) {
+          drops[i] = 0;
+        }
+        drops[i]++;
+      }
+    }, 33);
+  }
+
+  function stopMatrixRain() {
+    if (matrixInterval) {
+      clearInterval(matrixInterval);
+      matrixInterval = null;
+    }
+    if (matrixCanvas) {
+      matrixCanvas.classList.remove('active');
+      const ctx = matrixCanvas.getContext('2d');
+      if (ctx) ctx.clearRect(0, 0, matrixCanvas.width, matrixCanvas.height);
+    }
+  }
+
+  // =========================================================
+  // 5. ZERO-G PHYSICS "BREAK LAYOUT" SYSTEM (MATTER.JS)
+  // =========================================================
+  const zeroGToggle = document.getElementById('zero-g-toggle');
+  const mobileZeroGBtn = document.getElementById('mobile-zero-g-btn');
+  const restoreLayoutBtn = document.getElementById('restore-layout-btn');
+  let isZeroGActive = false;
+  let matterEngine = null;
+  let matterRunner = null;
+  let physicsElements = [];
+
+  function loadMatterJs(callback) {
+    if (window.Matter) {
+      callback();
+      return;
+    }
+    const script = document.createElement('script');
+    script.src = 'https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js';
+    script.onload = callback;
+    document.head.appendChild(script);
+  }
+
+  function enableZeroG() {
+    if (isZeroGActive) return;
+    loadMatterJs(() => {
+      isZeroGActive = true;
+      if (restoreLayoutBtn) restoreLayoutBtn.classList.add('active');
+      SoundFX.fanfare();
+
+      const { Engine, Runner, Bodies, Composite, Mouse, MouseConstraint, Events } = window.Matter;
+      matterEngine = Engine.create({ gravity: { x: 0, y: 0.2, scale: 0.001 } });
+
+      const w = window.innerWidth;
+      const h = window.innerHeight;
+
+      // Create boundary walls
+      const wallThickness = 120;
+      const ground = Bodies.rectangle(w / 2, h + wallThickness / 2 - 10, w * 2, wallThickness, { isStatic: true });
+      const ceiling = Bodies.rectangle(w / 2, -wallThickness / 2, w * 2, wallThickness, { isStatic: true });
+      const leftWall = Bodies.rectangle(-wallThickness / 2, h / 2, wallThickness, h * 2, { isStatic: true });
+      const rightWall = Bodies.rectangle(w + wallThickness / 2, h / 2, wallThickness, h * 2, { isStatic: true });
+
+      Composite.add(matterEngine.world, [ground, ceiling, leftWall, rightWall]);
+
+      // Target physics elements
+      const targetSelectors = '.kpi-card, .skill-card, .tag, .project-card, .edu-card, .hero-buttons a, .brand';
+      const domElements = document.querySelectorAll(targetSelectors);
+      physicsElements = [];
+
+      domElements.forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.width <= 0 || rect.height <= 0) return;
+
+        const body = Bodies.rectangle(
+          rect.left + rect.width / 2,
+          rect.top + rect.height / 2,
+          rect.width,
+          rect.height,
+          {
+            restitution: 0.85,
+            friction: 0.05,
+            frictionAir: 0.015,
+            density: 0.002
+          }
+        );
+
+        // Initial zero-g impulse
+        Matter.Body.setVelocity(body, {
+          x: (Math.random() - 0.5) * 12,
+          y: -Math.random() * 8
+        });
+        Matter.Body.setAngularVelocity(body, (Math.random() - 0.5) * 0.15);
+
+        // Store original inline style
+        el._origStyle = el.getAttribute('style') || '';
+        el.style.position = 'fixed';
+        el.style.top = '0px';
+        el.style.left = '0px';
+        el.style.width = `${rect.width}px`;
+        el.style.height = `${rect.height}px`;
+        el.style.margin = '0px';
+        el.style.zIndex = '1001';
+        el.style.pointerEvents = 'auto';
+        el.style.transition = 'none';
+
+        Composite.add(matterEngine.world, body);
+        physicsElements.push({ el, body, width: rect.width, height: rect.height });
+      });
+
+      // Mouse throwing interaction
+      const mouse = Mouse.create(document.body);
+      const mouseConstraint = MouseConstraint.create(matterEngine, {
+        mouse: mouse,
+        constraint: { stiffness: 0.2, render: { visible: false } }
+      });
+      Composite.add(matterEngine.world, mouseConstraint);
+
+      // Sync DOM elements with Matter bodies on each engine update
+      Events.on(matterEngine, 'afterUpdate', () => {
+        physicsElements.forEach(item => {
+          const { el, body, width, height } = item;
+          const x = body.position.x - width / 2;
+          const y = body.position.y - height / 2;
+          el.style.transform = `translate(${x}px, ${y}px) rotate(${body.angle}rad)`;
+        });
+      });
+
+      matterRunner = Runner.create();
+      Runner.run(matterRunner, matterEngine);
+    });
+  }
+
+  function restoreLayout() {
+    if (!isZeroGActive) return;
+    isZeroGActive = false;
+    if (restoreLayoutBtn) restoreLayoutBtn.classList.remove('active');
+    SoundFX.beep(660, 'triangle', 0.15, 0.15);
+
+    if (matterRunner && window.Matter) {
+      window.Matter.Runner.stop(matterRunner);
+    }
+    if (matterEngine && window.Matter) {
+      window.Matter.World.clear(matterEngine.world, false);
+      window.Matter.Engine.clear(matterEngine);
+    }
+
+    physicsElements.forEach(item => {
+      const el = item.el;
+      el.setAttribute('style', el._origStyle);
+      el.style.transform = '';
+      el.style.position = '';
+      el.style.top = '';
+      el.style.left = '';
+      el.style.width = '';
+      el.style.height = '';
+      el.style.margin = '';
+      el.style.zIndex = '';
+    });
+    physicsElements = [];
+  }
+
+  if (zeroGToggle) zeroGToggle.addEventListener('click', enableZeroG);
+  if (mobileZeroGBtn) mobileZeroGBtn.addEventListener('click', enableZeroG);
+  if (restoreLayoutBtn) restoreLayoutBtn.addEventListener('click', restoreLayout);
+
+  // =========================================================
+  // 6. KONAMI ARCADE EASTER EGG (SQL INVADERS GAME)
+  // =========================================================
+  const konamiSequence = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
+  let konamiIndex = 0;
+
+  const arcadeModal = document.getElementById('arcade-modal');
+  const arcadeCloseBtn = document.getElementById('arcade-close-btn');
+  const arcadeCanvas = document.getElementById('arcade-canvas');
+  const arcadeScoreVal = document.getElementById('arcade-score-val');
+  const arcadeWaveVal = document.getElementById('arcade-wave-val');
+  const arcadeLivesVal = document.getElementById('arcade-lives-val');
+
+  let arcadeRunning = false;
+  let arcadeAnimationId = null;
+
+  document.addEventListener('keydown', (e) => {
+    const key = e.key.length === 1 ? e.key.toLowerCase() : e.key;
+    const target = konamiSequence[konamiIndex].length === 1 ? konamiSequence[konamiIndex].toLowerCase() : konamiSequence[konamiIndex];
+
+    if (key === target) {
+      konamiIndex++;
+      if (konamiIndex === konamiSequence.length) {
+        konamiIndex = 0;
+        startArcadeGame();
+      }
+    } else {
+      konamiIndex = 0;
+    }
+  });
+
+  function startArcadeGame() {
+    if (!arcadeModal) return;
+    arcadeModal.classList.add('active');
+    arcadeRunning = true;
+    SoundFX.fanfare();
+    initSqlInvadersGame();
+  }
+
+  function stopArcadeGame() {
+    if (!arcadeModal) return;
+    arcadeModal.classList.remove('active');
+    arcadeRunning = false;
+    if (arcadeAnimationId) cancelAnimationFrame(arcadeAnimationId);
+  }
+
+  if (arcadeCloseBtn) arcadeCloseBtn.addEventListener('click', stopArcadeGame);
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && arcadeModal && arcadeModal.classList.contains('active')) {
+      stopArcadeGame();
+    }
+  });
+
+  // SQL Invaders Mini-Game Engine
+  function initSqlInvadersGame() {
+    if (!arcadeCanvas) return;
+    const ctx = arcadeCanvas.getContext('2d');
+    const width = arcadeCanvas.width;
+    const height = arcadeCanvas.height;
+
+    let score = 0;
+    let wave = 1;
+    let lives = 3;
+
+    const player = {
+      x: width / 2 - 20,
+      y: height - 40,
+      width: 40,
+      height: 16,
+      speed: 7,
+      movingLeft: false,
+      movingRight: false
+    };
+
+    let lasers = [];
+    let enemies = [];
+    let particles = [];
+    let enemySpawnTimer = 0;
+
+    const syntaxTokens = ['SELECT', 'FROM', 'WHERE', 'JOIN', 'NULL', 'DROP TABLE', 'BUG', 'NaN', 'SYNTAX_ERR', 'DEADLOCK', 'CTE', 'WINDOW'];
+
+    function spawnEnemy() {
+      const text = syntaxTokens[Math.floor(Math.random() * syntaxTokens.length)];
+      enemies.push({
+        x: Math.random() * (width - 100) + 20,
+        y: -20,
+        text: text,
+        speed: 1.2 + wave * 0.3 + Math.random() * 0.8,
+        color: text === 'DROP TABLE' || text === 'BUG' || text === 'DEADLOCK' ? '#EF4444' : '#10B981'
+      });
+    }
+
+    function fireLaser() {
+      lasers.push({
+        x: player.x + player.width / 2 - 2,
+        y: player.y - 4,
+        width: 4,
+        height: 12,
+        speed: 10
+      });
+      SoundFX.laser();
+    }
+
+    function createExplosion(x, y, color) {
+      SoundFX.explosion();
+      for (let i = 0; i < 14; i++) {
+        particles.push({
+          x: x,
+          y: y,
+          vx: (Math.random() - 0.5) * 6,
+          vy: (Math.random() - 0.5) * 6,
+          life: 25,
+          color: color
+        });
+      }
+    }
+
+    // Key handlers for Game
+    const keysDown = {};
+    window.addEventListener('keydown', (e) => {
+      if (!arcadeRunning) return;
+      keysDown[e.code] = true;
+      if (e.code === 'Space') {
+        e.preventDefault();
+        fireLaser();
+      }
+    });
+    window.addEventListener('keyup', (e) => {
+      if (!arcadeRunning) return;
+      keysDown[e.code] = false;
+    });
+    arcadeCanvas.addEventListener('click', () => {
+      if (arcadeRunning) fireLaser();
+    });
+
+    function gameLoop() {
+      if (!arcadeRunning) return;
+
+      // Update Player
+      if (keysDown['ArrowLeft'] || keysDown['KeyA']) player.x = Math.max(10, player.x - player.speed);
+      if (keysDown['ArrowRight'] || keysDown['KeyD']) player.x = Math.min(width - player.width - 10, player.x + player.speed);
+
+      // Spawn Enemies
+      enemySpawnTimer++;
+      if (enemySpawnTimer > Math.max(30, 80 - wave * 8)) {
+        spawnEnemy();
+        enemySpawnTimer = 0;
+      }
+
+      // Update Lasers
+      lasers.forEach((laser, lIdx) => {
+        laser.y -= laser.speed;
+        if (laser.y < -20) lasers.splice(lIdx, 1);
+      });
+
+      // Update Enemies
+      enemies.forEach((enemy, eIdx) => {
+        enemy.y += enemy.speed;
+
+        // Check Collision with Lasers
+        lasers.forEach((laser, lIdx) => {
+          if (
+            laser.x > enemy.x - 10 &&
+            laser.x < enemy.x + 80 &&
+            laser.y > enemy.y - 15 &&
+            laser.y < enemy.y + 15
+          ) {
+            createExplosion(enemy.x + 30, enemy.y, enemy.color);
+            enemies.splice(eIdx, 1);
+            lasers.splice(lIdx, 1);
+            score += 100;
+            if (score % 1000 === 0) {
+              wave++;
+              SoundFX.fanfare();
+            }
+          }
+        });
+
+        // Check Reach Bottom
+        if (enemy.y > height) {
+          enemies.splice(eIdx, 1);
+          lives--;
+          SoundFX.beep(220, 'sawtooth', 0.2, 0.2);
+          if (lives <= 0) {
+            lives = 3;
+            score = Math.max(0, score - 300);
+          }
+        }
+      });
+
+      // Update Particles
+      particles.forEach((p, pIdx) => {
+        p.x += p.vx;
+        p.y += p.vy;
+        p.life--;
+        if (p.life <= 0) particles.splice(pIdx, 1);
+      });
+
+      // Render
+      ctx.fillStyle = '#05080C';
+      ctx.fillRect(0, 0, width, height);
+
+      // Starfield background
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.4)';
+      for (let s = 0; s < 30; s++) {
+        const sx = (s * 37 + enemySpawnTimer * 0.5) % width;
+        const sy = (s * 53) % height;
+        ctx.fillRect(sx, sy, 1.5, 1.5);
+      }
+
+      // Draw Player Ship
+      ctx.fillStyle = '#38BDF8';
+      ctx.beginPath();
+      ctx.moveTo(player.x + player.width / 2, player.y - 6);
+      ctx.lineTo(player.x + player.width, player.y + player.height);
+      ctx.lineTo(player.x, player.y + player.height);
+      ctx.closePath();
+      ctx.fill();
+
+      ctx.fillStyle = '#F59E0B';
+      ctx.fillRect(player.x + player.width / 2 - 3, player.y + player.height - 2, 6, 4);
+
+      // Draw Lasers
+      ctx.fillStyle = '#38BDF8';
+      ctx.shadowColor = '#38BDF8';
+      ctx.shadowBlur = 8;
+      lasers.forEach(laser => {
+        ctx.fillRect(laser.x, laser.y, laser.width, laser.height);
+      });
+      ctx.shadowBlur = 0;
+
+      // Draw Enemies
+      ctx.font = 'bold 13px "JetBrains Mono", monospace';
+      enemies.forEach(enemy => {
+        ctx.fillStyle = enemy.color;
+        ctx.shadowColor = enemy.color;
+        ctx.shadowBlur = 10;
+        ctx.fillText(enemy.text, enemy.x, enemy.y);
+      });
+      ctx.shadowBlur = 0;
+
+      // Draw Particles
+      particles.forEach(p => {
+        ctx.fillStyle = p.color;
+        ctx.fillRect(p.x, p.y, 2, 2);
+      });
+
+      // Update HUD Values
+      if (arcadeScoreVal) arcadeScoreVal.textContent = String(score).padStart(4, '0');
+      if (arcadeWaveVal) arcadeWaveVal.textContent = wave;
+      if (arcadeLivesVal) arcadeLivesVal.textContent = '❤️'.repeat(Math.max(1, lives));
+
+      arcadeAnimationId = requestAnimationFrame(gameLoop);
+    }
+
+    arcadeAnimationId = requestAnimationFrame(gameLoop);
+  }
 </script>
 
 </body>
