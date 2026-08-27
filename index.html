@@ -607,46 +607,8 @@
   }
 
   /* ========================================================= */
-  /* ZERO-G MODE, TERMINAL HUD, & RETRO ARCADE STYLES          */
+  /* TERMINAL HUD & RETRO ARCADE STYLES                        */
   /* ========================================================= */
-
-  /* Zero-G Toggle in Navbar */
-  .nav-zerog {
-    display: inline-flex; align-items: center; gap: 6px;
-    font-size: 13px; font-family: 'JetBrains Mono', monospace; font-weight: 700;
-    color: #F59E0B; background: rgba(245, 158, 11, 0.12);
-    border: 1px solid rgba(245, 158, 11, 0.5);
-    padding: 8px 14px; border-radius: var(--radius-sm);
-    cursor: pointer; transition: all .2s ease;
-    box-shadow: 0 0 12px rgba(245, 158, 11, 0.2);
-    animation: zerog-pulse 2.5s infinite;
-  }
-  @keyframes zerog-pulse {
-    0%, 100% { box-shadow: 0 0 8px rgba(245, 158, 11, 0.2); border-color: rgba(245, 158, 11, 0.4); }
-    50% { box-shadow: 0 0 18px rgba(245, 158, 11, 0.5); border-color: rgba(245, 158, 11, 0.9); }
-  }
-  .nav-zerog:hover {
-    background: #F59E0B; color: #0B1118; box-shadow: 0 0 24px rgba(245, 158, 11, 0.7); transform: translateY(-1px);
-  }
-  .zerog-glow-dot {
-    width: 7px; height: 7px; border-radius: 50%;
-    background: #F59E0B; box-shadow: 0 0 8px #F59E0B;
-  }
-
-  /* Floating Restore Layout Button */
-  .restore-layout-btn {
-    position: fixed; top: 90px; left: 50%; transform: translateX(-50%);
-    z-index: 10000; display: none; align-items: center; gap: 10px;
-    background: #EF4444; color: #FFFFFF; font-family: 'JetBrains Mono', monospace;
-    font-weight: 700; font-size: 14px; padding: 12px 24px; border-radius: 30px;
-    border: 2px solid #FFFFFF; cursor: pointer; box-shadow: 0 0 30px rgba(239, 68, 68, 0.8);
-    animation: restore-bounce 1.5s infinite alternate;
-  }
-  .restore-layout-btn.active { display: inline-flex; }
-  @keyframes restore-bounce {
-    0% { transform: translateX(-50%) translateY(0); }
-    100% { transform: translateX(-50%) translateY(-6px); }
-  }
 
   /* Telemetry Live Systems HUD */
   .telemetry-hud {
@@ -859,10 +821,6 @@
     </nav>
 
     <div class="nav-actions">
-      <button id="zero-g-toggle" class="nav-zerog" title="Trigger Zero-G Physics Mode">
-        <span class="zerog-glow-dot"></span>
-        <span>⚠️ Zero-G Mode</span>
-      </button>
       <a href="assets/Yordanos_Ketema_Resume.pdf" target="_blank" rel="noopener" class="nav-resume">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
         <span>Resume (PDF)</span>
@@ -882,7 +840,6 @@
     <a href="#projects">Projects</a>
     <a href="#skills">Skills</a>
     <a href="#contact">Contact</a>
-    <a href="javascript:void(0)" id="mobile-zero-g-btn" style="color: #F59E0B; font-weight: 700;">⚠️ Zero-G Mode</a>
     <a href="javascript:void(0)" id="mobile-terminal-btn" style="color: var(--blue);">⚡ SQL Terminal (CLI)</a>
     <a href="assets/Yordanos_Ketema_Resume.pdf" target="_blank" rel="noopener">Download Resume (PDF) 📄</a>
     <a href="https://github.com/yordanos-ketema" target="_blank" rel="noopener">GitHub Profile ↗</a>
@@ -2089,11 +2046,6 @@
   </div>
 </footer>
 
-<!-- FLOATING RESTORE LAYOUT BUTTON FOR ZERO-G MODE -->
-<button id="restore-layout-btn" class="restore-layout-btn" title="Restore Normal Layout">
-  <span>🧲 RESTORE LAYOUT</span>
-</button>
-
 <!-- LIVE SYSTEMS TELEMETRY HUD -->
 <div id="telemetry-hud" class="telemetry-hud" role="complementary" aria-label="Systems Telemetry HUD">
   <div class="hud-header">
@@ -2101,10 +2053,6 @@
     <button class="hud-toggle-btn" id="hud-collapse-btn" title="Toggle HUD">−</button>
   </div>
   <div class="hud-body">
-    <div class="hud-row">
-      <span class="hud-label">ADDIS ABABA (EAT)</span>
-      <span class="hud-val mono" id="hud-clock">--:--:-- UTC+3</span>
-    </div>
     <div class="hud-row">
       <span class="hud-label">RENDER FPS</span>
       <span class="hud-val mono" id="hud-fps" style="color: var(--green);">60.0 FPS</span>
@@ -2391,7 +2339,6 @@
   // =========================================================
   // 3. LIVE SYSTEMS TELEMETRY HUD
   // =========================================================
-  const hudClock = document.getElementById('hud-clock');
   const hudFps = document.getElementById('hud-fps');
   const hudLatency = document.getElementById('hud-latency');
   const hudAudioBtn = document.getElementById('hud-audio-btn');
@@ -2400,21 +2347,6 @@
   const hudCollapseBtn = document.getElementById('hud-collapse-btn');
   const telemetryHud = document.getElementById('telemetry-hud');
   const hudTerminalBtn = document.getElementById('hud-terminal-btn');
-
-  // Addis Ababa Clock (EAT UTC+3)
-  function updateAddisClock() {
-    const now = new Date();
-    const eatTime = new Intl.DateTimeFormat('en-GB', {
-      timeZone: 'Africa/Addis_Ababa',
-      hour: '2-digit',
-      minute: '2-digit',
-      second: '2-digit',
-      hour12: false
-    }).format(now);
-    if (hudClock) hudClock.textContent = `${eatTime} EAT (UTC+3)`;
-  }
-  setInterval(updateAddisClock, 1000);
-  updateAddisClock();
 
   // Dynamic FPS Counter
   let lastTime = performance.now();
@@ -2825,152 +2757,7 @@ Let's connect immediately via email: <a href="mailto:yordanosketema13@gmail.com"
   }
 
   // =========================================================
-  // 5. ZERO-G PHYSICS "BREAK LAYOUT" SYSTEM (MATTER.JS)
-  // =========================================================
-  const zeroGToggle = document.getElementById('zero-g-toggle');
-  const mobileZeroGBtn = document.getElementById('mobile-zero-g-btn');
-  const restoreLayoutBtn = document.getElementById('restore-layout-btn');
-  let isZeroGActive = false;
-  let matterEngine = null;
-  let matterRunner = null;
-  let physicsElements = [];
-
-  function loadMatterJs(callback) {
-    if (window.Matter) {
-      callback();
-      return;
-    }
-    const script = document.createElement('script');
-    script.src = 'https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js';
-    script.onload = callback;
-    document.head.appendChild(script);
-  }
-
-  function enableZeroG() {
-    if (isZeroGActive) return;
-    loadMatterJs(() => {
-      isZeroGActive = true;
-      if (restoreLayoutBtn) restoreLayoutBtn.classList.add('active');
-      SoundFX.fanfare();
-
-      const { Engine, Runner, Bodies, Composite, Mouse, MouseConstraint, Events } = window.Matter;
-      matterEngine = Engine.create({ gravity: { x: 0, y: 0.2, scale: 0.001 } });
-
-      const w = window.innerWidth;
-      const h = window.innerHeight;
-
-      // Create boundary walls
-      const wallThickness = 120;
-      const ground = Bodies.rectangle(w / 2, h + wallThickness / 2 - 10, w * 2, wallThickness, { isStatic: true });
-      const ceiling = Bodies.rectangle(w / 2, -wallThickness / 2, w * 2, wallThickness, { isStatic: true });
-      const leftWall = Bodies.rectangle(-wallThickness / 2, h / 2, wallThickness, h * 2, { isStatic: true });
-      const rightWall = Bodies.rectangle(w + wallThickness / 2, h / 2, wallThickness, h * 2, { isStatic: true });
-
-      Composite.add(matterEngine.world, [ground, ceiling, leftWall, rightWall]);
-
-      // Target physics elements
-      const targetSelectors = '.kpi-card, .skill-card, .tag, .project-card, .edu-card, .hero-buttons a, .brand';
-      const domElements = document.querySelectorAll(targetSelectors);
-      physicsElements = [];
-
-      domElements.forEach(el => {
-        const rect = el.getBoundingClientRect();
-        if (rect.width <= 0 || rect.height <= 0) return;
-
-        const body = Bodies.rectangle(
-          rect.left + rect.width / 2,
-          rect.top + rect.height / 2,
-          rect.width,
-          rect.height,
-          {
-            restitution: 0.85,
-            friction: 0.05,
-            frictionAir: 0.015,
-            density: 0.002
-          }
-        );
-
-        // Initial zero-g impulse
-        Matter.Body.setVelocity(body, {
-          x: (Math.random() - 0.5) * 12,
-          y: -Math.random() * 8
-        });
-        Matter.Body.setAngularVelocity(body, (Math.random() - 0.5) * 0.15);
-
-        // Store original inline style
-        el._origStyle = el.getAttribute('style') || '';
-        el.style.position = 'fixed';
-        el.style.top = '0px';
-        el.style.left = '0px';
-        el.style.width = `${rect.width}px`;
-        el.style.height = `${rect.height}px`;
-        el.style.margin = '0px';
-        el.style.zIndex = '1001';
-        el.style.pointerEvents = 'auto';
-        el.style.transition = 'none';
-
-        Composite.add(matterEngine.world, body);
-        physicsElements.push({ el, body, width: rect.width, height: rect.height });
-      });
-
-      // Mouse throwing interaction
-      const mouse = Mouse.create(document.body);
-      const mouseConstraint = MouseConstraint.create(matterEngine, {
-        mouse: mouse,
-        constraint: { stiffness: 0.2, render: { visible: false } }
-      });
-      Composite.add(matterEngine.world, mouseConstraint);
-
-      // Sync DOM elements with Matter bodies on each engine update
-      Events.on(matterEngine, 'afterUpdate', () => {
-        physicsElements.forEach(item => {
-          const { el, body, width, height } = item;
-          const x = body.position.x - width / 2;
-          const y = body.position.y - height / 2;
-          el.style.transform = `translate(${x}px, ${y}px) rotate(${body.angle}rad)`;
-        });
-      });
-
-      matterRunner = Runner.create();
-      Runner.run(matterRunner, matterEngine);
-    });
-  }
-
-  function restoreLayout() {
-    if (!isZeroGActive) return;
-    isZeroGActive = false;
-    if (restoreLayoutBtn) restoreLayoutBtn.classList.remove('active');
-    SoundFX.beep(660, 'triangle', 0.15, 0.15);
-
-    if (matterRunner && window.Matter) {
-      window.Matter.Runner.stop(matterRunner);
-    }
-    if (matterEngine && window.Matter) {
-      window.Matter.World.clear(matterEngine.world, false);
-      window.Matter.Engine.clear(matterEngine);
-    }
-
-    physicsElements.forEach(item => {
-      const el = item.el;
-      el.setAttribute('style', el._origStyle);
-      el.style.transform = '';
-      el.style.position = '';
-      el.style.top = '';
-      el.style.left = '';
-      el.style.width = '';
-      el.style.height = '';
-      el.style.margin = '';
-      el.style.zIndex = '';
-    });
-    physicsElements = [];
-  }
-
-  if (zeroGToggle) zeroGToggle.addEventListener('click', enableZeroG);
-  if (mobileZeroGBtn) mobileZeroGBtn.addEventListener('click', enableZeroG);
-  if (restoreLayoutBtn) restoreLayoutBtn.addEventListener('click', restoreLayout);
-
-  // =========================================================
-  // 6. KONAMI ARCADE EASTER EGG (SQL INVADERS GAME)
+  // 5. KONAMI ARCADE EASTER EGG (SQL INVADERS GAME)
   // =========================================================
   const konamiSequence = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
   let konamiIndex = 0;
@@ -3228,7 +3015,7 @@ Let's connect immediately via email: <a href="mailto:yordanosketema13@gmail.com"
   }
 
   // =========================================================
-  // 7. DYNAMIC HACKER / MATRIX TEXT SCRAMBLE ENGINE
+  // 6. DYNAMIC HACKER / MATRIX TEXT SCRAMBLE ENGINE
   // =========================================================
   class HackerTextScramble {
     constructor(el) {
