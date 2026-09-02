@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Yordanos Ketema - CV</title>
+<style>
+  @page {
+    size: letter;
+    margin: 0;
+  }
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  html, body {
+    width: 8.5in;
+    height: 11in;
+    background: #ffffff;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    color: #1e293b;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .cv-page {
+    width: 8.5in;
+    height: 11in;
+    max-height: 11in;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    background: #ffffff;
+    padding: 14px 18px;
+  }
+
+  /* Header */
+  .cv-header {
+    background-color: #1f4e78;
+    color: #ffffff;
+    padding: 12px 18px;
+    border-radius: 4px;
+    margin-bottom: 9px;
+  }
+  .header-name {
+    font-size: 20pt;
+    font-weight: 800;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    line-height: 1.1;
+    margin-bottom: 2px;
+  }
+  .header-title {
+    font-size: 10.3pt;
+    font-weight: 600;
+    color: #ffffff;
+    line-height: 1.25;
+  }
+  .header-sub {
+    font-size: 8.6pt;
+    color: #d1e2f2;
+    font-weight: 400;
+    margin-top: 1px;
+  }
+
+  /* Layout Body */
+  .cv-body {
+    display: flex;
+    flex: 1;
+    gap: 13px;
+    min-height: 0;
+  }
+
+  /* Left Sidebar */
+  .cv-sidebar {
+    width: 2.32in;
+    min-width: 2.32in;
+    background-color: #1f4e78;
+    color: #ffffff;
+    border-radius: 4px;
+    padding: 10px 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 6px;
+  }
+
+  .photo-container {
+    text-align: center;
+    margin-bottom: 1px;
+  }
+  .profile-photo {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 4px;
+    border: 2px solid #ffffff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.25);
+  }
+
+  .sidebar-section-title {
+    background-color: #163a56;
+    color: #ffffff;
+    font-size: 7.4pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 2.5px 5px;
+    border-radius: 2px;
+    margin-bottom: 3px;
+  }
+
+  .contact-list {
+    list-style: none;
+    font-size: 7.3pt;
+    color: #f1f5f9;
+    line-height: 1.32;
+  }
+  .contact-list li {
+    margin-bottom: 2px;
+    word-break: break-word;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .contact-icon {
+    width: 10.5px;
+    height: 10.5px;
+    fill: #93c5fd;
+    flex-shrink: 0;
+  }
+  .contact-list a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .sidebar-skill-block {
+    margin-bottom: 2px;
+  }
+  .sidebar-skill-header {
+    font-size: 7.2pt;
+    font-weight: 700;
+    color: #93c5fd;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    margin-bottom: 1px;
+  }
+  .sidebar-skill-list {
+    list-style: none;
+    font-size: 7.1pt;
+    color: #f8fafc;
+    line-height: 1.25;
+    padding-left: 0;
+  }
+  .sidebar-skill-list li {
+    position: relative;
+    padding-left: 8px;
+    margin-bottom: 1px;
+  }
+  .sidebar-skill-list li::before {
+    content: "•";
+    position: absolute;
+    left: 0px;
+    color: #93c5fd;
+    font-size: 8pt;
+    line-height: 1;
+  }
+
+  .cert-item {
+    font-size: 7.2pt;
+    margin-bottom: 2px;
+    line-height: 1.22;
+  }
+  .cert-org {
+    font-weight: 700;
+    color: #93c5fd;
+  }
+  .cert-name {
+    color: #f8fafc;
+  }
+
+  .lang-item {
+    font-size: 7.2pt;
+    color: #f8fafc;
+    line-height: 1.24;
+    margin-bottom: 1px;
+  }
+  .lang-name {
+    font-weight: 600;
+    color: #93c5fd;
+  }
+
+  .impact-item {
+    font-size: 7.1pt;
+    color: #f8fafc;
+    line-height: 1.24;
+    margin-bottom: 1.5px;
+  }
+  .impact-highlight {
+    font-weight: 700;
+    color: #fde047;
+  }
+
+  /* Right Main Content */
+  .cv-main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-right: 1px;
+    gap: 5px;
+  }
+
+  .main-section {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .main-section-title {
+    color: #1f4e78;
+    font-size: 9.2pt;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-bottom: 1.2px solid #1f4e78;
+    padding-bottom: 1.5px;
+    margin-bottom: 3.5px;
+  }
+
+  .summary-paragraph {
+    font-size: 7.8pt;
+    line-height: 1.33;
+    color: #334155;
+    text-align: justify;
+  }
+
+  /* Education */
+  .edu-block {
+    margin-bottom: 1px;
+  }
+  .edu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+  .edu-degree {
+    font-size: 8.3pt;
+    font-weight: 700;
+    color: #0f172a;
+  }
+  .edu-date {
+    font-size: 7.8pt;
+    font-weight: 700;
+    color: #1f4e78;
+  }
+  .edu-school {
+    font-size: 7.7pt;
+    font-style: italic;
+    color: #1f4e78;
+    margin-bottom: 1px;
+  }
+  .edu-bullets {
+    list-style-type: square;
+    padding-left: 12px;
+    font-size: 7.5pt;
+    color: #334155;
+    line-height: 1.28;
+  }
+
+  /* Projects */
+  .project-entry {
+    margin-bottom: 4px;
+  }
+  .project-entry:last-child {
+    margin-bottom: 0;
+  }
+  .project-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+  .project-title {
+    font-size: 8.2pt;
+    font-weight: 700;
+    color: #0f172a;
+  }
+  .project-date {
+    font-size: 7.7pt;
+    font-weight: 700;
+    color: #1f4e78;
+  }
+  .project-subtitle {
+    font-size: 7.5pt;
+    font-style: italic;
+    color: #1f4e78;
+    margin-bottom: 1.5px;
+    font-weight: 500;
+  }
+  .project-bullets {
+    list-style-type: square;
+    padding-left: 12px;
+    font-size: 7.5pt;
+    color: #334155;
+    line-height: 1.27;
+  }
+  .project-bullets li {
+    margin-bottom: 1.5px;
+    text-align: justify;
+  }
+  .project-bullets li:last-child {
+    margin-bottom: 0;
+  }
+  .project-bullets strong {
+    color: #0f172a;
+    font-weight: 600;
+  }
+
+  /* Frameworks / Methodologies Grid */
+  .framework-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2px;
+    font-size: 7.4pt;
+    line-height: 1.26;
+    color: #334155;
+  }
+  .framework-item strong {
+    color: #0f172a;
+    font-weight: 700;
+  }
+</style>
+</head>
+<body>
+
+<div class="cv-page">
+  <!-- HEADER -->
+  <div class="cv-header">
+    <div class="header-name">Yordanos Ketema</div>
+    <div class="header-title">Business Administration &amp; Information Systems Specialist | BI Analyst &amp; Systems Architect</div>
+    <div class="header-sub">Addis Ababa University · College of Business &amp; Economics · School of Commerce</div>
+  </div>
+
+  <!-- MAIN BODY -->
+  <div class="cv-body">
+    <!-- LEFT SIDEBAR -->
+    <div class="cv-sidebar">
+      <!-- PHOTO -->
+      <div class="photo-container">
+        <img class="profile-photo" src="./assets/Yordanos%20Ketema.jpg" alt="Yordanos Ketema">
+      </div>
+
+      <!-- CONTACT -->
+      <div>
+        <div class="sidebar-section-title">Contact Details</div>
+        <ul class="contact-list">
+          <li>
+            <svg class="contact-icon" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+            <a href="mailto:yordanosketema13@gmail.com">yordanosketema13@gmail.com</a>
+          </li>
+          <li>
+            <svg class="contact-icon" viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+            <span>+251 926 794 684</span>
+          </li>
+          <li>
+            <svg class="contact-icon" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            <span>Addis Ababa, Ethiopia</span>
+          </li>
+          <li>
+            <svg class="contact-icon" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+            <a href="https://yordanos-ketema.github.io">yordanos-ketema.github.io</a>
+          </li>
+          <li>
+            <svg class="contact-icon" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.1-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/></svg>
+            <a href="https://github.com/yordanos-ketema">github.com/yordanos-ketema</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- WHAT I DELIVER -->
+      <div>
+        <div class="sidebar-section-title">What I Deliver</div>
+        <ul class="sidebar-skill-list">
+          <li>Revenue Leakage &amp; Shrinkage Control</li>
+          <li>Multi-Branch Store Inventory Sync</li>
+          <li>End-of-Day Financial Shift Audits</li>
+          <li>Statutory Tax Compliance (VAT / WHT)</li>
+          <li>Process Automation &amp; BPMN Mapping</li>
+          <li>Executive Dashboards &amp; KPI Analytics</li>
+        </ul>
+      </div>
+
+      <!-- CORE COMPETENCIES -->
+      <div>
+        <div class="sidebar-section-title">Core Competencies</div>
+        
+        <div class="sidebar-skill-block">
+          <div class="sidebar-skill-header">Business Administration</div>
+          <ul class="sidebar-skill-list">
+            <li>Operations &amp; Process Improvement</li>
+            <li>Financial Modeling, Budgeting &amp; COGS</li>
+            <li>Strategic Planning &amp; Market Research</li>
+            <li>Project Management (Scope &amp; Budget)</li>
+            <li>Business Writing &amp; Communication</li>
+          </ul>
+        </div>
+
+        <div class="sidebar-skill-block">
+          <div class="sidebar-skill-header">Information Systems</div>
+          <ul class="sidebar-skill-list">
+            <li>Systems Analysis &amp; Design (BRD, RTM)</li>
+            <li>Business Process Modeling (BPMN / UML)</li>
+            <li>BI &amp; Reporting (Power BI, Excel, DAX)</li>
+            <li>Database Management (SQL, PostgreSQL)</li>
+            <li>Web Applications &amp; FinTech Integration</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- KEY TOOLS -->
+      <div>
+        <div class="sidebar-section-title">Key Tools &amp; Technologies</div>
+        <ul class="sidebar-skill-list">
+          <li>Power BI · Microsoft Excel (Advanced)</li>
+          <li>SQL (PostgreSQL, SQLite, MySQL)</li>
+          <li>Python (pandas, data analysis)</li>
+          <li>Next.js · TypeScript · PHP · Tailwind</li>
+          <li>Telebirr · CBE Birr · Chapa Gateways</li>
+        </ul>
+      </div>
+
+      <!-- CERTIFICATIONS -->
+      <div>
+        <div class="sidebar-section-title">Certifications</div>
+        <div class="cert-item">
+          <div class="cert-org">Udacity</div>
+          <div class="cert-name">Data Science Nanodegree</div>
+        </div>
+        <div class="cert-item">
+          <div class="cert-org">Udacity</div>
+          <div class="cert-name">Fundamentals of Programming</div>
+        </div>
+      </div>
+
+      <!-- MEASURABLE HIGHLIGHTS -->
+      <div>
+        <div class="sidebar-section-title">Key Business Impact</div>
+        <div class="impact-item"><span class="impact-highlight">38.5%</span> Shrinkage Reduction</div>
+        <div class="impact-item"><span class="impact-highlight">1.84M ETB</span> Annualized Savings</div>
+        <div class="impact-item"><span class="impact-highlight">1.2M+</span> Single-Use Bags Diverted</div>
+        <div class="impact-item"><span class="impact-highlight">150M+</span> Data Points Harmonized</div>
+      </div>
+
+      <!-- LANGUAGES -->
+      <div>
+        <div class="sidebar-section-title">Languages</div>
+        <div class="lang-item"><span class="lang-name">English:</span> Professional Proficiency</div>
+        <div class="lang-item"><span class="lang-name">Amharic:</span> Native / Bilingual</div>
+      </div>
+    </div>
+
+    <!-- RIGHT MAIN CONTENT -->
+    <div class="cv-main">
+      <!-- PROFESSIONAL SUMMARY -->
+      <div class="main-section">
+        <div class="main-section-title">Professional Summary</div>
+        <p class="summary-paragraph">
+          Business Administration and Information Systems specialist (Addis Ababa University) dedicated to translating organizational goals into robust operational workflows, data intelligence pipelines, and reliable digital systems. Proven capability in diagnosing business inefficiencies, automating statutory tax compliance (VAT / Withholding), eliminating inventory shrinkage, and synchronizing multi-branch retail operations with Ethiopian digital payment ecosystems (Telebirr, CBE Birr). Experienced across formal Business Analysis (BRD, BPMN, UAT), executive BI dashboards, and production web platforms.
+        </p>
+      </div>
+
+      <!-- EDUCATION -->
+      <div class="main-section">
+        <div class="main-section-title">Education</div>
+        <div class="edu-block">
+          <div class="edu-header">
+            <span class="edu-degree">Bachelor of Arts — Business Administration &amp; Information Systems</span>
+            <span class="edu-date">2023 – Present</span>
+          </div>
+          <div class="edu-school">Addis Ababa University · College of Business &amp; Economics · School of Commerce</div>
+          <ul class="edu-bullets">
+            <li><strong>Core Business &amp; Systems Curriculum:</strong> Database Systems, Quantitative Business Analysis, Strategic Management, Financial Accounting, Enterprise Information Systems, Systems Analysis &amp; Design, Operations Management.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- FEATURED PROJECTS & SYSTEMS ARCHITECTURE -->
+      <div class="main-section">
+        <div class="main-section-title">Featured Business &amp; Technical Projects</div>
+
+        <!-- PROJECT 1: KALDIS -->
+        <div class="project-entry">
+          <div class="project-header">
+            <span class="project-title">Kaldi's Coffee: Multi-Branch Inventory &amp; Sales Tracking Engine</span>
+            <span class="project-date">2026</span>
+          </div>
+          <div class="project-subtitle">Enterprise Operations · Next.js 14, TypeScript, Prisma ORM, SQLite, FinTech Ledgers</div>
+          <ul class="project-bullets">
+            <li><strong>Business Challenge:</strong> High inventory shrinkage, lack of cross-branch stock visibility, and manual end-of-day cash and mobile wallet reconciliation taking over 45 minutes per shift.</li>
+            <li><strong>Solution &amp; Implementation:</strong> Built a centralized multi-branch management platform linking sales to automated recipe ingredient depletion (Bill of Materials) and first-in first-out (FIFO) perishable stock rotation across 5 Addis Ababa branches. Integrated daily shift reconciliation auditing physical register cash against Telebirr (46%) and CBE Birr (28%) digital transactions.</li>
+            <li><strong>Business Impact:</strong> Achieved a <strong>38.5% reduction in stock shrinkage</strong>, generated <strong>1.84M ETB in annualized cost recovery</strong>, cut shift reconciliation to <strong>&lt;8 minutes</strong>, and authored a complete BA suite (BRD, BPMN workflows, RTM, and UAT scenarios).</li>
+          </ul>
+        </div>
+
+        <!-- PROJECT 2: ECOBAG ADDIS -->
+        <div class="project-entry">
+          <div class="project-header">
+            <span class="project-title">EcoBag Addis: Localized Sustainable E-Commerce Platform &amp; BA Suite</span>
+            <span class="project-date">2025</span>
+          </div>
+          <div class="project-subtitle">Product Architecture · Next.js 14, Node.js/Express, TypeScript, PostgreSQL, Prisma</div>
+          <ul class="project-bullets">
+            <li><strong>Business Challenge:</strong> Local e-commerce barriers including delivery failures from missing street addresses, manual tax calculation bottlenecks, and risk of duplicate online payments.</li>
+            <li><strong>Solution &amp; Implementation:</strong> Formulated comprehensive business requirements resolving market friction: engineered 5-tier landmark-based delivery addressing across 11 sub-cities, an automated 15% VAT and 2% Withholding tax engine with 10-digit TIN validation, and multi-wallet checkout (Telebirr, CBE Birr, Chapa) with automated duplicate-charge prevention.</li>
+            <li><strong>Business Impact:</strong> Supported diversion of <strong>1.2M+ single-use plastic bags</strong>, decreased courier misdirection to <strong>&lt;2%</strong>, and enabled sub-2-second automated statutory proforma generation.</li>
+          </ul>
+        </div>
+
+        <!-- PROJECT 3: REGALFRONT -->
+        <div class="project-entry">
+          <div class="project-header">
+            <span class="project-title">REGALFRONT Consultancy PLC: Full-Stack Production Web Platform</span>
+            <span class="project-date">2026</span>
+          </div>
+          <div class="project-subtitle">Client Solution · PHP, MySQL, JavaScript, Tailwind CSS, Google Analytics 4</div>
+          <ul class="project-bullets">
+            <li><strong>Business Challenge:</strong> Ethiopian strategic advisory firm needed an authoritative online presence and a secure lead intake pipeline to engage international NGOs, UN agencies, and government institutions.</li>
+            <li><strong>Solution &amp; Implementation:</strong> Delivered a fully responsive web platform with structured client proposal intake, automated email notifications, and an authenticated administrative dashboard. Configured Google Analytics 4 conversion tracking to monitor inbound client leads.</li>
+            <li><strong>Business Impact:</strong> Established digital authority, accelerated strategic consultation inquiry response times, and achieved 100% search engine indexation.</li>
+          </ul>
+        </div>
+
+        <!-- PROJECT 4: COVID DATA ANALYSIS -->
+        <div class="project-entry">
+          <div class="project-header">
+            <span class="project-title">Global Pandemic Impact &amp; Health Data Intelligence</span>
+            <span class="project-date">2025</span>
+          </div>
+          <div class="project-subtitle">BI &amp; Analytics · SQL, Power BI (DAX Star Schema), Python (pandas), Advanced Excel</div>
+          <ul class="project-bullets">
+            <li><strong>Business Challenge:</strong> Multi-country health datasets suffered from inconsistent reporting and regional double-counting, obscuring true infection and vaccination rollout dynamics.</li>
+            <li><strong>Solution &amp; Impact:</strong> Reconciled 150.5M+ records across 210 countries using structured SQL queries to eliminate aggregation errors; constructed interactive Power BI dashboards and Excel analytical models delivering verified trend insights for public health decision support.</li>
+          </ul>
+        </div>
+
+        <!-- PROJECT 5: EAST AFRICA ECON -->
+        <div class="project-entry">
+          <div class="project-header">
+            <span class="project-title">Ethiopia &amp; East Africa Macroeconomic Analytics</span>
+            <span class="project-date">2025</span>
+          </div>
+          <div class="project-subtitle">Macroeconomic Modeling · SQL, Excel, Python (pandas), Power BI</div>
+          <ul class="project-bullets">
+            <li><strong>Business Solution &amp; Impact:</strong> Harmonized World Bank development indicators across Ethiopia, Kenya, Uganda, Tanzania, and Rwanda; developed predictive Compound Annual Growth Rate (CAGR) models and Power BI visual dashboards to evaluate regional economic growth, demographic trends, and market expansion opportunities.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- METHODOLOGIES & FRAMEWORKS -->
+      <div class="main-section">
+        <div class="main-section-title">Methodologies &amp; Operational Frameworks</div>
+        <div class="framework-grid">
+          <div class="framework-item"><strong>Business Analysis:</strong> Requirements Gathering (BRD), Traceability Matrix (RTM), BPMN Process Flows, UAT Testing &amp; Acceptance Criteria.</div>
+          <div class="framework-item"><strong>Regulatory Compliance:</strong> Ethiopian MoR 15% VAT &amp; 2% Withholding Tax Rules, Buyer TIN Validation, Proforma Invoicing Standards.</div>
+          <div class="framework-item"><strong>Operations &amp; Controls:</strong> First-In First-Out (FIFO) Stock Allocation, Bill of Materials (BOM) Costing, Cash/Digital Ledger Auditing.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

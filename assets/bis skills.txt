@@ -1,0 +1,21 @@
+Business Administration Skills
+Management & leadership – planning, organizing, delegating, decision-making
+Financial literacy – budgeting, accounting basics, financial analysis
+Marketing – market research, branding, consumer behavior
+Strategic thinking – business planning, competitive analysis
+Operations management – process improvement, supply chain basics
+Communication – business writing, presentations, negotiation
+Human resources – team management, organizational behavior
+Project management – timelines, budgets, resource allocation
+
+
+Information Systems Skills
+Database management – SQL, data modeling, database design
+Systems analysis & design – understanding business needs, translating them into technical requirements
+Programming basics – often Python, Java, or similar (varies by program)
+Business process modeling – flowcharts, UML, workflow analysis
+Enterprise software – ERP systems (like SAP), CRM tools
+Data analytics – Excel, BI tools (Power BI, Tableau), basic statistics
+IT project management – Agile/Scrum methodologies
+Cybersecurity fundamentals – basic risk and data protection awareness
+Cloud computing basics – understanding of cloud services and infrastructure
