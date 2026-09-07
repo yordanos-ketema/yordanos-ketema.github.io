@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Yordanos Ketema - CV</title>
 <style>
   @page {
@@ -329,6 +330,109 @@
     color: #0f172a;
     font-weight: 700;
   }
+
+  /* Responsive screen display for mobile phones and tablets */
+  @media screen and (max-width: 850px) {
+    html, body {
+      width: 100%;
+      height: auto;
+      overflow-x: hidden;
+      font-size: 13px;
+    }
+    .cv-page {
+      width: 100%;
+      height: auto;
+      max-height: none;
+      padding: 16px;
+      overflow: visible;
+    }
+    .cv-header {
+      padding: 16px;
+      margin-bottom: 14px;
+    }
+    .header-name {
+      font-size: 22px;
+    }
+    .header-title {
+      font-size: 13px;
+      line-height: 1.4;
+    }
+    .header-sub {
+      font-size: 12px;
+      margin-top: 4px;
+    }
+    .cv-body {
+      flex-direction: column;
+      gap: 16px;
+    }
+    .cv-sidebar {
+      width: 100%;
+      min-width: 0;
+      padding: 16px;
+      border-radius: 6px;
+      gap: 14px;
+    }
+    .sidebar-section-title {
+      font-size: 11px;
+      padding: 4px 8px;
+      margin-bottom: 6px;
+    }
+    .contact-list {
+      font-size: 12px;
+      line-height: 1.6;
+    }
+    .contact-icon {
+      width: 14px;
+      height: 14px;
+    }
+    .sidebar-skill-header {
+      font-size: 11px;
+      margin-top: 6px;
+    }
+    .sidebar-skill-list {
+      font-size: 11.5px;
+      line-height: 1.5;
+    }
+    .cv-main {
+      width: 100%;
+    }
+    .main-section-title {
+      font-size: 12px;
+      padding-bottom: 4px;
+      margin-bottom: 8px;
+    }
+    .edu-degree, .project-title {
+      font-size: 14px;
+    }
+    .edu-date, .project-date {
+      font-size: 12px;
+    }
+    .project-subtitle {
+      font-size: 12px;
+      margin-bottom: 6px;
+    }
+    .project-bullets {
+      font-size: 12px;
+      line-height: 1.55;
+    }
+    .framework-grid {
+      font-size: 12px;
+      line-height: 1.5;
+      gap: 6px;
+    }
+  }
+
+  @media print {
+    html, body {
+      width: 8.5in;
+      height: 11in;
+    }
+    .cv-page {
+      width: 8.5in;
+      height: 11in;
+      max-height: 11in;
+    }
+  }
 </style>
 </head>
 <body>
@@ -442,14 +546,6 @@
         </div>
       </div>
 
-      <!-- MEASURABLE HIGHLIGHTS -->
-      <div>
-        <div class="sidebar-section-title">Key Business Impact</div>
-        <div class="impact-item"><span class="impact-highlight">38.5%</span> Shrinkage Reduction</div>
-        <div class="impact-item"><span class="impact-highlight">1.84M ETB</span> Annualized Savings</div>
-        <div class="impact-item"><span class="impact-highlight">1.2M+</span> Single-Use Bags Diverted</div>
-        <div class="impact-item"><span class="impact-highlight">150M+</span> Data Points Harmonized</div>
-      </div>
 
       <!-- LANGUAGES -->
       <div>
@@ -474,7 +570,7 @@
         <div class="main-section-title">Education</div>
         <div class="edu-block">
           <div class="edu-header">
-            <span class="edu-degree">Bachelor of Arts — Business Administration &amp; Information Systems</span>
+            <span class="edu-degree">Bachelor of Arts · Business Administration &amp; Information Systems</span>
             <span class="edu-date">2023 – Present</span>
           </div>
           <div class="edu-school">Addis Ababa University · College of Business &amp; Economics · School of Commerce</div>
@@ -494,7 +590,7 @@
             <span class="project-title">Kaldi's Coffee: Multi-Branch Inventory &amp; Sales Tracking Engine</span>
             <span class="project-date">2026</span>
           </div>
-          <div class="project-subtitle">Enterprise Operations · Next.js 14, TypeScript, Prisma ORM, SQLite, FinTech Ledgers</div>
+          <div class="project-subtitle">Enterprise Operations · Multi-Branch Platform</div>
           <ul class="project-bullets">
             <li><strong>Business Challenge:</strong> High inventory shrinkage, lack of cross-branch stock visibility, and manual end-of-day cash and mobile wallet reconciliation taking over 45 minutes per shift.</li>
             <li><strong>Solution &amp; Implementation:</strong> Built a centralized multi-branch management platform linking sales to automated recipe ingredient depletion (Bill of Materials) and first-in first-out (FIFO) perishable stock rotation across 5 Addis Ababa branches. Integrated daily shift reconciliation auditing physical register cash against Telebirr (46%) and CBE Birr (28%) digital transactions.</li>
@@ -508,7 +604,7 @@
             <span class="project-title">EcoBag Addis: Localized Sustainable E-Commerce Platform &amp; BA Suite</span>
             <span class="project-date">2025</span>
           </div>
-          <div class="project-subtitle">Product Architecture · Next.js 14, Node.js/Express, TypeScript, PostgreSQL, Prisma</div>
+          <div class="project-subtitle">Product Architecture · Localized Commerce</div>
           <ul class="project-bullets">
             <li><strong>Business Challenge:</strong> Local e-commerce barriers including delivery failures from missing street addresses, manual tax calculation bottlenecks, and risk of duplicate online payments.</li>
             <li><strong>Solution &amp; Implementation:</strong> Formulated comprehensive business requirements resolving market friction: engineered 5-tier landmark-based delivery addressing across 11 sub-cities, an automated 15% VAT and 2% Withholding tax engine with 10-digit TIN validation, and multi-wallet checkout (Telebirr, CBE Birr, Chapa) with automated duplicate-charge prevention.</li>
@@ -522,7 +618,7 @@
             <span class="project-title">REGALFRONT Consultancy PLC: Full-Stack Production Web Platform</span>
             <span class="project-date">2026</span>
           </div>
-          <div class="project-subtitle">Client Solution · PHP, MySQL, JavaScript, Tailwind CSS, Google Analytics 4</div>
+          <div class="project-subtitle">Strategic Advisory Web Solution</div>
           <ul class="project-bullets">
             <li><strong>Business Challenge:</strong> Ethiopian strategic advisory firm needed an authoritative online presence and a secure lead intake pipeline to engage international NGOs, UN agencies, and government institutions.</li>
             <li><strong>Solution &amp; Implementation:</strong> Delivered a fully responsive web platform with structured client proposal intake, automated email notifications, and an authenticated administrative dashboard. Configured Google Analytics 4 conversion tracking to monitor inbound client leads.</li>
@@ -536,7 +632,7 @@
             <span class="project-title">Global Pandemic Impact &amp; Health Data Intelligence</span>
             <span class="project-date">2025</span>
           </div>
-          <div class="project-subtitle">BI &amp; Analytics · SQL, Power BI (DAX Star Schema), Python (pandas), Advanced Excel</div>
+          <div class="project-subtitle">BI &amp; Cross-Source Data Reconciliation</div>
           <ul class="project-bullets">
             <li><strong>Business Challenge:</strong> Multi-country health datasets suffered from inconsistent reporting and regional double-counting, obscuring true infection and vaccination rollout dynamics.</li>
             <li><strong>Solution &amp; Impact:</strong> Reconciled 150.5M+ records across 210 countries using structured SQL queries to eliminate aggregation errors; constructed interactive Power BI dashboards and Excel analytical models delivering verified trend insights for public health decision support.</li>
@@ -549,7 +645,7 @@
             <span class="project-title">Ethiopia &amp; East Africa Macroeconomic Analytics</span>
             <span class="project-date">2025</span>
           </div>
-          <div class="project-subtitle">Macroeconomic Modeling · SQL, Excel, Python (pandas), Power BI</div>
+          <div class="project-subtitle">Macroeconomic Modeling &amp; Demographics</div>
           <ul class="project-bullets">
             <li><strong>Business Solution &amp; Impact:</strong> Harmonized World Bank development indicators across Ethiopia, Kenya, Uganda, Tanzania, and Rwanda; developed predictive Compound Annual Growth Rate (CAGR) models and Power BI visual dashboards to evaluate regional economic growth, demographic trends, and market expansion opportunities.</li>
           </ul>
