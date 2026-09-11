@@ -4,6 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Yordanos Ketema | Portfolio</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/favicon-192.png">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <meta name="description" content="Portfolio of Yordanos Ketema — Business Administration & Information Systems Specialist, BI Analyst & Systems Architect based in Addis Ababa, Ethiopia.">
+  <meta property="og:title" content="Yordanos Ketema | Portfolio">
+  <meta property="og:description" content="BI Analyst & Systems Architect — Real digital products, business solutions, and data analytics grounded in code and business acumen.">
+  <meta property="og:image" content="assets/Yordanos%20Ketema.jpg">
+  <meta property="og:type" content="website">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -145,7 +153,86 @@
       50% { opacity: 1; }
     }
 
-    .hero-content { position: relative; z-index: 2; max-width: 620px; }
+    .hero-wrapper {
+      max-width: 1100px;
+      width: 100%;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 56px;
+      position: relative;
+      z-index: 2;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      flex: 1 1 540px;
+      max-width: 600px;
+    }
+    .hero-visual {
+      flex: 0 0 auto;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .hero-image-card {
+      position: relative;
+      width: 300px;
+      height: 375px;
+      border-radius: 24px;
+      padding: 5px;
+      background: linear-gradient(145deg, rgba(59,130,246,0.35), rgba(15,23,41,0.95), rgba(96,165,250,0.18));
+      border: 1px solid rgba(59,130,246,0.28);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.6), 0 0 35px rgba(59,130,246,0.2);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+    }
+    .hero-image-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 28px 60px rgba(0,0,0,0.7), 0 0 48px rgba(59,130,246,0.35);
+    }
+    .hero-avatar {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 15%;
+      border-radius: 19px;
+      display: block;
+    }
+    .hero-badge {
+      position: absolute;
+      bottom: -16px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(15, 23, 41, 0.95);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 8px 18px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--white);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.5), 0 0 16px rgba(59,130,246,0.18);
+      white-space: nowrap;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+    .badge-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #10B981;
+      box-shadow: 0 0 8px #10B981;
+      animation: pulseDot 2s infinite;
+      flex-shrink: 0;
+    }
+    @keyframes pulseDot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.45; transform: scale(0.85); }
+    }
     .hero-eyebrow {
       display: inline-flex; align-items: center; gap: 10px;
       font-size: 12px; font-weight: 600; letter-spacing: 2.5px;
@@ -245,6 +332,43 @@
       background: var(--bg3); border: 1px solid var(--border);
       border-radius: 20px; padding: 40px;
       display: flex; flex-direction: column; gap: 20px;
+    }
+    .about-profile-header {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--border);
+    }
+    .about-profile-photo {
+      width: 64px;
+      height: 64px;
+      border-radius: 16px;
+      object-fit: cover;
+      object-position: center 15%;
+      border: 2px solid var(--accent);
+      box-shadow: 0 0 16px var(--glow);
+      flex-shrink: 0;
+    }
+    .about-profile-name {
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--white);
+      letter-spacing: -0.3px;
+    }
+    .about-profile-role {
+      font-size: 13px;
+      color: var(--accent2);
+      font-weight: 600;
+      margin-top: 2px;
+    }
+    .about-profile-status {
+      font-size: 11.5px;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 5px;
     }
     .edu-item { display: flex; gap: 16px; align-items: flex-start; }
     .edu-icon {
@@ -533,6 +657,19 @@
       nav { padding: 18px 32px; }
       section { padding: 80px 32px; }
       .hero { padding: 110px 32px 70px; }
+      .hero-wrapper {
+        flex-direction: column-reverse;
+        gap: 36px;
+        text-align: center;
+        align-items: center;
+      }
+      .hero-content { max-width: 100%; }
+      .hero-eyebrow { justify-content: center; }
+      .hero-sub { margin-left: auto; margin-right: auto; }
+      .hero-actions { justify-content: center; }
+      .hero-image-card { width: 240px; height: 300px; border-radius: 20px; }
+      .hero-avatar { border-radius: 16px; }
+      .hero-monogram { display: none; }
       .about-grid { grid-template-columns: 1fr; gap: 48px; }
     }
 
@@ -795,21 +932,32 @@
 <!-- HERO -->
 <section class="hero" id="top">
   <div class="hero-monogram" aria-hidden="true">YK</div>
-  <div class="hero-content">
-    <div class="hero-eyebrow">Portfolio</div>
-    <h1>
-      Yordanos<br>
-      <span class="line2">Ketema.</span>
-    </h1>
-    <p class="hero-sub">
-      4th-year Business & Information Systems student at Addis Ababa University.
-      I build real digital products, from business websites to e-commerce platforms,
-      grounded in both code and business thinking.
-    </p>
-    <div class="hero-actions">
-      <a href="#projects" class="btn btn-primary">View My Work →</a>
-      <a href="assets/Yordanos_Ketema_CV.pdf" target="_blank" rel="noopener" class="btn btn-outline">📄 View CV</a>
-      <a href="#contact" class="btn btn-outline">Get In Touch</a>
+  <div class="hero-wrapper">
+    <div class="hero-content">
+      <div class="hero-eyebrow">Portfolio</div>
+      <h1>
+        Yordanos<br>
+        <span class="line2">Ketema.</span>
+      </h1>
+      <p class="hero-sub">
+        4th-year Business & Information Systems student at Addis Ababa University.
+        I build real digital products, from business websites to e-commerce platforms,
+        grounded in both code and business thinking.
+      </p>
+      <div class="hero-actions">
+        <a href="#projects" class="btn btn-primary">View My Work →</a>
+        <a href="assets/Yordanos_Ketema_CV.pdf" target="_blank" rel="noopener" class="btn btn-outline">📄 View CV</a>
+        <a href="#contact" class="btn btn-outline">Get In Touch</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-image-card">
+        <img src="assets/Yordanos%20Ketema.jpg" alt="Yordanos Ketema" class="hero-avatar">
+        <div class="hero-badge">
+          <span class="badge-dot"></span>
+          <span>Open to Opportunities</span>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -840,6 +988,14 @@
       </div>
     </div>
     <div class="about-image-block reveal">
+      <div class="about-profile-header">
+        <img src="assets/Yordanos%20Ketema.jpg" alt="Yordanos Ketema" class="about-profile-photo">
+        <div>
+          <div class="about-profile-name">Yordanos Ketema</div>
+          <div class="about-profile-role">BI Analyst &amp; Systems Architect</div>
+          <div class="about-profile-status"><span class="badge-dot"></span> Available for Hire &amp; Collaboration</div>
+        </div>
+      </div>
       <div class="edu-item">
         <div class="edu-icon">🎓</div>
         <div>
